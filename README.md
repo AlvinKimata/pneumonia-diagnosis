@@ -1,2 +1,2 @@
-# musical-eureka
+# Pneumonia diagnosis project.
 School project
