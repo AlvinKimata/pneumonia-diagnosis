@@ -2,6 +2,7 @@
 import torch
 import cnn_model
 import cv2
+import numpy as np
 
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
@@ -11,14 +12,14 @@ model = model.to(device)
 #Load model ckpt.
 print('Loading checkpoint.')
 ckpt = torch.load('models/best.pth', map_location = device)
-model.load_state_dict(ckpt)
+model.load_state_dict(ckpt, strict = True)
 
 #Evaluation mode.
 model = model.eval()
 
 
-def preprocess_img(image_path):
-    image = cv2.imread(image_path)
+def preprocess_img(image):
+    # image = cv2.imread(image_path)
     image = image / 255
     image = cv2.resize(image, (256, 256))
     image = image.transpose(2, 0, 1) #(W, H, C) -> (C, W, H)
@@ -26,17 +27,18 @@ def preprocess_img(image_path):
     return image_pt
 
 
-def deepfakes_image_predict(input_image, model):
+def image_predict(input_image):
     image = preprocess_img(input_image)
 
     out = model.forward(image)
+    out = out.detach().cpu().numpy()
+    out = np.round(out, 4)
+    if out > 0.5:
+        return f"{out * 100}% probability of prescence of pneumonia in image."
     
-    return out
+    else:
 
-pneumonia = 'inputs/samples/pneumonia.jpeg'
-normal = 'inputs/samples/normal.jpeg'
+        out = 1 - out
+        return f"{out * 100}% probability of abscence of pneumonia in image."
 
-pneumonia_grads = deepfakes_image_predict(input_image=pneumonia, model = model)
-normal_grads = deepfakes_image_predict(input_image=normal, model = model)
-print(normal_grads)
-print(pneumonia_grads)
+# np.round()
