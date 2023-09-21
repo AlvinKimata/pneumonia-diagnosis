@@ -40,5 +40,3 @@ def image_predict(input_image):
 
         out = 1 - out
         return f"{out * 100}% probability of abscence of pneumonia in image."
-
-# np.round()
