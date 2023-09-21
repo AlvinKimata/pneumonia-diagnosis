@@ -17,7 +17,8 @@ model.load_state_dict(ckpt)
 model = model.eval()
 
 
-def preprocess_img(image):
+def preprocess_img(image_path):
+    image = cv2.imread(image_path)
     image = image / 255
     image = cv2.resize(image, (256, 256))
     image = image.transpose(2, 0, 1) #(W, H, C) -> (C, W, H)
@@ -25,24 +26,17 @@ def preprocess_img(image):
     return image_pt
 
 
-def deepfakes_image_predict(input_image):
-    face = preprocess_img(input_image)
+def deepfakes_image_predict(input_image, model):
+    image = preprocess_img(input_image)
 
-    img_grads = img_model.forward(face)
-    multimodal_grads = multimodal.clf_rgb[0].forward(img_grads)
+    out = model.forward(image)
+    
+    return out
 
-    out = nn.Softmax()(multimodal_grads)
-    max = torch.argmax(out, dim=-1) #Index of the max value in the tensor.
-    max = max.cpu().detach().numpy()
-    max_value = out[max] #Actual value of the tensor.
-    max_value = np.argmax(out[max].detach().numpy())
+pneumonia = 'inputs/samples/pneumonia.jpeg'
+normal = 'inputs/samples/normal.jpeg'
 
-    if max_value > 0.5:
-        preds = round(100 - (max_value*100), 3)
-        text2 = f"The image is REAL."
-
-    else:
-        preds = round(max_value*100, 3)
-        text2 = f"The image is FAKE."
-
-    return text2
+pneumonia_grads = deepfakes_image_predict(input_image=pneumonia, model = model)
+normal_grads = deepfakes_image_predict(input_image=normal, model = model)
+print(normal_grads)
+print(pneumonia_grads)
