@@ -6,16 +6,18 @@ import numpy as np
 
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
-model = cnn_model.conv_v1()
-model = model.to(device)
+def load_model():
+    model = cnn_model.conv_v1()
+    model = model.to(device)
 
-#Load model ckpt.
-print('Loading checkpoint.')
-ckpt = torch.load('models/best.pth', map_location = device)
-model.load_state_dict(ckpt, strict = True)
+    #Load model ckpt.
+    print('Loading checkpoint.')
+    ckpt = torch.load('models/best.pth', map_location = device)
+    model.load_state_dict(ckpt, strict = True)
 
-#Evaluation mode.
-model = model.eval()
+    #Evaluation mode.
+    model = model.eval()
+    return model
 
 
 def preprocess_img(image):
