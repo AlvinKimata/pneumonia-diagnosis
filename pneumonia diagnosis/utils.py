@@ -1,8 +1,11 @@
 #Perform model inference.
-import torch
-import cnn_model
+import io
 import cv2
+import torch
 import numpy as np
+from PIL import Image
+from models import cnn_model
+
 
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
@@ -11,9 +14,9 @@ def load_model():
     model = model.to(device)
 
     #Load model ckpt.
-    print('Loading checkpoint.')
-    ckpt = torch.load('models/best.pth', map_location = device)
-    model.load_state_dict(ckpt, strict = True)
+    # print('Loading checkpoint.')
+    # ckpt = torch.load('ckpt/best.pth', map_location = device)
+    # model.load_state_dict(ckpt, strict = True)
 
     #Evaluation mode.
     model = model.eval()
@@ -21,7 +24,6 @@ def load_model():
 
 
 def preprocess_img(image):
-    # image = cv2.imread(image_path)
     image = image / 255
     image = cv2.resize(image, (256, 256))
     image = image.transpose(2, 0, 1) #(W, H, C) -> (C, W, H)
@@ -30,6 +32,7 @@ def preprocess_img(image):
 
 
 def image_predict(input_image):
+    model = load_model()
     image = preprocess_img(input_image)
 
     out = model.forward(image)
@@ -42,3 +45,19 @@ def image_predict(input_image):
 
         out = 1 - out
         return f"{out * 100}% probability of abscence of pneumonia in image."
+
+
+def image_classification(image_bn, model):
+    img = decode_image_binary(image_bn)
+    img = preprocess_img(img)
+    grads = model.forward(img)
+    out = grads.detach().cpu().numpy()
+    out = np.round(out, 4)
+    return out
+
+def decode_image_binary(image_bn):
+    '''Reads image in binary and returns it np.array format'''
+    img_buff = np.frombuffer(image_bn, np.uint8)
+    image_decoded = cv2.imdecode(img_buff, cv2.IMREAD_COLOR)
+    image_array = np.array(image_decoded)
+    return image_array

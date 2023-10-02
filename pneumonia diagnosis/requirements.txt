@@ -2,3 +2,5 @@ opencv-python
 torch
 torchvision
 gradio
+pybase64
+Pillow

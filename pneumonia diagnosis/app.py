@@ -1,7 +1,7 @@
 import gradio as gr
 import utils
 import torch
-import cnn_model
+from models import cnn_model
 
 title = "Pneumonia diagnosis."
 description = "A web application for diagnosing prescence or abscence of pneumonia in chesy xray images."
