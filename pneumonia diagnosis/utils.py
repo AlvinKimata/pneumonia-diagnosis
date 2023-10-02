@@ -1,5 +1,5 @@
 #Perform model inference.
-import io
+import os
 import cv2
 import torch
 import numpy as np
@@ -14,9 +14,8 @@ def load_model():
     model = model.to(device)
 
     #Load model ckpt.
-    # print('Loading checkpoint.')
-    # ckpt = torch.load('ckpt/best.pth', map_location = device)
-    # model.load_state_dict(ckpt, strict = True)
+    ckpt = torch.load('../ckpt/best.pth', map_location = device)
+    model.load_state_dict(ckpt, strict = True)
 
     #Evaluation mode.
     model = model.eval()
@@ -52,8 +51,13 @@ def image_classification(image_bn, model):
     img = preprocess_img(img)
     grads = model.forward(img)
     out = grads.detach().cpu().numpy()
-    out = np.round(out, 4)
-    return out
+    out = np.round(out * 100, 4)
+    if out > 0.5:
+        return f"{out}% probability of prescence of pneumonia in image."
+    
+    else:
+        out = 1 - out
+        return f"{out}% probability of abscence of pneumonia in image."
 
 def decode_image_binary(image_bn):
     '''Reads image in binary and returns it np.array format'''
