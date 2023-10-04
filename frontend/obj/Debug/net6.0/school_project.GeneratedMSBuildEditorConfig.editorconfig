@@ -15,6 +15,14 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = /home/debonair/Documents/python/pneumonia-diagnosis/frontend
 build_property._RazorSourceGeneratorDebug = 
 
+[/home/debonair/Documents/python/pneumonia-diagnosis/frontend/Views/Diagnosis/Batch_Diagnosis.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRGlhZ25vc2lzL0JhdGNoX0RpYWdub3Npcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/debonair/Documents/python/pneumonia-diagnosis/frontend/Views/Diagnosis/Single_Diagnosis.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRGlhZ25vc2lzL1NpbmdsZV9EaWFnbm9zaXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/debonair/Documents/python/pneumonia-diagnosis/frontend/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

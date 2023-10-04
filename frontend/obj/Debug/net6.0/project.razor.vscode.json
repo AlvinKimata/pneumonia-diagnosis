@@ -23719,6 +23719,16 @@
       "FilePath": "/home/debonair/Documents/python/pneumonia-diagnosis/frontend/Views/Home/Index.cshtml",
       "TargetPath": "Views\\Home\\Index.cshtml",
       "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/debonair/Documents/python/pneumonia-diagnosis/frontend/Views/Diagnosis/Single_Diagnosis.cshtml",
+      "TargetPath": "Views\\Diagnosis\\Single_Diagnosis.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/debonair/Documents/python/pneumonia-diagnosis/frontend/Views/Diagnosis/Batch_Diagnosis.cshtml",
+      "TargetPath": "Views\\Diagnosis\\Batch_Diagnosis.cshtml",
+      "FileKind": "mvc"
     }
   ]
 }
