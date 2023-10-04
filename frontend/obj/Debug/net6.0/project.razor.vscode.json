@@ -23729,6 +23729,16 @@
       "FilePath": "/home/debonair/Documents/python/pneumonia-diagnosis/frontend/Views/Diagnosis/Batch_Diagnosis.cshtml",
       "TargetPath": "Views\\Diagnosis\\Batch_Diagnosis.cshtml",
       "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/debonair/Documents/python/pneumonia-diagnosis/frontend/Views/DataAnalysis/ProjectAnalysis.cshtml",
+      "TargetPath": "Views\\DataAnalysis\\ProjectAnalysis.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/debonair/Documents/python/pneumonia-diagnosis/frontend/Views/ModelAnalysis/GradCAM.cshtml",
+      "TargetPath": "Views\\ModelAnalysis\\GradCAM.cshtml",
+      "FileKind": "mvc"
     }
   ]
 }
