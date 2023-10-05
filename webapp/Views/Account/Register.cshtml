@@ -1,36 +1,36 @@
 @model RegisterViewModel;
 @{
     ViewData["Title"] = "Registration";
+    Layout = "~/Views/Shared/_AuthLayout.cshtml";
 }
 
 <h1>User Registration</h1>
-
-<div class="row">
-    <div class="col-md-12">
-        <form method="post">
-            <div asp-validation-summary="All" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Email"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Password"></label>
-                <input asp-for="Password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ConfirmPassword"></label>
-                <input asp-for="ConfirmPassword" class="form-control" />
-                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="City"></label>
-                <input asp-for="City" class="form-control" />
-            </div>
-
-            <button type="submit" class="btn btn-primary">Register</button>
-        </form>
+<form method="post">
+    <div class="form-group">
+        <ion-icon name="person-outline"></ion-icon>
+        <input class="form-control" asp-for="Name" type="text" placeholder="Full Name" />
+        <span class="text-danger" asp-validation-for="Name"></span>
     </div>
-</div>
+
+    <div class="form-group">
+        <input class="form-control" asp-for="Email" type="text" placeholder="Email" />
+        <ion-icon name="mail-outline"></ion-icon>
+        <span class="text-danger" asp-validation-for="Email"></span>
+    </div>
+    
+    <div class="form-group">
+        <input class="form-control" asp-for="Password" type="password" placeholder="Password" />
+        <ion-icon name="lock-closed-outline"></ion-icon>
+        <span class="text-danger" asp-validation-for="Password"></span>
+    </div>
+
+    <div class="form-group">
+        <input class="form-control" asp-for="ConfirmPassword" type="password" placeholder="Confirm Password" />
+        <ion-icon name="lock-open-outline"></ion-icon>
+        <span class="text-danger" asp-validation-for="ConfirmPassword"></span>
+    </div>
+
+    <button class="btn primary w-100" type="submit">Sign Up</button>
+    <p class="noAcc">Already have an account ? <a asp-action="Login"> Login </a></p>
+
+</form>
