@@ -8,7 +8,7 @@
 The database used is Ms SQL server running on a docker image. Use the command below to pull and start a docker container.
 
 ```bash
-docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=Kihato001#" -p 1433:1433 -d mcr.microsoft.com/mssql/server:2022-latest
+docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<password>" -p 1433:1433 -d mcr.microsoft.com/mssql/server:2022-latest
 
 ```
 
