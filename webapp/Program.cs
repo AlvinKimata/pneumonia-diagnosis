@@ -4,7 +4,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 
 
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -14,11 +13,12 @@ builder.Services.AddDbContext<AppDbContext> (options =>{
 
     options.UseSqlServer(connectionString);
 });
-builder.Services.AddIdentity<ApplicationUser, IdentityOptions>(options => 
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options => 
     {
         options.Password.RequiredLength = 10;
         options.Password.RequiredUniqueChars = 3;   
     }).AddEntityFrameworkStores<AppDbContext>();
+
 
 
 builder.Services.AddControllersWithViews();
