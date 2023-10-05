@@ -5,6 +5,7 @@ build_property.UsingMicrosoftNETSdkWeb = true
 build_property.ProjectTypeGuids = 
 build_property.InvariantGlobalization = 
 build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = school_project
 build_property.RootNamespace = school_project
@@ -14,6 +15,10 @@ build_property.SupportLocalizedComponentNames =
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
 build_property.MSBuildProjectDirectory = /home/debonair/Documents/python/pneumonia-diagnosis/frontend
 build_property._RazorSourceGeneratorDebug = 
+
+[/home/debonair/Documents/python/pneumonia-diagnosis/frontend/Views/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9SZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
 
 [/home/debonair/Documents/python/pneumonia-diagnosis/frontend/Views/DataAnalysis/ProjectAnalysis.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRGF0YUFuYWx5c2lzL1Byb2plY3RBbmFseXNpcy5jc2h0bWw=

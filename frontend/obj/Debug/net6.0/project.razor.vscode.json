@@ -23739,6 +23739,11 @@
       "FilePath": "/home/debonair/Documents/python/pneumonia-diagnosis/frontend/Views/ModelAnalysis/GradCAM.cshtml",
       "TargetPath": "Views\\ModelAnalysis\\GradCAM.cshtml",
       "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/debonair/Documents/python/pneumonia-diagnosis/frontend/Views/Account/Register.cshtml",
+      "TargetPath": "Views\\Account\\Register.cshtml",
+      "FileKind": "mvc"
     }
   ]
 }
