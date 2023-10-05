@@ -1,6 +1,7 @@
 using System.Net;
 using school_project.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +13,12 @@ builder.Services.AddDbContext<AppDbContext> (options =>{
 
     options.UseSqlServer(connectionString);
 });
+builder.Services.AddIdentity<ApplicationUser, IdentityOptions>(options => 
+    {
+        options.Password.RequiredLength = 10;
+        options.Password.RequiredUniqueChars = 3;   
+    }).AddEntityFrameworkStores<AppDbContext>();
+
 
 
 builder.Services.AddControllersWithViews();

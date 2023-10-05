@@ -69,11 +69,14 @@
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
 
-                        <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                        <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
+                            data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" asp-controller="Diagnosis" asp-action="Single_Diagnosis">Single image diagnosis</a>
+                                <a class="nav-link" asp-controller="Diagnosis" asp-action="Single_Diagnosis">Single
+                                    image diagnosis</a>
 
-                                <a class="nav-link" asp-controller="Diagnosis" asp-action="Batch_Diagnosis">Batch image diagnosis</a>
+                                <a class="nav-link" asp-controller="Diagnosis" asp-action="Batch_Diagnosis">Batch image
+                                    diagnosis</a>
                             </nav>
                         </div>
 
@@ -100,15 +103,15 @@
                 </div>
             </nav>
         </div>
-         <!--End of side navigation -->
-         <!--Start of Inner page Content -->
+        <!--End of side navigation -->
+        <!--Start of Inner page Content -->
         <div id="layoutSidenav_content">
             @RenderBody()
         </div>
         <!--End of inner page content -->
     </div>
 
-   
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
