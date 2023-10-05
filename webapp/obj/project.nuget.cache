@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "WtMGLaPos7ErWCU4TnGNwA4lS428IhNaZxisGSazvgFsxpylW5fbCG74ThP3LMXGpBpS2DVu9rThcDLRW6e8JA==",
+  "dgSpecHash": "bhxmnPdExRRYwJkzkWwT1EcMcPdtaoyzjK2bR74ZM2EW+fNY73nlUA6ANF1w28Y5VlX4dX3GPqI6eY2N4A5pxg==",
   "success": true,
-  "projectFilePath": "/home/debonair/Documents/python/pneumonia-diagnosis/frontend/school_project.csproj",
+  "projectFilePath": "/home/debonair/Documents/python/pneumonia-diagnosis/webapp/school_project.csproj",
   "expectedPackageFiles": [
     "/home/debonair/.nuget/packages/azure.core/1.25.0/azure.core.1.25.0.nupkg.sha512",
     "/home/debonair/.nuget/packages/azure.identity/1.7.0/azure.identity.1.7.0.nupkg.sha512",

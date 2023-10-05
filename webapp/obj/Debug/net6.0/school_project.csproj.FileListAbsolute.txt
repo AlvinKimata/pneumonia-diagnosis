@@ -32,3 +32,11 @@
 /home/debonair/Documents/python/pneumonia-diagnosis/frontend/obj/Debug/net6.0/school_project.MvcApplicationPartsAssemblyInfo.cache
 /home/debonair/Documents/python/pneumonia-diagnosis/frontend/obj/Debug/net6.0/school_project.RazorAssemblyInfo.cache
 /home/debonair/Documents/python/pneumonia-diagnosis/frontend/obj/Debug/net6.0/school_project.RazorAssemblyInfo.cs
+/home/debonair/Documents/python/pneumonia-diagnosis/webapp/obj/Debug/net6.0/school_project.csproj.AssemblyReference.cache
+/home/debonair/Documents/python/pneumonia-diagnosis/webapp/obj/Debug/net6.0/school_project.GeneratedMSBuildEditorConfig.editorconfig
+/home/debonair/Documents/python/pneumonia-diagnosis/webapp/obj/Debug/net6.0/school_project.AssemblyInfoInputs.cache
+/home/debonair/Documents/python/pneumonia-diagnosis/webapp/obj/Debug/net6.0/school_project.AssemblyInfo.cs
+/home/debonair/Documents/python/pneumonia-diagnosis/webapp/obj/Debug/net6.0/school_project.csproj.CoreCompileInputs.cache
+/home/debonair/Documents/python/pneumonia-diagnosis/webapp/obj/Debug/net6.0/school_project.MvcApplicationPartsAssemblyInfo.cache
+/home/debonair/Documents/python/pneumonia-diagnosis/webapp/obj/Debug/net6.0/school_project.RazorAssemblyInfo.cache
+/home/debonair/Documents/python/pneumonia-diagnosis/webapp/obj/Debug/net6.0/school_project.RazorAssemblyInfo.cs

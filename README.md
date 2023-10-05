@@ -1,11 +1,9 @@
-# Pneumonia diagnosis project.
+# AI-based Pneumonia diagnosis system.
 
-### This web application is implemented using the ASP.Net Core framework.
-
-## Application Setup.
+### This web application is implemented using the `ASP.Net Core` framework.
 
 ### 1. Database setup.
-The database used is Ms SQL server running on a docker image. Use the command below to pull and start a docker container.
+The database used is Ms SQL server running on a docker container. Use the command below to pull and start a docker container from the image.
 
 ```bash
 $ docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<password>" -p 1433:1433 -d mcr.microsoft.com/mssql/server:2022-latest
@@ -34,6 +32,7 @@ $ python classification_endpoint.py
 Use the command below to install web app dependencies.
 
 ```bash
+$ cd "webapp"
 $ dotnet restore
 $ dotnet build
 $ dotnet run

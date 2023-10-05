@@ -2859,11 +2859,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/debonair/Documents/python/pneumonia-diagnosis/frontend/school_project.csproj",
+      "projectUniqueName": "/home/debonair/Documents/python/pneumonia-diagnosis/webapp/school_project.csproj",
       "projectName": "school_project",
-      "projectPath": "/home/debonair/Documents/python/pneumonia-diagnosis/frontend/school_project.csproj",
+      "projectPath": "/home/debonair/Documents/python/pneumonia-diagnosis/webapp/school_project.csproj",
       "packagesPath": "/home/debonair/.nuget/packages/",
-      "outputPath": "/home/debonair/Documents/python/pneumonia-diagnosis/frontend/obj/",
+      "outputPath": "/home/debonair/Documents/python/pneumonia-diagnosis/webapp/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/debonair/.nuget/NuGet/NuGet.Config"
