@@ -4,24 +4,21 @@
     Layout = "~/Views/Shared/_AuthLayout.cshtml";
 }
 
-<form method="post">
-    <div class="form-group">
-        <input asp-for="Email" class="form-control" type="text" placeholder="Email" />
-        <ion-icon name="person-outline"></ion-icon>
-        <span class="text-danger" asp-validation-for="Email"></span>
+<form>
+    <div class="form-floating mb-3">
+        <input class="form-control" id="inputEmail" type="email" placeholder="name@example.com" />
+        <label for="inputEmail">Email address</label>
     </div>
-
-    <div class="form-group">
-        <input asp-for="Password" class="form-control" type="password" placeholder="Password" />
-        <ion-icon name="lock-closed-outline"></ion-icon>
-        <span class="text-danger" asp-validation-for="Password"></span>
+    <div class="form-floating mb-3">
+        <input class="form-control" id="inputPassword" type="password" placeholder="Password" />
+        <label for="inputPassword">Password</label>
     </div>
-
-    <div class="remember">
-        <label> <input asp-for="RememberMe" type="checkbox" /> Remember Me</label>
-        <a href="#">Forgot Password?</a>
-
+    <div class="form-check mb-3">
+        <input class="form-check-input" id="inputRememberPassword" type="checkbox" value="" />
+        <label class="form-check-label" for="inputRememberPassword">Remember Password</label>
     </div>
-    <button type="submit" class="btn primary w-100">Sign In</button>
-    <p class="noAcc">Don’t have account ? <a asp-action="Register" asp-controller="Account"> Register as new member</a></p>
+    <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
+        <a class="small" href="password.html">Forgot Password?</a>
+        <a class="btn btn-primary" href="index.html">Login</a>
+    </div>
 </form>
