@@ -23744,6 +23744,11 @@
       "FilePath": "/home/debonair/Documents/python/pneumonia-diagnosis/frontend/Views/Account/Register.cshtml",
       "TargetPath": "Views\\Account\\Register.cshtml",
       "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/debonair/Documents/python/pneumonia-diagnosis/frontend/Views/Account/Login.cshtml",
+      "TargetPath": "Views\\Account\\Login.cshtml",
+      "FileKind": "mvc"
     }
   ]
 }
