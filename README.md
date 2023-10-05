@@ -26,6 +26,6 @@ $ cd "pneumonia diagnosis" && pip install -r requirements.txt
 
 #### B. Run the command below to start the Flask API endpoint.
 ```bash
-$ cd pneumonia diagnosis/endpoint
+$ cd "pneumonia diagnosis/endpoint"
 $ python classification_endpoint.py
 ```
