@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace school_project.ViewModels
 {
-    public class SingleImageDiagnosis
+    public class SingleImageDiagnosisViewModel
     {
 
         public int id {get; set;}
