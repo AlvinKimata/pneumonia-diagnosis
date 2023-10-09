@@ -67,7 +67,7 @@ namespace school_project.Controllers
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { 
-                    UserName = model.Email,
+                    UserName = model.Name,
                     Email = model.Email,
                     City = model.City
 
