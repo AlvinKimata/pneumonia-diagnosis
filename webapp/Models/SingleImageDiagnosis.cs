@@ -9,6 +9,7 @@ namespace school_project.Models
     public class SingleImageDiagnosis{
         public int id {get; set;}
 
+        [Required]
         public string PhotoPath {get; set;}
 
         //The label of the image after model inference.
