@@ -15,5 +15,6 @@ namespace school_project.Models{
         }
 
         public DbSet<Employee> Employees {get; set;}
+
     }
 }

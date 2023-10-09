@@ -77,7 +77,7 @@ namespace school_project.Controllers
                 if (result.Succeeded)
                 {
                     await signInManager.SignInAsync(user, isPersistent: false);
-                    return RedirectToAction("index", "home");
+                    return RedirectToAction("Login", "Account");
                 }
 
                 foreach (var error in result.Errors)

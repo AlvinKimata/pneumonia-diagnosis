@@ -13,12 +13,14 @@ builder.Services.AddDbContext<AppDbContext> (options =>{
 
     options.UseSqlServer(connectionString);
 });
+
+
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options => 
     {
         options.Password.RequiredLength = 8;
         options.Password.RequiredUniqueChars = 1;   
+        options.SignIn.RequireConfirmedAccount = false;
     }).AddEntityFrameworkStores<AppDbContext>();
-
 
 
 builder.Services.AddControllersWithViews();

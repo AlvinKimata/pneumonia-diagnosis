@@ -1,6 +1,5 @@
-﻿@* @inject  SignInManager<ApplicationUser> signInManager; *@
-@* @model HomeDetailsViewModel *@
-
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> signInManager;
 
 <!DOCTYPE html>
 <html lang="en">
@@ -100,6 +99,9 @@
                             </nav>
                         </div>
                     </div>
+                </div>
+                <div class="sb-sidenav-footer">
+                    <div class="small">Logged in as @Model.Employee.Name</div>
                 </div>
             </nav>
         </div>
