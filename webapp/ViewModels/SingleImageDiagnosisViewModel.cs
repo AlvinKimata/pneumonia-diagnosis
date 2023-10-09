@@ -9,6 +9,8 @@ namespace school_project.ViewModels
 {
     public class SingleImageDiagnosis
     {
+
+        public int id {get; set;}
         [Required]
         public List<IFormFile> Photos { get; set; }
     }

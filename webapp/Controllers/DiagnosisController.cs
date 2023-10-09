@@ -5,6 +5,7 @@ using System;
 using System.Net.Http;
 using System.IO;
 using Microsoft.Extensions.Configuration;
+using school_project.ViewModels;
 
 
 namespace school_project.Controllers;
@@ -12,12 +13,7 @@ namespace school_project.Controllers;
 public class DiagnosisController: Controller
 {
     private IConfiguration _config;
-
-    public Startup(IConfiguration config)
-        {
-            _config = config;
-        }
-
+    
     private static async Task<byte[]> ReadStreamAsync(FileStream stream)
     {
         using (var memoryStream = new MemoryStream())
@@ -63,7 +59,6 @@ public class DiagnosisController: Controller
     }
 
    [HttpPost]
-   [AllowAnonymous]
     public async Task<IActionResult> ImageInference(SingleImageDiagnosisViewModel model)
     {
         if (ModelState.IsValid)
@@ -72,17 +67,21 @@ public class DiagnosisController: Controller
                 id = model.id,
                 PhotoPath = model.PhotoPath
             };
-            var modelResult = await ImageInference(imageInstance.PhotoPath)
 
-            if (modelResult.Succeeded)
-            {
-                return modelResult
+            //Copy image to images directory.
+            var res = await ProcessUploadedFile(imageInstance);
+
+            if (res.Succeeded){
+                //If copying the file succeeded, then perform inference.
+                var modelResult = await ImageInference(res);
+                return modelResult;
             }
 
             foreach (var error in result.Errors)
             {
                 ModelState.AddModelError("", error.Description);
             }
+
         }
         return View(model);
     }
@@ -100,12 +99,9 @@ public class DiagnosisController: Controller
                     using (var fileStream = new FileStream(filePath, FileMode.Create))
                     {
                         photo.CopyTo(fileStream);
-                    }
-                    
+                    }   
                 }
-
             }
-
             return uniqueFileName;
         }
 
