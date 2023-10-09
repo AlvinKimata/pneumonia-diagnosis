@@ -27,11 +27,7 @@ public class DiagnosisController: Controller
         }
     }
     
-    public ViewResult Single_Diagnosis()
-    {
-        return View();
-    }
-
+   
     public async Task<IActionResult> ImageInference(string imagePath)
     {
         var classificationEndpoint = _config.GetConnectionString("classificationEndpoint");
@@ -66,11 +62,31 @@ public class DiagnosisController: Controller
         }
     }
 
-
-    public ViewResult Batch_Diagnosis()
+   [HttpPost]
+   [AllowAnonymous]
+    public async Task<IActionResult> ImageInference(SingleImageDiagnosisViewModel model)
     {
-        return View();
+        if (ModelState.IsValid)
+        {
+            var imageInstance = new SingleImageDiagnosis { 
+                id = model.id,
+                PhotoPath = model.PhotoPath
+            };
+            var modelResult = await ImageInference(imageInstance.PhotoPath)
+
+            if (modelResult.Succeeded)
+            {
+                return modelResult
+            }
+
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError("", error.Description);
+            }
+        }
+        return View(model);
     }
+
     private string ProcessUploadedFile(SingleImageDiagnosisViewModel model)
         {
             string uniqueFileName = null;
@@ -92,4 +108,15 @@ public class DiagnosisController: Controller
 
             return uniqueFileName;
         }
+
+    public ViewResult Batch_Diagnosis()
+    {
+        return View();
+    }
+
+    public ViewResult Single_Diagnosis()
+    {
+        return View();
+    }
+
 }
