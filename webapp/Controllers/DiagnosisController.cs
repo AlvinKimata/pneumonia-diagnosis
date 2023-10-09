@@ -3,17 +3,21 @@ using school_project.Models;
 using System.Threading.Tasks;
 using System;
 using System.Net.Http;
-using System.IO;
-using Microsoft.Extensions.Configuration;
 using school_project.ViewModels;
+using Microsoft.AspNetCore.Hosting;
 
 
 namespace school_project.Controllers;
 
 public class DiagnosisController: Controller
 {
-    private IConfiguration _config;
-    
+    private readonly Microsoft.AspNetCore.Hosting.IHostingEnvironment hostingEnvironment;
+
+    public DiagnosisController(Microsoft.AspNetCore.Hosting.IHostingEnvironment hostingEnvironment)
+        {
+            this.hostingEnvironment = hostingEnvironment;
+        }
+
     private static async Task<byte[]> ReadStreamAsync(FileStream stream)
     {
         using (var memoryStream = new MemoryStream())
@@ -23,69 +27,43 @@ public class DiagnosisController: Controller
         }
     }
     
-   
-    public async Task<IActionResult> ImageInference(string imagePath)
+    public async Task<IActionResult> ConvertImageToBytes(SingleImageDiagnosisViewModel model)
     {
-        var classificationEndpoint = _config.GetConnectionString("classificationEndpoint");
+        var apiUrl = "http://localhost:12345/classification";
+        HttpClient httpClient = new HttpClient();
 
-        try{
-             using (HttpClient httpClient = new HttpClient())
-             using (FileStream imageStream = File.OpenRead(imagePath))
-             {
-                 // Create a ByteArrayContent with the image data
+        foreach(var formFile in model.Photos)
+        {
+            using (FileStream imageStream = System.IO.File.OpenRead(formFile.FileName))
+            {
+                // Create a ByteArrayContent with the image data
                 ByteArrayContent content = new ByteArrayContent(await ReadStreamAsync(imageStream));
 
                 // Set the Content-Type header
                 content.Headers.Add("Content-Type", "image/jpeg");
 
-                // Send the POST request
-                HttpResponseMessage response = await httpClient.PostAsync(classificationEndpoint, content);
+                //Send the POST request.
+                HttpResponseMessage response = await httpClient.PostAsync(apiUrl, content);
 
                 // Check the response status
                 if (response.IsSuccessStatusCode)
                 {
                     string responseContent = await response.Content.ReadAsStringAsync();
-                    return Json($"Response: {responseContent}");
+                    // return Json($"Response: {responseContent}");
+                    return Json(new { Response = responseContent });
+
                 }
                 else
                 {
                     return Json($"Request failed with status code {response.StatusCode}");
                 }
-             }
-        }
-        catch(Exception ex){
-            Console.WriteLine($"An error occurred: {ex.Message}");
-        }
-    }
-
-   [HttpPost]
-    public async Task<IActionResult> ImageInference(SingleImageDiagnosisViewModel model)
-    {
-        if (ModelState.IsValid)
-        {
-            var imageInstance = new SingleImageDiagnosis { 
-                id = model.id,
-                PhotoPath = model.PhotoPath
-            };
-
-            //Copy image to images directory.
-            var res = await ProcessUploadedFile(imageInstance);
-
-            if (res.Succeeded){
-                //If copying the file succeeded, then perform inference.
-                var modelResult = await ImageInference(res);
-                return modelResult;
             }
-
-            foreach (var error in result.Errors)
-            {
-                ModelState.AddModelError("", error.Description);
-            }
-
         }
         return View(model);
     }
 
+
+    [HttpPost]
     private string ProcessUploadedFile(SingleImageDiagnosisViewModel model)
         {
             string uniqueFileName = null;
