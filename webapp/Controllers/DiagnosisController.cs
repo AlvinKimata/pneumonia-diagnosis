@@ -4,12 +4,20 @@ using System.Threading.Tasks;
 using System;
 using System.Net.Http;
 using System.IO;
+using Microsoft.Extensions.Configuration;
+
 
 namespace school_project.Controllers;
 
 public class DiagnosisController: Controller
 {
-    public string apiUrl = "http://localhost:12345/classification";
+    private IConfiguration _config;
+
+    public Startup(IConfiguration config)
+        {
+            _config = config;
+        }
+
     private static async Task<byte[]> ReadStreamAsync(FileStream stream)
     {
         using (var memoryStream = new MemoryStream())
@@ -26,6 +34,8 @@ public class DiagnosisController: Controller
 
     public async Task<IActionResult> ImageInference(string imagePath)
     {
+        var classificationEndpoint = _config.GetConnectionString("classificationEndpoint");
+
         try{
              using (HttpClient httpClient = new HttpClient())
              using (FileStream imageStream = File.OpenRead(imagePath))
@@ -37,17 +47,17 @@ public class DiagnosisController: Controller
                 content.Headers.Add("Content-Type", "image/jpeg");
 
                 // Send the POST request
-                HttpResponseMessage response = await httpClient.PostAsync(apiUrl, content);
+                HttpResponseMessage response = await httpClient.PostAsync(classificationEndpoint, content);
 
                 // Check the response status
                 if (response.IsSuccessStatusCode)
                 {
                     string responseContent = await response.Content.ReadAsStringAsync();
-                    Console.WriteLine($"Response: {responseContent}");
+                    return Json($"Response: {responseContent}");
                 }
                 else
                 {
-                    Console.WriteLine($"Request failed with status code {response.StatusCode}");
+                    return Json($"Request failed with status code {response.StatusCode}");
                 }
              }
         }
@@ -55,6 +65,7 @@ public class DiagnosisController: Controller
             Console.WriteLine($"An error occurred: {ex.Message}");
         }
     }
+
 
      public ViewResult Batch_Diagnosis()
     {
