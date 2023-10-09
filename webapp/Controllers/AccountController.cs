@@ -76,11 +76,6 @@ namespace school_project.Controllers
 
                 if (result.Succeeded)
                 {
-                    // if(signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
-                    // {
-                    //     return RedirectToAction("ListUsers", "Administration");
-                    // }
-
                     await signInManager.SignInAsync(user, isPersistent: false);
                     return RedirectToAction("index", "home");
                 }
@@ -103,7 +98,7 @@ namespace school_project.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public async Task<IActionResult> Login(LoginViewModel model, string returnUrl)
+        public async Task<IActionResult> Login(LoginViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -111,14 +106,7 @@ namespace school_project.Controllers
 
                 if (result.Succeeded)
                 {
-                    if (!string.IsNullOrEmpty(returnUrl))
-                    {
-                        return LocalRedirect(returnUrl);
-                    }
-                    else
-                    {
-                        return RedirectToAction("index", "home");
-                    }
+                    return RedirectToAction("index", "home");
                 }
 
                 ModelState.AddModelError(string.Empty, "Invalid login attempt");

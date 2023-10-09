@@ -15,8 +15,8 @@ builder.Services.AddDbContext<AppDbContext> (options =>{
 });
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options => 
     {
-        options.Password.RequiredLength = 10;
-        options.Password.RequiredUniqueChars = 3;   
+        options.Password.RequiredLength = 8;
+        options.Password.RequiredUniqueChars = 1;   
     }).AddEntityFrameworkStores<AppDbContext>();
 
 

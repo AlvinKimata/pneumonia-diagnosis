@@ -1,4 +1,6 @@
-﻿@inject  SignInManager<ApplicationUser> signInManager;
+﻿@* @inject  SignInManager<ApplicationUser> signInManager; *@
+@* @model HomeDetailsViewModel *@
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -98,9 +100,6 @@
                             </nav>
                         </div>
                     </div>
-                </div>
-                <div class="sb-sidenav-footer">
-                    <div class="small">Logged in as @User.Identity.Name</div>
                 </div>
             </nav>
         </div>
