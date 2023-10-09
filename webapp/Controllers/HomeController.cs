@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using school_project.Models;
 using school_project.ViewModels;
-
+using System.ComponentModel.DataAnnotations;
 namespace school_project.Controllers;
 
 public class HomeController : Controller

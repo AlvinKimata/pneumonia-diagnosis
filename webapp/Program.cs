@@ -2,6 +2,10 @@ using System.Net;
 using school_project.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.Extensions.DependencyInjection;
+
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,6 +26,13 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
         options.SignIn.RequireConfirmedAccount = false;
     }).AddEntityFrameworkStores<AppDbContext>();
 
+// builder.Services.AddMvc(options => {
+//                 var policy = new AuthorizationPolicyBuilder()
+//                                 .RequireAuthenticatedUser()
+//                                 .Build();
+
+//                 options.Filters.Add(new AuthorizeFilter(policy));
+//             });
 
 builder.Services.AddControllersWithViews();
 var app = builder.Build();

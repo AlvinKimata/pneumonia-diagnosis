@@ -67,7 +67,7 @@ namespace school_project.Controllers
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { 
-                    UserName = model.Name,
+                    UserName = model.Email,
                     Email = model.Email,
                     City = model.City
 
@@ -107,6 +107,7 @@ namespace school_project.Controllers
                 if (result.Succeeded)
                 {
                     return RedirectToAction("index", "home");
+
                 }
 
                 ModelState.AddModelError(string.Empty, "Invalid login attempt");
