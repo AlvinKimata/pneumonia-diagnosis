@@ -10,6 +10,6 @@ namespace school_project.ViewModels
     public class SingleImageDiagnosis
     {
         [Required]
-        public string PhotoPath
+        public List<IFormFile> Photos { get; set; }
     }
 }

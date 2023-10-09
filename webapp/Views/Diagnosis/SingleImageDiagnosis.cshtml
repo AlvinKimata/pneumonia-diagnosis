@@ -15,9 +15,8 @@
 
     <div class="d-flex justify-content-center">
         <div class="btn btn-primary btn-rounded">
-            <label class="form-label text-white m-1" for="customFile1">Choose file</label>
-            <input type="file" class="form-control d-none" id="customFile1" />
+            <label class="form-label text-white m-1" asp-for="Photos">Choose file</label>
+            <input multiple asp-for="Photos" class="form-control custom-file-input d-none">
         </div>
     </div>
-
 </div>

@@ -67,9 +67,29 @@ public class DiagnosisController: Controller
     }
 
 
-     public ViewResult Batch_Diagnosis()
+    public ViewResult Batch_Diagnosis()
     {
         return View();
     }
+    private string ProcessUploadedFile(SingleImageDiagnosisViewModel model)
+        {
+            string uniqueFileName = null;
+            if (model.Photos != null && model.Photos.Count > 0)
+            {
+                foreach (IFormFile photo in model.Photos)
+                {
+                    string uploadsFolder = Path.Combine(hostingEnvironment.WebRootPath, "images");
+                    uniqueFileName = Guid.NewGuid().ToString() + "_" + photo.FileName;
+                    string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                    using (var fileStream = new FileStream(filePath, FileMode.Create))
+                    {
+                        photo.CopyTo(fileStream);
+                    }
+                    
+                }
 
+            }
+
+            return uniqueFileName;
+        }
 }
