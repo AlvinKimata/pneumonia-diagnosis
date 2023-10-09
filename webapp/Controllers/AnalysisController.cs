@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace school_project.Controllers;
 
-public class DiagnosisController: Controller
+public class AnalysisController: Controller
 {
     
-    public ViewResult Single_Diagnosis()
+    public ViewResult DataAnalysis()
     {
         return View();
     }
 
-     public ViewResult Batch_Diagnosis()
+     public ViewResult ModelAnalysis()
     {
         return View();
     }
