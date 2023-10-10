@@ -11,7 +11,6 @@ namespace school_project.Controllers;
 
 public class DiagnosisController: Controller
 {
-    private readonly Microsoft.AspNetCore.Hosting.IHostingEnvironment hostingEnvironment;
     private readonly IProjectRepository projectRepository;
 
     public DiagnosisController(Microsoft.AspNetCore.Hosting.IHostingEnvironment hostingEnvironment,
@@ -93,31 +92,13 @@ public class DiagnosisController: Controller
         return uniqueFileName;
     }
 
-    [HttpPost]
-    public IActionResult CreateSingleImageProject(SingleImageDiagnosisViewModel model)
-    {
-        if (ModelState.IsValid)
-        {
-            string uniqueFileName = ProcessUploadedFile(model);
-            SingleImageDiagnosis newSingleImageDiagnosis = new SingleImageDiagnosis
-            {
-                Photos = uniqueFileName,
-                ImageResult = model.ImageResult
-            };
-
-            projectRepository.Add(newSingleImageDiagnosis);
-            return RedirectToAction("Index");
-
-        }
-
-        return View();
-    }
+   
 
     public ViewResult BatchImageDiagnosis()
     {
         return View();
     }
-    
+
 
     public ViewResult SingleImageDiagnosis()
     {
