@@ -27,46 +27,52 @@ public class DiagnosisController: Controller
         }
     }
     
+    
     public async Task<IActionResult> ConvertImageToBytes(SingleImageDiagnosisViewModel model)
     {
         var apiUrl = "http://localhost:12345/classification";
         HttpClient httpClient = new HttpClient();
-
-        foreach(var formFile in model.Photos)
+        if (ModelState.IsValid)
         {
-            using (FileStream imageStream = System.IO.File.OpenRead(formFile.FileName))
+            foreach(var formFile in model.Photos)
             {
-                // Create a ByteArrayContent with the image data
-                ByteArrayContent content = new ByteArrayContent(await ReadStreamAsync(imageStream));
-
-                // Set the Content-Type header
-                content.Headers.Add("Content-Type", "image/jpeg");
-
-                //Send the POST request.
-                HttpResponseMessage response = await httpClient.PostAsync(apiUrl, content);
-
-                // Check the response status
-                if (response.IsSuccessStatusCode)
+                using (FileStream imageStream = System.IO.File.OpenRead(formFile.FileName))
                 {
-                    model.ImageResult = await response.Content.ReadAsStringAsync();
-                    // string responseContent = await response.Content.ReadAsStringAsync();
-                    // return Json($"Response: {responseContent}");
-                    // return Json(new { Response = responseContent }); 
-                    return View(model);
+                    // Create a ByteArrayContent with the image data
+                    ByteArrayContent content = new ByteArrayContent(await ReadStreamAsync(imageStream));
 
-                }
-                else
-                {
-                    return Json($"Request failed with status code {response.StatusCode}");
+                    // Set the Content-Type header
+                    content.Headers.Add("Content-Type", "image/jpeg");
+
+                    //Send the POST request.
+                    HttpResponseMessage response = await httpClient.PostAsync(apiUrl, content);
+
+                    // Check the response status
+                    if (response.IsSuccessStatusCode)
+                    {
+                        model.ImageResult = await response.Content.ReadAsStringAsync();
+                        // string responseContent = await response.Content.ReadAsStringAsync();
+                        // return Json($"Response: {responseContent}");
+                        // return Json(new { Response = responseContent }); 
+                        return View(model);
+
+                    }
+                    else
+                    {
+                        return Json($"Request failed with status code {response.StatusCode}");
+                    }
                 }
             }
         }
-        return View(model);
+
+      return View(model);
     }
 
 
     [HttpPost]
     private string ProcessUploadedFile(SingleImageDiagnosisViewModel model)
+    {
+        if(ModelState.IsValid)
         {
             string uniqueFileName = null;
             if (model.Photos != null && model.Photos.Count > 0)
@@ -83,14 +89,15 @@ public class DiagnosisController: Controller
                 }
             }
             return uniqueFileName;
-        }
+        }   
+    }
 
-    public ViewResult Batch_Diagnosis()
+    public ViewResult BatchImageDiagnosis()
     {
         return View();
     }
 
-    public ViewResult Single_Diagnosis()
+    public ViewResult SingleImageDiagnosis()
     {
         return View();
     }
