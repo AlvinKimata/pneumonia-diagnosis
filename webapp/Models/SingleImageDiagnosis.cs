@@ -10,6 +10,9 @@ namespace school_project.Models
         public int id {get; set;}
 
         [Required]
+        public string Name {get; set;}
+
+        [Required]
         public string Photos {get; set;}
 
         //The label of the image after model inference.
