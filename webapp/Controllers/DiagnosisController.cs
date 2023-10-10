@@ -12,12 +12,13 @@ namespace school_project.Controllers;
 public class DiagnosisController: Controller
 {
     private readonly Microsoft.AspNetCore.Hosting.IHostingEnvironment hostingEnvironment;
+    private readonly IProjectRepository projectRepository;
 
     public DiagnosisController(Microsoft.AspNetCore.Hosting.IHostingEnvironment hostingEnvironment,
                               IProjectRepository projectRepository)
         {
             this.hostingEnvironment = hostingEnvironment;
-            _projectRepository = projectRepository;
+            this.projectRepository = projectRepository;
         }
 
     private static async Task<byte[]> ReadStreamAsync(FileStream stream)
@@ -74,28 +75,26 @@ public class DiagnosisController: Controller
     [HttpPost]
     private string ProcessUploadedFile(SingleImageDiagnosisViewModel model)
     {
-        if(ModelState.IsValid)
+        string uniqueFileName = null;
+      
+        if (model.Photos != null && model.Photos.Count > 0)
         {
-            string uniqueFileName = null;
-            if (model.Photos != null && model.Photos.Count > 0)
+            foreach (IFormFile photo in model.Photos)
             {
-                foreach (IFormFile photo in model.Photos)
+                string uploadsFolder = Path.Combine(hostingEnvironment.WebRootPath, "images");
+                uniqueFileName = Guid.NewGuid().ToString() + "_" + photo.FileName;
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
                 {
-                    string uploadsFolder = Path.Combine(hostingEnvironment.WebRootPath, "images");
-                    uniqueFileName = Guid.NewGuid().ToString() + "_" + photo.FileName;
-                    string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-                    using (var fileStream = new FileStream(filePath, FileMode.Create))
-                    {
-                        photo.CopyTo(fileStream);
-                    }   
-                }
+                    photo.CopyTo(fileStream);
+                }   
             }
-            return uniqueFileName;
-        }   
+        }
+        return uniqueFileName;
     }
 
     [HttpPost]
-    public IActionResult Create(SingleImageDiagnosisViewModel model)
+    public IActionResult CreateSingleImageProject(SingleImageDiagnosisViewModel model)
     {
         if (ModelState.IsValid)
         {
@@ -106,17 +105,19 @@ public class DiagnosisController: Controller
                 ImageResult = model.ImageResult
             };
 
-            _projectRepository.Add(newSingleImageDiagnosis);
+            projectRepository.Add(newSingleImageDiagnosis);
             return RedirectToAction("Index");
 
         }
 
         return View();
     }
+
     public ViewResult BatchImageDiagnosis()
     {
         return View();
     }
+    
 
     public ViewResult SingleImageDiagnosis()
     {
