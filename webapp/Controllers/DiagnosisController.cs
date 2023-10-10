@@ -13,9 +13,11 @@ public class DiagnosisController: Controller
 {
     private readonly Microsoft.AspNetCore.Hosting.IHostingEnvironment hostingEnvironment;
 
-    public DiagnosisController(Microsoft.AspNetCore.Hosting.IHostingEnvironment hostingEnvironment)
+    public DiagnosisController(Microsoft.AspNetCore.Hosting.IHostingEnvironment hostingEnvironment,
+                              IProjectRepository projectRepository)
         {
             this.hostingEnvironment = hostingEnvironment;
+            _projectRepository = projectRepository;
         }
 
     private static async Task<byte[]> ReadStreamAsync(FileStream stream)
@@ -92,6 +94,25 @@ public class DiagnosisController: Controller
         }   
     }
 
+    [HttpPost]
+    public IActionResult Create(SingleImageDiagnosisViewModel model)
+    {
+        if (ModelState.IsValid)
+        {
+            string uniqueFileName = ProcessUploadedFile(model);
+            SingleImageDiagnosis newSingleImageDiagnosis = new SingleImageDiagnosis
+            {
+                Photos = uniqueFileName,
+                ImageResult = model.ImageResult
+            };
+
+            _projectRepository.Add(newSingleImageDiagnosis);
+            return RedirectToAction("Index");
+
+        }
+
+        return View();
+    }
     public ViewResult BatchImageDiagnosis()
     {
         return View();
