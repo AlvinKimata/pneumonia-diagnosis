@@ -48,9 +48,11 @@ public class DiagnosisController: Controller
                 // Check the response status
                 if (response.IsSuccessStatusCode)
                 {
-                    string responseContent = await response.Content.ReadAsStringAsync();
+                    model.ImageResult = await response.Content.ReadAsStringAsync();
+                    // string responseContent = await response.Content.ReadAsStringAsync();
                     // return Json($"Response: {responseContent}");
-                    return Json(new { Response = responseContent });
+                    // return Json(new { Response = responseContent }); 
+                    return View(model);
 
                 }
                 else
