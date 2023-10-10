@@ -72,51 +72,51 @@ public class HomeController : Controller
         return View();
     }
 
-        [HttpGet]
-        public ViewResult Edit(int id)
-        {
-            Project project = _employeeRepository.GetEmployee(id);
-            EmployeeEditViewModel employeeEditViewModel = new EmployeeEditViewModel()
-            {
-                Id = employee.Id,
-                Name = employee.Name,
-                Email = employee.Email,
-                Deprtment = employee.Deprtment,
-                ExistingPhotoPath = employee.PhotoPath
-            };
+        // [HttpGet]
+        // public ViewResult Edit(int id)
+        // {
+        //     // Project project = _employeeRepository.GetEmployee(id);
+        //     EmployeeEditViewModel employeeEditViewModel = new EmployeeEditViewModel()
+        //     {
+        //         Id = employee.Id,
+        //         Name = employee.Name,
+        //         Email = employee.Email,
+        //         Deprtment = employee.Deprtment,
+        //         ExistingPhotoPath = employee.PhotoPath
+        //     };
 
-            return View(employeeEditViewModel);
-        }
+        //     return View(employeeEditViewModel);
+        // }
 
-        [HttpPost]
-        public IActionResult Edit(EmployeeEditViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                Employee employee = _employeeRepository.GetEmployee(model.Id);
-                //Update properties.
-                employee.Name = model.Name;
-                employee.Email = model.Email;
-                employee.Deprtment = model.Deprtment;
+        // [HttpPost]
+        // public IActionResult Edit(EmployeeEditViewModel model)
+        // {
+        //     if (ModelState.IsValid)
+        //     {
+        //         Employee employee = _employeeRepository.GetEmployee(model.Id);
+        //         //Update properties.
+        //         employee.Name = model.Name;
+        //         employee.Email = model.Email;
+        //         employee.Deprtment = model.Deprtment;
 
-                if (model.Photos != null)
-                {
-                    if (model.ExistingPhotoPath != null)
-                    {
-                        string filePath = Path.Combine(hostingEnvironment.WebRootPath, "images", model.ExistingPhotoPath);
-                        System.IO.File.Delete(filePath);
-                    };
+        //         if (model.Photos != null)
+        //         {
+        //             if (model.ExistingPhotoPath != null)
+        //             {
+        //                 string filePath = Path.Combine(hostingEnvironment.WebRootPath, "images", model.ExistingPhotoPath);
+        //                 System.IO.File.Delete(filePath);
+        //             };
 
-                    employee.PhotoPath = ProcessUploadedFile(model);
-                }
+        //             employee.PhotoPath = ProcessUploadedFile(model);
+        //         }
 
-                _employeeRepository.Update(employee);
-                return RedirectToAction("Index");
+        //         _employeeRepository.Update(employee);
+        //         return RedirectToAction("Index");
 
-            }
+        //     }
 
-            return View();
-        }
+        //     return View();
+        // }
 
 
     public IActionResult Privacy()

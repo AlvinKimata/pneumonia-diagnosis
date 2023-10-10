@@ -15,7 +15,7 @@ namespace school_project.Models{
         }
 
         public DbSet<Employee> Employees {get; set;}
-        public DbSet<Project> Project {get; set;}
+        public DbSet<SingleImageDiagnosis> SingleImageDiagnosis {get; set;}
 
     }
 }
