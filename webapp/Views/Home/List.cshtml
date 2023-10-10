@@ -1,0 +1,29 @@
+@model IEnumerable<SingleImageDiagnosis>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Projects List";
+
+ }
+
+<div class="card deck">
+    @foreach (var project in Model)
+    {
+        var photoPath = "~/images/" + (project.Photos ?? "noimage.jpg");
+
+        <div class="card m-3" style="min-width: 18rem; max-width:30.5%;">
+            <div class="card-header">
+                <h3>@project.Name</h3>
+            </div>
+            <img class="card-img-top imageThumbnail"  src="@photoPath" asp-append-version="true"/>
+
+            <div class="card-footer text-center d-flex">
+                <a asp-controller="home" asp-action="details" asp-route-id="@project.Id" 
+                   class="btn btn-primary m-1">View</a>
+                <a asp-action="edit" asp-controller ="home" 
+                   asp-route-id="@project.Id" class="btn btn-primary  m-1">Edit</a>
+                <a href="#" class="btn btn-danger  m-1">Delete</a>
+            </div>
+        </div>
+    }
+</div>
