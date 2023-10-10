@@ -10,12 +10,15 @@ public class HomeController : Controller
     private readonly Microsoft.AspNetCore.Hosting.IHostingEnvironment hostingEnvironment;
 
     private readonly ILogger<HomeController> _logger;
+    privare readonly ApplicationDbContext _context;
 
     public HomeController(ILogger<HomeController> logger,
-                        Microsoft.AspNetCore.Hosting.IHostingEnvironment hostingEnvironment)
+                        Microsoft.AspNetCore.Hosting.IHostingEnvironment hostingEnvironment,
+                        ApplicationDbContext context)
     {
         _logger = logger;
         this.hostingEnvironment = hostingEnvironment;
+        _context = context;
     }
 
     public IActionResult Index()
@@ -28,6 +31,23 @@ public class HomeController : Controller
         return View();
     }
 
+    public async Task<IActionResult> Details(int? id)
+    {
+        if (id == null)
+        {
+            return NotFound();
+        }
+
+        var singleImageDiagnisisInstance = await _context.SingleImageDiagnosis
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (singleImageDiagnisisInstance == null)
+            {
+                return NotFound();
+            }
+
+            return View(singleImageDiagnisisInstance);
+    }
+    
 
     [HttpPost]
     private string ProcessUploadedFile(SingleImageDiagnosisViewModel model)
