@@ -16,6 +16,6 @@ namespace school_project.Models
         public string Photos {get; set;}
 
         //The label of the image after model inference.
-        public string ImageResult {get; set;}
+        // public string ImageResult {get; set;}
     }
 }

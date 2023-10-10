@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using school_project.Models;
 using school_project.ViewModels;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore;
 namespace school_project.Controllers;
 
 public class HomeController : Controller
@@ -10,11 +11,11 @@ public class HomeController : Controller
     private readonly Microsoft.AspNetCore.Hosting.IHostingEnvironment hostingEnvironment;
 
     private readonly ILogger<HomeController> _logger;
-    privare readonly ApplicationDbContext _context;
+    private readonly AppDbContext _context;
 
     public HomeController(ILogger<HomeController> logger,
                         Microsoft.AspNetCore.Hosting.IHostingEnvironment hostingEnvironment,
-                        ApplicationDbContext context)
+                        AppDbContext context)
     {
         _logger = logger;
         this.hostingEnvironment = hostingEnvironment;
@@ -31,6 +32,7 @@ public class HomeController : Controller
         return View();
     }
 
+    [HttpGet]
     public async Task<IActionResult> Details(int? id)
     {
         if (id == null)
@@ -47,7 +49,7 @@ public class HomeController : Controller
 
             return View(singleImageDiagnisisInstance);
     }
-    
+
 
     [HttpPost]
     private string ProcessUploadedFile(SingleImageDiagnosisViewModel model)
@@ -72,7 +74,7 @@ public class HomeController : Controller
 
    
     [HttpPost]
-    public IActionResult Create(SingleImageDiagnosisViewModel model)
+    public async Task<IActionResult> Create(SingleImageDiagnosisViewModel model)
     {
         if (ModelState.IsValid)
         {
@@ -81,12 +83,12 @@ public class HomeController : Controller
             {
                 Name = model.Name,
                 Photos = uniqueFileName,
-                ImageResult = model.ImageResult
+                // ImageResult = model.ImageResult
             };
+            _context.Add(newSingleImageDiagnosis);
+            await _context.SaveChangesAsync();
 
-            // projectRepository.Add(newSingleImageDiagnosis);
             return RedirectToAction("Index");
-
         }
 
         return View();
