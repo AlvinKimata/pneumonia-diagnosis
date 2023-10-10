@@ -8,17 +8,14 @@ namespace school_project.Controllers;
 public class HomeController : Controller
 {
     private readonly Microsoft.AspNetCore.Hosting.IHostingEnvironment hostingEnvironment;
-    private readonly IProjectRepository projectRepository;
 
     private readonly ILogger<HomeController> _logger;
 
     public HomeController(ILogger<HomeController> logger,
-                        Microsoft.AspNetCore.Hosting.IHostingEnvironment hostingEnvironment,
-                        IProjectRepository projectRepository)
+                        Microsoft.AspNetCore.Hosting.IHostingEnvironment hostingEnvironment)
     {
         _logger = logger;
         this.hostingEnvironment = hostingEnvironment;
-        _projectRepository = projectRepository;
     }
 
     public IActionResult Index()
@@ -26,15 +23,36 @@ public class HomeController : Controller
         return View();
     }
 
-    public ViewResult ListSingleImageProject()
-    {
-        var model = _projectRepository.GetProject();
-        return View(model);
+    [HttpGet]
+    public IActionResult Create(){
+        return View();
     }
 
 
     [HttpPost]
-    public IActionResult CreateSingleImageProject(SingleImageDiagnosisViewModel model)
+    private string ProcessUploadedFile(SingleImageDiagnosisViewModel model)
+    {
+        string uniqueFileName = null;
+      
+        if (model.Photos != null && model.Photos.Count > 0)
+        {
+            foreach (IFormFile photo in model.Photos)
+            {
+                string uploadsFolder = Path.Combine(hostingEnvironment.WebRootPath, "images");
+                uniqueFileName = Guid.NewGuid().ToString() + "_" + photo.FileName;
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    photo.CopyTo(fileStream);
+                }   
+            }
+        }
+        return uniqueFileName;
+    }
+
+   
+    [HttpPost]
+    public IActionResult Create(SingleImageDiagnosisViewModel model)
     {
         if (ModelState.IsValid)
         {
@@ -46,7 +64,7 @@ public class HomeController : Controller
                 ImageResult = model.ImageResult
             };
 
-            projectRepository.Add(newSingleImageDiagnosis);
+            // projectRepository.Add(newSingleImageDiagnosis);
             return RedirectToAction("Index");
 
         }

@@ -47,8 +47,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRGlhZ25vc2lzL1NpbmdsZUltYWdlRGlhZ25vc2lzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[/home/debonair/Documents/python/pneumonia-diagnosis/webapp/Views/Home/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9DcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/debonair/Documents/python/pneumonia-diagnosis/webapp/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/debonair/Documents/python/pneumonia-diagnosis/webapp/Views/Home/ListSingleImageProjects.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9MaXN0U2luZ2xlSW1hZ2VQcm9qZWN0cy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [/home/debonair/Documents/python/pneumonia-diagnosis/webapp/Views/Home/Privacy.cshtml]

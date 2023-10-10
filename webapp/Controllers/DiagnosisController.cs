@@ -11,13 +11,11 @@ namespace school_project.Controllers;
 
 public class DiagnosisController: Controller
 {
-    private readonly IProjectRepository projectRepository;
+    private readonly Microsoft.AspNetCore.Hosting.IHostingEnvironment hostingEnvironment;
 
-    public DiagnosisController(Microsoft.AspNetCore.Hosting.IHostingEnvironment hostingEnvironment,
-                              IProjectRepository projectRepository)
+    public DiagnosisController(Microsoft.AspNetCore.Hosting.IHostingEnvironment hostingEnvironment)
         {
             this.hostingEnvironment = hostingEnvironment;
-            this.projectRepository = projectRepository;
         }
 
     private static async Task<byte[]> ReadStreamAsync(FileStream stream)
@@ -67,32 +65,9 @@ public class DiagnosisController: Controller
             }
         }
 
-      return View(model);
+        return View(model);
     }
 
-
-    [HttpPost]
-    private string ProcessUploadedFile(SingleImageDiagnosisViewModel model)
-    {
-        string uniqueFileName = null;
-      
-        if (model.Photos != null && model.Photos.Count > 0)
-        {
-            foreach (IFormFile photo in model.Photos)
-            {
-                string uploadsFolder = Path.Combine(hostingEnvironment.WebRootPath, "images");
-                uniqueFileName = Guid.NewGuid().ToString() + "_" + photo.FileName;
-                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-                using (var fileStream = new FileStream(filePath, FileMode.Create))
-                {
-                    photo.CopyTo(fileStream);
-                }   
-            }
-        }
-        return uniqueFileName;
-    }
-
-   
 
     public ViewResult BatchImageDiagnosis()
     {
