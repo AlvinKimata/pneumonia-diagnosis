@@ -33,6 +33,13 @@ public class HomeController : Controller
     }
 
     [HttpGet]
+    // GET: ProfessionalBodies
+    public async Task<IActionResult> List()
+    {
+        return View(await _context.SingleImageDiagnosis.ToListAsync());
+    }
+
+    [HttpGet]
     public async Task<IActionResult> Details(int? id)
     {
         if (id == null)
