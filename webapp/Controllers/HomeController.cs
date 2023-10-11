@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using school_project.Models;
 using System.Net.Http;
-using System.IO;
+// using System.IO;
 using school_project.ViewModels;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.EntityFrameworkCore;
@@ -90,69 +90,49 @@ public class HomeController : Controller
         }
         return uniqueFileName;
     }
-    
-    [HttpPost]
-    public async Task<string> ConvertImageToBytes(SingleImageDiagnosisViewModel model)
-    {
-
-        
-
-        string apiUrl = "http://localhost:12345/classification";
-        HttpClient httpClient = new HttpClient();
-        if (ModelState.IsValid)
-        {
-            foreach(var formFile in model.Photos)
-            {
-                using (FileStream imageStream = System.IO.File.OpenRead(formFile.FileName))
-                {
-                    // Create a ByteArrayContent with the image data
-                    ByteArrayContent content = new ByteArrayContent(await ReadStreamAsync(imageStream));
-
-                    // Set the Content-Type header
-                    content.Headers.Add("Content-Type", "image/jpeg");
-
-                    //Send the POST request.
-                    HttpResponseMessage response = await httpClient.PostAsync(apiUrl, content);
-
-                    // Check the response status
-                    if (response.IsSuccessStatusCode)
-                    {
-                        string responseContent = await response.Content.ReadAsStringAsync();
-                        // string result = JsonConvert.DeserializeObject<SingleImageDiagnosisViewModel>(responseContent);
-                        return responseContent;
-                        // return Json($"Response: {responseContent}");
-                    }
-                    else
-                    {
-                        return $"{response.StatusCode}";
-                    }
-                }
-            }
-        }
-
-        return "Invalid ModelState"; 
-    }
 
     [HttpPost]
     public async Task<IActionResult> Create(SingleImageDiagnosisViewModel model)
     {
-        var serializerSettings = new JsonSerializerSettings()
-        {
-            Formatting = Formatting.Indented,
-        };
-
         if (ModelState.IsValid)
         {
             string uniqueFileName = ProcessUploadedFile(model);
+            string responseContent = null;
 
-            //Decode Json contents.
-            var imageResult = await ConvertImageToBytes(model);
+            //Make API call.
+            string apiUrl = "http://localhost:12345/classification";
+            HttpClient httpClient = new HttpClient();
+
+            string uploadsFolder = Path.Combine(hostingEnvironment.WebRootPath, "images");
+            string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+            FileStream imageStream = System.IO.File.OpenRead(filePath);
+
+            // Create a ByteArrayContent with the image data
+            ByteArrayContent content = new ByteArrayContent(await ReadStreamAsync(imageStream));
+
+            // Set the Content-Type header
+            content.Headers.Add("Content-Type", "image/jpeg");
+
+            //Send the POST request.
+            HttpResponseMessage response = await httpClient.PostAsync(apiUrl, content);
+
+            // Check the response status
+            if (response.IsSuccessStatusCode)
+            {
+                responseContent = await response.Content.ReadAsStringAsync();
+            }
+            else
+            {
+                responseContent = "No prediction";
+            }
+
             SingleImageDiagnosis newSingleImageDiagnosis = new SingleImageDiagnosis
             {
                 Name = model.Name,
                 Photos = uniqueFileName,
-                ImageResult = imageResult
+                ImageResult = responseContent
             };
+            
             _context.Add(newSingleImageDiagnosis);
             await _context.SaveChangesAsync();
 
