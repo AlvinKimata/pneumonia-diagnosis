@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "YiOMuoEu1ZkPhKU23+ASHp/F9bDY4C302MHtiYaDQek0RRMitj76qQwze8yJl30krxKqwuIy6HUtX4sl3xEUBA==",
+  "dgSpecHash": "qCnEKCwqyUTzi+afpghTxpblA4q3YsbEe01qXausjsCPBp12SlwqV3t+n9yoTIb6p/MGIDCqfJ4IDact4c9ZcQ==",
   "success": true,
   "projectFilePath": "/home/debonair/Documents/python/pneumonia-diagnosis/webapp/school_project.csproj",
   "expectedPackageFiles": [
@@ -46,6 +46,7 @@
     "/home/debonair/.nuget/packages/microsoft.sqlserver.server/1.0.0/microsoft.sqlserver.server.1.0.0.nupkg.sha512",
     "/home/debonair/.nuget/packages/microsoft.win32.systemevents/6.0.0/microsoft.win32.systemevents.6.0.0.nupkg.sha512",
     "/home/debonair/.nuget/packages/mono.texttemplating/2.2.1/mono.texttemplating.2.2.1.nupkg.sha512",
+    "/home/debonair/.nuget/packages/newtonsoft.json/13.0.3/newtonsoft.json.13.0.3.nupkg.sha512",
     "/home/debonair/.nuget/packages/system.codedom/4.4.0/system.codedom.4.4.0.nupkg.sha512",
     "/home/debonair/.nuget/packages/system.configuration.configurationmanager/6.0.1/system.configuration.configurationmanager.6.0.1.nupkg.sha512",
     "/home/debonair/.nuget/packages/system.diagnostics.diagnosticsource/6.0.0/system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512",

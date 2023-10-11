@@ -17,6 +17,10 @@
             </div>
             <img class="card-img-top imageThumbnail"  src="@photoPath" asp-append-version="true"/>
 
+            <div class="card-header">
+                <h3>@project.ImageResult</h3>
+            </div>
+
             <div class="card-footer text-center d-flex">
                 <a asp-controller="home" asp-action="details" asp-route-id="@project.Id" 
                    class="btn btn-primary m-1">View</a>

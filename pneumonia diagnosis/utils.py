@@ -37,13 +37,14 @@ def image_predict(input_image):
     out = model.forward(image)
     out = out.detach().cpu().numpy()
     out = np.round(out, 4)
-    if out > 0.5:
-        return f"{out * 100}% probability of prescence of pneumonia in image."
+    return out
+    # if out > 0.5:
+    #     return f"{out * 100}% probability of prescence of pneumonia in image."
     
-    else:
+    # else:
 
-        out = 1 - out
-        return f"{out * 100}% probability of abscence of pneumonia in image."
+    #     out = 1 - out
+    #     return f"{out * 100}% probability of abscence of pneumonia in image."
 
 
 def image_classification(image_bn, model):
@@ -52,12 +53,13 @@ def image_classification(image_bn, model):
     grads = model.forward(img)
     out = grads.detach().cpu().numpy()
     out = np.round(out * 100, 4)
-    if out > 0.5:
-        return f"{out}% probability of prescence of pneumonia in image."
+    return out
+    # if out > 0.5:
+    #     return f"{out}% probability of prescence of pneumonia in image."
     
-    else:
-        out = 1 - out
-        return f"{out}% probability of abscence of pneumonia in image."
+    # else:
+    #     out = 1 - out
+    #     return f"{out}% probability of abscence of pneumonia in image."
 
 def decode_image_binary(image_bn):
     '''Reads image in binary and returns it np.array format'''

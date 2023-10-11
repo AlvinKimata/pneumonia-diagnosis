@@ -53,7 +53,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/home/debonair/.dotnet/sdk/6.0.412/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.414/RuntimeIdentifierGraph.json"
         }
       }
     }

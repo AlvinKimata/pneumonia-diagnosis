@@ -29,7 +29,7 @@ class Program
                 if (response.IsSuccessStatusCode)
                 {
                     string responseContent = await response.Content.ReadAsStringAsync();
-                    Console.WriteLine($"Response: {responseContent}");
+                    Console.WriteLine($"{responseContent}");
                 }
                 else
                 {

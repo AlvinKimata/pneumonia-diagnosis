@@ -72,6 +72,7 @@
 /home/debonair/Documents/python/pneumonia-diagnosis/webapp/bin/Debug/net6.0/Microsoft.SqlServer.Server.dll
 /home/debonair/Documents/python/pneumonia-diagnosis/webapp/bin/Debug/net6.0/Microsoft.Win32.SystemEvents.dll
 /home/debonair/Documents/python/pneumonia-diagnosis/webapp/bin/Debug/net6.0/Mono.TextTemplating.dll
+/home/debonair/Documents/python/pneumonia-diagnosis/webapp/bin/Debug/net6.0/Newtonsoft.Json.dll
 /home/debonair/Documents/python/pneumonia-diagnosis/webapp/bin/Debug/net6.0/System.CodeDom.dll
 /home/debonair/Documents/python/pneumonia-diagnosis/webapp/bin/Debug/net6.0/System.Configuration.ConfigurationManager.dll
 /home/debonair/Documents/python/pneumonia-diagnosis/webapp/bin/Debug/net6.0/System.Drawing.Common.dll
