@@ -41,6 +41,14 @@ public class HomeController : Controller
         return View(await _context.SingleImageDiagnosis.ToListAsync());
     }
 
+
+    [HttpGet]
+    // GET: ProfessionalBodies
+    public async Task<IActionResult> ListBatch()
+    {
+        return View(await _context.BatchImageDiagnosis.ToListAsync());
+    }
+
     private static async Task<byte[]> ReadStreamAsync(FileStream stream)
     {
         using (var memoryStream = new MemoryStream())
