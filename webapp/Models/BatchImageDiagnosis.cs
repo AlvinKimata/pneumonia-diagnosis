@@ -9,16 +9,16 @@ namespace school_project.Models
     public class BatchImageDiagnosis{
 
         //Project ID.
-        public int id {get; set;}
+        public int Id {get; set;}
 
         [Required]
         public string Name {get; set;}
 
         [Required]
-        public List<string> Photos {get; set;}
+        public string PhotoPath {get; set;}
 
         //Labels of batch images after model inference.
-        public List<string> ImageResults {get; set;}
+        // public List<string> ImageResults {get; set;}
     }
 }
 

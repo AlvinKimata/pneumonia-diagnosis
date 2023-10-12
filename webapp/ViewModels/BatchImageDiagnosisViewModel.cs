@@ -9,12 +9,16 @@ namespace school_project.ViewModels
 {
     public class BatchImageDiagnosisViewModel
     {
-        public int id {get; set;}
+        public int Id {get; set;}
 
         [Required]
         public string Name {get; set;}
 
         [Required]
-        public List<string> Photos { get; set; }
+        public string PhotoPath {get; set;}
+
+
+        // [Required]
+        // public List<IFormFile> Photos { get; set; }
     }
 }
