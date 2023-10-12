@@ -163,7 +163,7 @@ public class HomeController : Controller
             string filePath = null;
             string apiUrl = "http://localhost:12345/classification";
             HttpClient httpClient = new HttpClient();
-            List<string> responseContent = new List<string>();
+            List<string> responseContents = new List<string>();
             List<string> uniqueFileNames = new List<string>();
 
             //Loop through the images and copy them to a directory.
@@ -194,22 +194,31 @@ public class HomeController : Controller
                 // Check the response status
                 if (response.IsSuccessStatusCode)
                 {
-                    var imageresult = await response.Content.ReadAsStringAsync();
-                    responseContent.Append(imageresult);
+                    var responseContent = await response.Content.ReadAsStringAsync();
+                    responseContents.Append(responseContent);
                 }
                 else
                 {
-                    responseContent.Append("No prediction");
+                    responseContents.Append("No prediction");
                 }
-
             }
+
+            List<Photo> photoEntities = uniqueFileNames.Select(uniqueFileName => new Photo
+            {
+                PhotoPath = uniqueFileName
+            }).ToList();
+
+            List<ImageRes> imageResultEntities = responseContents.Select(responseContent => new ImageRes
+            {
+                imageresult = responseContent
+            }).ToList();
 
 
             BatchImageDiagnosis newBatchImageDiagnosis = new BatchImageDiagnosis
             {
                 Name = model.Name,
-                Photos = uniqueFileNames,
-                ImagesResults = responseContent
+                Photos = photoEntities,
+                ImagesResults = imageResultEntities
             };
             
             _context.Add(newBatchImageDiagnosis);
@@ -221,53 +230,6 @@ public class HomeController : Controller
         return View();
     }
 
-    // [HttpGet]
-    // public ViewResult Edit(int id)
-    // {
-    //     // Project project = _employeeRepository.GetEmployee(id);
-    //     EmployeeEditViewModel employeeEditViewModel = new EmployeeEditViewModel()
-    //     {
-    //         Id = employee.Id,
-    //         Name = employee.Name,
-    //         Email = employee.Email,
-    //         Deprtment = employee.Deprtment,
-    //         ExistingPhotoPath = employee.PhotoPath
-    //     };
-
-    //     return View(employeeEditViewModel);
-    // }
-
-    // [HttpPost]
-    // public IActionResult Edit(EmployeeEditViewModel model)
-    // {
-    //     if (ModelState.IsValid)
-    //     {
-    //         Employee employee = _employeeRepository.GetEmployee(model.Id);
-    //         //Update properties.
-    //         employee.Name = model.Name;
-    //         employee.Email = model.Email;
-    //         employee.Deprtment = model.Deprtment;
-
-    //         if (model.Photos != null)
-    //         {
-    //             if (model.ExistingPhotoPath != null)
-    //             {
-    //                 string filePath = Path.Combine(hostingEnvironment.WebRootPath, "images", model.ExistingPhotoPath);
-    //                 System.IO.File.Delete(filePath);
-    //             };
-
-    //             employee.PhotoPath = ProcessUploadedFile(model);
-    //         }
-
-    //         _employeeRepository.Update(employee);
-    //         return RedirectToAction("Index");
-
-    //     }
-
-    //     return View();
-    // }
-
-
     public IActionResult Privacy()
     {
         return View();
@@ -278,6 +240,5 @@ public class HomeController : Controller
     {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
-
 
 }

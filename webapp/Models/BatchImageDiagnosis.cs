@@ -16,10 +16,8 @@ namespace school_project.Models
         public string Name {get; set;}
 
         [Required]
-        public List<string> Photos {get; set;}
+        public List<Photo> Photos {get; set;}
 
-        public List<string> ImagesResults {get; set; }
+        public List<ImageRes> ImagesResults {get; set; }
     }
 }
-
-

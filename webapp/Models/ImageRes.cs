@@ -8,12 +8,12 @@ using Microsoft.EntityFrameworkCore;
 namespace school_project.Models
 {
 
-    public class Photo
+    public class ImageRes
     {
         [Key]
         public int Id { get; set; }
         [Required]
-        public string PhotoPath { get; set; }
+        public string imageresult { get; set; }
     }
 
 }
