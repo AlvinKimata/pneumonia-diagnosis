@@ -2,3 +2,4 @@ pneumonia diagnosis/ckpt/best.pth
 pneumonia diagnosis/inputs/chest_xray
 pneumonia diagnosis/inputs/archive.zip
 webapp/wwwroot/images/
+misc/
