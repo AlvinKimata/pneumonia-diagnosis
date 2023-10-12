@@ -10,6 +10,7 @@ namespace school_project.Models
     public class BatchImageDiagnosis{
 
         //Project ID.
+        [Key]
         public int Id {get; set;}
 
         [Required]

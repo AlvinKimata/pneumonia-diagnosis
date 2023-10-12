@@ -195,24 +195,26 @@ public class HomeController : Controller
                 if (response.IsSuccessStatusCode)
                 {
                     var responseContent = await response.Content.ReadAsStringAsync();
-                    responseContents.Append(responseContent);
+                    responseContents.Add(responseContent);
                 }
                 else
                 {
-                    responseContents.Append("No prediction");
+                    responseContents.Add("No prediction");
                 }
             }
-
-            List<Photo> photoEntities = uniqueFileNames.Select(uniqueFileName => new Photo
-            {
-                PhotoPath = uniqueFileName
-            }).ToList();
 
             List<ImageRes> imageResultEntities = responseContents.Select(responseContent => new ImageRes
             {
                 imageresult = responseContent
             }).ToList();
 
+
+            List<Photo> photoEntities = uniqueFileNames.Select(uniqueFileName => new Photo
+            {
+                PhotoPath = uniqueFileName
+            }).ToList();
+
+            
 
             BatchImageDiagnosis newBatchImageDiagnosis = new BatchImageDiagnosis
             {
