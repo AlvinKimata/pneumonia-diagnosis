@@ -19,5 +19,19 @@ namespace school_project.Models{
 
         public DbSet<BatchImageDiagnosis> BatchImageDiagnosis {get; set;}
 
+        // protected override void OnModelCreating(ModelBuilder builder)
+        // {
+        //     ModelBuilder.Entity<BatchImageDiagnosis>()
+        //     .HasForeignKey()
+        //     .HasPrincipalKey()
+        // }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<BatchImageDiagnosis>()
+                .HasMany(b => b.Photos)
+                .WithOne();
+        }
+
     }
 }

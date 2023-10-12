@@ -34,6 +34,12 @@ public class HomeController : Controller
         return View();
     }
 
+
+    [HttpGet]
+    public IActionResult CreateBatch(){
+        return View();
+    }
+
     [HttpGet]
     // GET: ProfessionalBodies
     public async Task<IActionResult> List()
