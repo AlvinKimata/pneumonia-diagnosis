@@ -2,11 +2,10 @@
 using Microsoft.AspNetCore.Mvc;
 using school_project.Models;
 using System.Net.Http;
-// using System.IO;
+using System.IO;
 using school_project.ViewModels;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json;
 namespace school_project.Controllers;
 
 public class HomeController : Controller
@@ -142,6 +141,71 @@ public class HomeController : Controller
         return View();
     }
 
+    [HttpPost]
+    public async Task<IActionResult> CreateBatch(BatchImageDiagnosisViewModel model)
+    {
+        if (ModelState.IsValid)
+        {
+            string filePath = null;
+            string apiUrl = "http://localhost:12345/classification";
+            HttpClient httpClient = new HttpClient();
+            List<string> responseContent = new List<string>();
+            List<string> uniqueFileNames = new List<string>();
+
+            //Loop through the images and copy them to a directory.
+            foreach(IFormFile image in model.Photos)
+            {            
+
+                string uploadsFolder = Path.Combine(hostingEnvironment.WebRootPath, model.Name);
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + image.FileName;
+                uniqueFileNames.Add(uniqueFileName);
+                filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    image.CopyTo(fileStream);
+                }   
+
+                //Perform api call to the image.
+                FileStream imageStream = System.IO.File.OpenRead(filePath);
+
+                // Create a ByteArrayContent with the image data
+                ByteArrayContent content = new ByteArrayContent(await ReadStreamAsync(imageStream));
+
+                // Set the Content-Type header
+                content.Headers.Add("Content-Type", "image/jpeg");
+
+                //Send the POST request.
+                HttpResponseMessage response = await httpClient.PostAsync(apiUrl, content);
+
+                // Check the response status
+                if (response.IsSuccessStatusCode)
+                {
+                    var imageresult = await response.Content.ReadAsStringAsync();
+                    responseContent.Append(imageresult);
+                }
+                else
+                {
+                    responseContent.Append("No prediction");
+                }
+
+            }
+
+
+            BatchImageDiagnosis newBatchImageDiagnosis = new BatchImageDiagnosis
+            {
+                Name = model.Name,
+                Photos = uniqueFileNames,
+                ImagesResults = responseContent
+            };
+            
+            _context.Add(newBatchImageDiagnosis);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Index");
+        }
+
+        return View();
+    }
 
     // [HttpGet]
     // public ViewResult Edit(int id)

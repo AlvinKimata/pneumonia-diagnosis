@@ -15,10 +15,9 @@ namespace school_project.Models
         public string Name {get; set;}
 
         [Required]
-        public string PhotoPath {get; set;}
+        public List<string> Photos {get; set;}
 
-        //Labels of batch images after model inference.
-        // public List<string> ImageResults {get; set;}
+        public List<string> ImagesResults {get; set; }
     }
 }
 

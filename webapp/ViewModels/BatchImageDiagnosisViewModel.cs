@@ -14,11 +14,8 @@ namespace school_project.ViewModels
         [Required]
         public string Name {get; set;}
 
-        [Required]
-        public string PhotoPath {get; set;}
+        public List<IFormFile> Photos { get; set; }
 
 
-        // [Required]
-        // public List<IFormFile> Photos { get; set; }
     }
 }
