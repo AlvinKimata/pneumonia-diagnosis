@@ -41,7 +41,6 @@ public class HomeController : Controller
     }
 
     [HttpGet]
-    // GET: ProfessionalBodies
     public async Task<IActionResult> List()
     {
         return View(await _context.SingleImageDiagnosis.ToListAsync());
@@ -49,10 +48,20 @@ public class HomeController : Controller
 
 
     [HttpGet]
-    // GET: ProfessionalBodies
     public async Task<IActionResult> ListBatch()
     {
-        return View(await _context.BatchImageDiagnosis.ToListAsync());
+        var data = from l in _context.Photo
+                   join t in _context.ImageRes
+                   on l.Id equals t.Id
+
+                   select new 
+                   {
+                    l.Id,
+                    l.PhotoPath,
+                    t.imageresult
+                   };
+        return View(new {data = await data.ToListAsync()});
+        // return View(await _context.BatchImageDiagnosis.ToListAsync());
     }
 
     private static async Task<byte[]> ReadStreamAsync(FileStream stream)

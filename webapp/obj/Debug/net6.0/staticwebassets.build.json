@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "GaiWv22EOE4tXs/x4rHiigQXeV7JkY29HAazRpV9gxY=",
+  "Hash": "Jfa4xLY1WyvJk7cTagudjuilTEeBLzSQ4WUufLVlga4=",
   "Source": "school_project",
   "BasePath": "_content/school_project",
   "Mode": "Default",
@@ -168,6 +168,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/images/10555ac8-2274-4a01-a41c-b06b0779b268_normal.jpeg"
+    },
+    {
+      "Identity": "/home/debonair/Documents/python/pneumonia-diagnosis/webapp/wwwroot/images/15781bfb-84da-4095-9328-f9ab5e0e26e6_Screenshot from 2023-10-12 11-12-37.png",
+      "SourceId": "school_project",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/debonair/Documents/python/pneumonia-diagnosis/webapp/wwwroot/",
+      "BasePath": "_content/school_project",
+      "RelativePath": "images/15781bfb-84da-4095-9328-f9ab5e0e26e6_Screenshot from 2023-10-12 11-12-37.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/15781bfb-84da-4095-9328-f9ab5e0e26e6_Screenshot from 2023-10-12 11-12-37.png"
     },
     {
       "Identity": "/home/debonair/Documents/python/pneumonia-diagnosis/webapp/wwwroot/images/3a66cbe7-a368-4b9a-8317-78adf7c6f7dc_Screenshot from 2023-10-12 11-48-55.png",
@@ -595,6 +612,23 @@
       "OriginalItemSpec": "wwwroot/Kihato/41341440-ed2f-423e-983d-59603e0fa69b_Screenshot from 2023-10-12 11-38-00.png"
     },
     {
+      "Identity": "/home/debonair/Documents/python/pneumonia-diagnosis/webapp/wwwroot/Kihato/43c67d62-3937-4110-a9a2-00866009a067_Screenshot from 2023-10-12 11-12-37.png",
+      "SourceId": "school_project",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/debonair/Documents/python/pneumonia-diagnosis/webapp/wwwroot/",
+      "BasePath": "_content/school_project",
+      "RelativePath": "Kihato/43c67d62-3937-4110-a9a2-00866009a067_Screenshot from 2023-10-12 11-12-37.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/Kihato/43c67d62-3937-4110-a9a2-00866009a067_Screenshot from 2023-10-12 11-12-37.png"
+    },
+    {
       "Identity": "/home/debonair/Documents/python/pneumonia-diagnosis/webapp/wwwroot/Kihato/5007d33d-429f-442f-97af-b0864f650a49_Screenshot from 2023-10-12 11-48-55.png",
       "SourceId": "school_project",
       "SourceType": "Discovered",
@@ -612,6 +646,23 @@
       "OriginalItemSpec": "wwwroot/Kihato/5007d33d-429f-442f-97af-b0864f650a49_Screenshot from 2023-10-12 11-48-55.png"
     },
     {
+      "Identity": "/home/debonair/Documents/python/pneumonia-diagnosis/webapp/wwwroot/Kihato/5503bb95-1eac-487c-acad-0ef3dc2a60b8_Screenshot from 2023-10-12 11-38-00.png",
+      "SourceId": "school_project",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/debonair/Documents/python/pneumonia-diagnosis/webapp/wwwroot/",
+      "BasePath": "_content/school_project",
+      "RelativePath": "Kihato/5503bb95-1eac-487c-acad-0ef3dc2a60b8_Screenshot from 2023-10-12 11-38-00.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/Kihato/5503bb95-1eac-487c-acad-0ef3dc2a60b8_Screenshot from 2023-10-12 11-38-00.png"
+    },
+    {
       "Identity": "/home/debonair/Documents/python/pneumonia-diagnosis/webapp/wwwroot/Kihato/66febc04-8bd6-4ab8-b7e0-e7b7ba320dfb_Screenshot from 2023-10-12 11-50-44.png",
       "SourceId": "school_project",
       "SourceType": "Discovered",
@@ -627,6 +678,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/Kihato/66febc04-8bd6-4ab8-b7e0-e7b7ba320dfb_Screenshot from 2023-10-12 11-50-44.png"
+    },
+    {
+      "Identity": "/home/debonair/Documents/python/pneumonia-diagnosis/webapp/wwwroot/Kihato/76fd1436-4212-4578-a9ec-b3670b21fc62_Screenshot from 2023-10-12 11-43-10.png",
+      "SourceId": "school_project",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/debonair/Documents/python/pneumonia-diagnosis/webapp/wwwroot/",
+      "BasePath": "_content/school_project",
+      "RelativePath": "Kihato/76fd1436-4212-4578-a9ec-b3670b21fc62_Screenshot from 2023-10-12 11-43-10.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/Kihato/76fd1436-4212-4578-a9ec-b3670b21fc62_Screenshot from 2023-10-12 11-43-10.png"
     },
     {
       "Identity": "/home/debonair/Documents/python/pneumonia-diagnosis/webapp/wwwroot/Kihato/7b847949-e760-41ab-931e-bfaacf8d4b5e_Screenshot from 2023-10-12 11-48-55.png",
@@ -663,6 +731,23 @@
       "OriginalItemSpec": "wwwroot/Kihato/7f7158b5-7a49-420d-88cc-182cac85fe5e_Screenshot from 2023-10-12 11-48-55.png"
     },
     {
+      "Identity": "/home/debonair/Documents/python/pneumonia-diagnosis/webapp/wwwroot/Kihato/809e1000-fd62-4534-8614-3452b76464e0_Screenshot from 2023-10-12 11-38-00.png",
+      "SourceId": "school_project",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/debonair/Documents/python/pneumonia-diagnosis/webapp/wwwroot/",
+      "BasePath": "_content/school_project",
+      "RelativePath": "Kihato/809e1000-fd62-4534-8614-3452b76464e0_Screenshot from 2023-10-12 11-38-00.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/Kihato/809e1000-fd62-4534-8614-3452b76464e0_Screenshot from 2023-10-12 11-38-00.png"
+    },
+    {
       "Identity": "/home/debonair/Documents/python/pneumonia-diagnosis/webapp/wwwroot/Kihato/8181890d-e2e0-4195-bb9c-82dbb6d79229_Screenshot from 2023-10-12 11-51-26.png",
       "SourceId": "school_project",
       "SourceType": "Discovered",
@@ -678,6 +763,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/Kihato/8181890d-e2e0-4195-bb9c-82dbb6d79229_Screenshot from 2023-10-12 11-51-26.png"
+    },
+    {
+      "Identity": "/home/debonair/Documents/python/pneumonia-diagnosis/webapp/wwwroot/Kihato/81d0a6f0-0663-4946-aecb-11e138b4f141_Screenshot from 2023-10-12 11-38-49.png",
+      "SourceId": "school_project",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/debonair/Documents/python/pneumonia-diagnosis/webapp/wwwroot/",
+      "BasePath": "_content/school_project",
+      "RelativePath": "Kihato/81d0a6f0-0663-4946-aecb-11e138b4f141_Screenshot from 2023-10-12 11-38-49.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/Kihato/81d0a6f0-0663-4946-aecb-11e138b4f141_Screenshot from 2023-10-12 11-38-49.png"
     },
     {
       "Identity": "/home/debonair/Documents/python/pneumonia-diagnosis/webapp/wwwroot/Kihato/a8d4e349-7299-4dd4-a646-0e768a1880a4_Screenshot from 2023-10-12 11-51-26.png",
@@ -746,6 +848,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/Kihato/c6cc005e-0fab-47fd-baee-199b586da496_Screenshot from 2023-10-12 11-51-26.png"
+    },
+    {
+      "Identity": "/home/debonair/Documents/python/pneumonia-diagnosis/webapp/wwwroot/Kihato/d617c50d-103d-4506-a344-e8a6aef3c27f_Screenshot from 2023-10-12 11-47-32.png",
+      "SourceId": "school_project",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/debonair/Documents/python/pneumonia-diagnosis/webapp/wwwroot/",
+      "BasePath": "_content/school_project",
+      "RelativePath": "Kihato/d617c50d-103d-4506-a344-e8a6aef3c27f_Screenshot from 2023-10-12 11-47-32.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/Kihato/d617c50d-103d-4506-a344-e8a6aef3c27f_Screenshot from 2023-10-12 11-47-32.png"
     },
     {
       "Identity": "/home/debonair/Documents/python/pneumonia-diagnosis/webapp/wwwroot/Kihato/da05fbd2-8284-4486-80d8-b66e023615e0_Screenshot from 2023-10-12 11-51-26.png",

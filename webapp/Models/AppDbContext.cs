@@ -17,8 +17,9 @@ namespace school_project.Models{
 
         public DbSet<Employee> Employees {get; set;}
         public DbSet<SingleImageDiagnosis> SingleImageDiagnosis {get; set;}
-
         public DbSet<BatchImageDiagnosis> BatchImageDiagnosis {get; set;}
+        public DbSet<Photo> Photo {get; set;}
+        public DbSet<ImageRes> ImageRes {get; set;}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
