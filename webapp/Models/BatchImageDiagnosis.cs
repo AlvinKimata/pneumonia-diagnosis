@@ -9,6 +9,12 @@ namespace school_project.Models
 {
     public class BatchImageDiagnosis{
 
+        public BatchImageDiagnosis()
+        {
+            Photos = new List<Photo>(); 
+            ImagesResults = new List<ImageRes>();
+        }
+
         //Project ID.
         [Key]
         public int Id {get; set;}
@@ -17,8 +23,8 @@ namespace school_project.Models
         public string Name {get; set;}
       
         [Required]
-        public List<Photo> Photos {get; set;} = new List<Photo>(); 
+        public List<Photo> Photos {get; set;}
 
-        public List<ImageRes> ImagesResults {get; set; } = new List<ImageRes>();
+        public List<ImageRes> ImagesResults {get; set; }
     }
 }

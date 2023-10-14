@@ -196,7 +196,7 @@ public class HomeController : Controller
             foreach(IFormFile image in model.Photos)
             {            
 
-                string uploadsFolder = Path.Combine(hostingEnvironment.WebRootPath, model.Name);
+                string uploadsFolder = Path.Combine(hostingEnvironment.WebRootPath, "images");
                 string uniqueFileName = Guid.NewGuid().ToString() + "_" + image.FileName;
                 uniqueFileNames.Add(uniqueFileName);
                 filePath = Path.Combine(uploadsFolder, uniqueFileName);
