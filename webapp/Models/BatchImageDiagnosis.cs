@@ -15,10 +15,10 @@ namespace school_project.Models
 
         [Required]
         public string Name {get; set;}
-
+      
         [Required]
-        public List<Photo> Photos {get; set;}
+        public List<Photo> Photos {get; set;} = new List<Photo>(); 
 
-        public List<ImageRes> ImagesResults {get; set; }
+        public List<ImageRes> ImagesResults {get; set; } = new List<ImageRes>();
     }
 }

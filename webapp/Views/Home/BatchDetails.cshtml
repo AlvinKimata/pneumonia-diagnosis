@@ -1,0 +1,14 @@
+@model BatchImageDiagnosis
+
+@{
+    ViewBag.Title = "Employee Details";
+    var photoPath = Model.Name;
+}
+
+<div class="card-deck">
+
+    <h3>@Model.Name</h3>
+    <h3>@Model.Id</h3>
+    <h3>@Model.Photos.Count</h3>
+
+</div>

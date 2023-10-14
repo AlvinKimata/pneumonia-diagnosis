@@ -50,18 +50,35 @@ public class HomeController : Controller
     [HttpGet]
     public async Task<IActionResult> ListBatch()
     {
-        var data = from l in _context.Photo
-                   join t in _context.ImageRes
-                   on l.Id equals t.Id
+        // var data = from l in _context.Photo
+        //            join t in _context.ImageRes
+        //            on l.Id equals t.Id
 
-                   select new 
-                   {
-                    l.Id,
-                    l.PhotoPath,
-                    t.imageresult
-                   };
-        return View(new {data = await data.ToListAsync()});
-        // return View(await _context.BatchImageDiagnosis.ToListAsync());
+        //            select new 
+        //            {
+        //             l.Id,
+        //             l.PhotoPath,
+        //             t.imageresult
+        //            };
+        // return View(new {data = await data.ToListAsync()});
+        return View(await _context.BatchImageDiagnosis.ToListAsync());
+    }
+
+    public async Task<IActionResult> BatchDetails(int? id)
+    {
+        if (id == null)
+        {
+            return NotFound();
+        }
+
+        var batchImageDiagnosisProject = await _context.BatchImageDiagnosis
+            .FirstOrDefaultAsync(m => m.Id == id);
+        if (batchImageDiagnosisProject == null)
+        {
+            return NotFound();
+        }
+
+        return View(batchImageDiagnosisProject);
     }
 
     private static async Task<byte[]> ReadStreamAsync(FileStream stream)
@@ -158,7 +175,7 @@ public class HomeController : Controller
             _context.Add(newSingleImageDiagnosis);
             await _context.SaveChangesAsync();
 
-            return RedirectToAction("Index");
+            return RedirectToAction("List");
         }
 
         return View();
@@ -235,7 +252,7 @@ public class HomeController : Controller
             _context.Add(newBatchImageDiagnosis);
             await _context.SaveChangesAsync();
 
-            return RedirectToAction("Index");
+            return RedirectToAction("ListBatch");
         }
 
         return View();
