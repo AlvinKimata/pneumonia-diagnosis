@@ -5,6 +5,8 @@ using System;
 using System.Net.Http;
 using school_project.ViewModels;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
+
 
 
 namespace school_project.Controllers;
