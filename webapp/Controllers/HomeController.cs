@@ -72,6 +72,8 @@ public class HomeController : Controller
         }
 
         var batchImageDiagnosisProject = await _context.BatchImageDiagnosis
+            .Include(b => b.Photos)
+            .Include(b => b.ImagesResults)
             .FirstOrDefaultAsync(m => m.Id == id);
         if (batchImageDiagnosisProject == null)
         {
@@ -267,6 +269,14 @@ public class HomeController : Controller
     public IActionResult Error()
     {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+    }
+
+    public int GetPhotosAndResults(BatchImageDiagnosisViewModel model)
+    {
+
+        var numOfImages = _context.Entry(model).Collection(b => b.Photos).Query().Count();
+
+        return numOfImages;
     }
 
 }

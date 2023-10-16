@@ -27,6 +27,7 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
         options.SignIn.RequireConfirmedAccount = false;
     }).AddEntityFrameworkStores<AppDbContext>();
 
+
 // builder.Services.AddMvc(options => {
 //                 var policy = new AuthorizationPolicyBuilder()
 //                                 .RequireAuthenticatedUser()
