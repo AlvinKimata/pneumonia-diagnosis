@@ -15,10 +15,14 @@
         var imageresult = Model.ImagesResults[i].imageresult;
         var imageName = Model.Photos[i].PhotoPath;
         var photo = photoPath + imageName;
-        <h3>@imageresult</h3>
-        <h3>@photo</h3>
-        <img class="card-img-top imageThumbnail"  src="@photo" asp-append-version="true"/>
-    }
-    <h3>@Model.Photos.Count</h3>
 
+        <div class="card m-3" style="min-width: 18rem; max-width:30.5%;">
+            
+            <div class="card-header">
+                <h3>@imageresult</h3>
+            </div>
+            
+            <img class="card-img-top imageThumbnail"  src="@photo" asp-append-version="true"/>
+        </div>
+    }
 </div>
