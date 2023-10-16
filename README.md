@@ -2,7 +2,7 @@
 
 ### This web application is implemented using the `ASP.Net Core` framework.
 
-### 1. Database setup.
+### 1. Database setup (Ubuntu 22.04 + versions).
 The database used is Ms SQL server running on a docker container. Use the command below to pull and start a docker container from the image.
 
 ```bash
