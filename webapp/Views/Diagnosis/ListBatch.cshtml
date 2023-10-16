@@ -6,7 +6,8 @@
 }
 
 
-
+@if (Model.Any())
+{
 <div class="card-deck">
 
     @foreach (var project in Model)
@@ -28,5 +29,18 @@
             </div>
         </div>
     }
-
 </div>
+}
+else 
+{
+    <div class="card">
+    <div class="card-header">No batch image diagnosis project created yet.</div>
+    <div class="card-body">
+        <h5 class="card-title">
+            Use the button below to create a project.
+        </h5>
+
+        <a class="btn btn-primary" style="width: auto" asp-controller="Home" asp-action="CreateBatch">Create</a>
+    </div>
+</div>   
+}

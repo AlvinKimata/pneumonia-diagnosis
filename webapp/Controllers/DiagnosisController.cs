@@ -60,4 +60,20 @@ public class DiagnosisController : Controller
         return View(await _context.BatchImageDiagnosis.ToListAsync());
     }
 
+    [HttpPost]
+    public async Task<IActionResult> Delete(int? id)
+    {
+        if (id == null)
+        {
+            return NotFound();
+        }
+        var batchImageDiagnosisProject = await _context.BatchImageDiagnosis
+        .FirstOrDefaultAsync(m => m.Id == id);
+
+        _context.Remove(batchImageDiagnosisProject);
+        await _context.SaveChangesAsync();
+        return RedirectToAction("ListBatch");
+
+    }
+
 }

@@ -131,7 +131,7 @@ public class HomeController : Controller
             _context.Add(newSingleImageDiagnosis);
             await _context.SaveChangesAsync();
 
-            return RedirectToAction("List");
+            return RedirectToAction("Index");
         }
 
         return View();
@@ -231,6 +231,22 @@ public class HomeController : Controller
         var numOfImages = _context.Entry(model).Collection(b => b.Photos).Query().Count();
 
         return numOfImages;
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Delete(int? id)
+    {
+        if (id == null)
+        {
+            return NotFound();
+        }
+        var newSingleImageDiagnosis = await _context.SingleImageDiagnosis
+        .FirstOrDefaultAsync(m => m.Id == id);
+
+        _context.Remove(newSingleImageDiagnosis);
+        await _context.SaveChangesAsync();
+        return RedirectToAction("Index");
+
     }
 
 }
