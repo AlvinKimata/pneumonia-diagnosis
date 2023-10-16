@@ -12,14 +12,11 @@ public class HomeController : Controller
 {
     private readonly Microsoft.AspNetCore.Hosting.IHostingEnvironment hostingEnvironment;
 
-    private readonly ILogger<HomeController> _logger;
     private readonly AppDbContext _context;
 
-    public HomeController(ILogger<HomeController> logger,
-                        Microsoft.AspNetCore.Hosting.IHostingEnvironment hostingEnvironment,
+    public HomeController(Microsoft.AspNetCore.Hosting.IHostingEnvironment hostingEnvironment,
                         AppDbContext context)
     {
-        _logger = logger;
         this.hostingEnvironment = hostingEnvironment;
         _context = context;
     }
@@ -38,49 +35,6 @@ public class HomeController : Controller
     [HttpGet]
     public IActionResult CreateBatch(){
         return View();
-    }
-
-    [HttpGet]
-    public async Task<IActionResult> List()
-    {
-        return View(await _context.SingleImageDiagnosis.ToListAsync());
-    }
-
-
-    [HttpGet]
-    public async Task<IActionResult> ListBatch()
-    {
-        // var data = from l in _context.Photo
-        //            join t in _context.ImageRes
-        //            on l.Id equals t.Id
-
-        //            select new 
-        //            {
-        //             l.Id,
-        //             l.PhotoPath,
-        //             t.imageresult
-        //            };
-        // return View(new {data = await data.ToListAsync()});
-        return View(await _context.BatchImageDiagnosis.ToListAsync());
-    }
-
-    public async Task<IActionResult> BatchDetails(int? id)
-    {
-        if (id == null)
-        {
-            return NotFound();
-        }
-
-        var batchImageDiagnosisProject = await _context.BatchImageDiagnosis
-            .Include(b => b.Photos)
-            .Include(b => b.ImagesResults)
-            .FirstOrDefaultAsync(m => m.Id == id);
-        if (batchImageDiagnosisProject == null)
-        {
-            return NotFound();
-        }
-
-        return View(batchImageDiagnosisProject);
     }
 
     private static async Task<byte[]> ReadStreamAsync(FileStream stream)
