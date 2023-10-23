@@ -61,6 +61,7 @@ def image_classification(image_bn, model):
     #     out = 1 - out
     #     return f"{out}% probability of abscence of pneumonia in image."
 
+
 def decode_image_binary(image_bn):
     '''Reads image in binary and returns it np.array format'''
     img_buff = np.frombuffer(image_bn, np.uint8)

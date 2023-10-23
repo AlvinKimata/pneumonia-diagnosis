@@ -32,6 +32,29 @@ def predict_class():
         print("Model not loaded yet!")
 
 
+
+@app.route('/batch_classification', methods = ['POST'])
+def predict_batch_classes():
+    if model:
+        try:
+            #Check the respose type.
+            content_type = request.content_type
+            if content_type == "image/jpeg":
+                results = []
+                #Read image binary data.
+                images_data = request.data
+                for image in images_data:
+                    prediction = utils.image_classification(image, model = model)
+                    results.append(prediction)
+                results_str = str(results)
+                return results_str
+        except:
+            return jsonify({'trace': traceback.format_exc()})
+    else:
+        print("Model not loaded yet.")
+
+
+
 if __name__ == "__main__":
     try:
         port = int(sys.argv[1])
