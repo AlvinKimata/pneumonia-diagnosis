@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace school_project.Controllers;
 
-public class DiagnosisController : Controller
+public class DiagnosisController : ViewComponent
 {
     private readonly Microsoft.AspNetCore.Hosting.IHostingEnvironment hostingEnvironment;
     private readonly AppDbContext _context;
@@ -76,23 +76,40 @@ public class DiagnosisController : Controller
 
     }
 
-    // //Get results from a batch instance.
-    // public ImageRes GetResultsFromBatchExample(int? id)
-    // {
-    //     ImageRes imageresults = _context.ImageRes
-    //     .FirstOrDefault(b => b.Id == id);
+    
 
-    //     // Create a list to store the parsed integers
-    //     List<float> floatList = new List<float>();
+    //Get results from a batch instance.
+    public List<int> GetResultsFromBatchExample(int? id)
+    {
+        BatchImageDiagnosis imageresults = _context.BatchImageDiagnosis
+        .Include(b => b.ImagesResults)
+        .FirstOrDefault(b => b.Id == id);
 
-    //     // Parse each element in the string array and add it to the list
-    //     foreach (string item in imageresults)
-    //     {
-    //         if (float.TryParse(item, out float floatValue))
-    //         {
-    //             floatList.Add(floatValue);
-    //         }
-    //     }
-    // return imageresults;
-    // }
+        // Create a list to store the parsed integers
+        List<int> imagesStatus = new List<int>();
+
+        // Parse each element in the string array and add it to the list
+        for(int i = 0; i < imageresults.ImagesResults.Count; i++)
+        {
+            var floatItem = float.Parse(imageresults.ImagesResults[i].imageresult);
+
+            if (floatItem < 80)
+            {
+                imagesStatus.Add(-1);
+            }
+
+            else
+            {
+                imagesStatus.Add(1);
+            }
+        }
+        return imagesStatus;
+    }
+
+    [HttpGet]
+    public PartialViewResult GetImagesStatus(int id)
+    {
+        List<int> imagesStatus = GetResultsFromBatchExample(id); // Your existing method
+        return PartialView("_ImagesStatusPartialView", imagesStatus);
+    }
 }

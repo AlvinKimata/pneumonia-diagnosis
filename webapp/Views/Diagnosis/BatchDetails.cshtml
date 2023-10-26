@@ -1,4 +1,5 @@
 @model BatchImageDiagnosis
+@using school_project.Controllers;
 
 @{   
     ViewBag.Title = "Project Details";
@@ -9,21 +10,6 @@
 
     <h3>Project Name: @Model.Name</h3>
     <h3>Number of images diagnosed are: @Model.Photos.Count</h3>
-
-    @{
-        //Get imageresults, parse them and store them as a list of floats.
-        List<float> ImageResultsList = new List<float>();
-
-        for (int i = 0; i < Model.ImagesResults.Count; i++)
-        {
-            var imageresult = Model.ImagesResults[i].imageresult;
-            //Convert string to float.
-            if (float.TryParse(imageresult, out float floatValue))
-            {
-                ImageResultsList.Add(floatValue);
-            }
-        }
-    }
 
     @for(int i = 0; i < Model.Photos.Count; i++)
     {
@@ -39,17 +25,36 @@
             
             <img class="card-img-top imageThumbnail"  src="@photo" asp-append-version="true"/>
         </div>
-        <div>
-            <h2>@ImageResultsList[i]</h2>
-        </div>
     }
 
-    <div>
-        <canvas id="myChart" width="200" height="110" style="width: 197px;height:110px"></canvas>
+    <div class="status" id="imagesStatusContainer">
+        <!-- This is where the results will be displayed -->
     </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    function getImagesStatus(id) {
+        $.ajax({
+            url: '@Url.Action("GetImagesStatus", "Diagnosis")', // Update with your actual controller and action names
+            data: { id: id },
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                // Update the content of the "imagesStatusContainer" div with the received data
+                $('#imagesStatusContainer').html(data);
+            },
+            error: function () {
+                alert('Failed to fetch data.');
+            }
+        });
+    }
+
+    // Call the function when the page loads or when a specific event occurs
+    getImagesStatus(@Model.Id);
+</script>
+
+
+@* <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script type="text/javascript">
     function OnSuccess(data){
         const barChart = document.getElementById('myChart');
@@ -71,4 +76,4 @@
             }
         });
     }
-</script>
+</script> *@
