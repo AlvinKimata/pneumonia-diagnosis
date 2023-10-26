@@ -6,7 +6,6 @@ using System.Net.Http;
 using school_project.ViewModels;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
-using AspNetCore;
 
 
 
@@ -78,37 +77,22 @@ public class DiagnosisController : Controller
     }
 
     //Get results from a batch instance.
-    public async GetResultsFromBatchExample(string? id)
+    public ImageRes GetResultsFromBatchExample(int? id)
     {
-        List<ImageRes> imageresults = _context.BatchImageDiagnosis
-        .Include(b => b.ImagesResults)
-        .FirstOrDefault(b => b.Id == id)
-        .ToListAsync();
-
-        return imageresults;
-        
-    }
-
-    public List<string> ParseListFromString(string? stringList)
-    {
-        // Split the string into individual values using whitespace as the separator
-        string[] stringList = inputString.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+        ImageRes imageresults = _context.ImageRes
+        .FirstOrDefault(b => b.Id == id);
 
         // Create a list to store the parsed integers
-        List<int> intList = new List<int>();
+        List<float> floatList = new List<float>();
 
         // Parse each element in the string array and add it to the list
-        foreach (string item in stringList)
+        foreach (string item in imageresults)
         {
-            if (int.TryParse(item, out int intValue))
+            if (float.TryParse(item, out float floatValue))
             {
-                intList.Add(intValue);
-            }
-            else
-            {
-                Console.WriteLine($"Unable to parse '{item}' as an integer.");
+                floatList.Add(floatValue);
             }
         }
-        return intList;
+    return imageresults;
     }
 }

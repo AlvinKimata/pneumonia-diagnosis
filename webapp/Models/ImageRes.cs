@@ -14,6 +14,8 @@ namespace school_project.Models
         public int Id { get; set; }
         [Required]
         public string imageresult { get; set; }
+
+        public int ImageResultStatus {get; set;}
     }
 
 }

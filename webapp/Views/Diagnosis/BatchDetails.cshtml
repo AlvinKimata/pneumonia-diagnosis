@@ -14,13 +14,13 @@
         //Get imageresults, parse them and store them as a list of floats.
         List<float> ImageResultsList = new List<float>();
 
-        for (int i = 0; Model.ImagesResults.Count; i++)
+        for (int i = 0; i < Model.ImagesResults.Count; i++)
         {
-            var imageresult = Model.ImageResults[i].imageresult;
+            var imageresult = Model.ImagesResults[i].imageresult;
             //Convert string to float.
-            if (float.TryParse(item, out int intValue))
+            if (float.TryParse(imageresult, out float floatValue))
             {
-                ImageResultsList.Add(intValue);
+                ImageResultsList.Add(floatValue);
             }
         }
     }
@@ -38,6 +38,9 @@
             </div>
             
             <img class="card-img-top imageThumbnail"  src="@photo" asp-append-version="true"/>
+        </div>
+        <div>
+            <h2>@ImageResultsList[i]</h2>
         </div>
     }
 
