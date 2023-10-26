@@ -13,9 +13,9 @@ def load_model():
     model = cnn_model.conv_v1()
     model = model.to(device)
 
-    #Load model ckpt.
-    # ckpt = torch.load('../ckpt/best.pth', map_location = device)
-    # model.load_state_dict(ckpt, strict = True)
+    # Load model ckpt.
+    ckpt = torch.load('../ckpt/best.pth', map_location = device)
+    model.load_state_dict(ckpt, strict = True)
 
     #Evaluation mode.
     model = model.eval()

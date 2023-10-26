@@ -7,8 +7,23 @@
 
 <div class="card-deck">
 
-    <h3>@Model.Name</h3>
-    <h3>@Model.Id</h3>
+    <h3>Project Name: @Model.Name</h3>
+    <h3>Number of images diagnosed are: @Model.Photos.Count</h3>
+
+    @{
+        //Get imageresults, parse them and store them as a list of floats.
+        List<float> ImageResultsList = new List<float>();
+
+        for (int i = 0; Model.ImagesResults.Count; i++)
+        {
+            var imageresult = Model.ImageResults[i].imageresult;
+            //Convert string to float.
+            if (float.TryParse(item, out int intValue))
+            {
+                ImageResultsList.Add(intValue);
+            }
+        }
+    }
 
     @for(int i = 0; i < Model.Photos.Count; i++)
     {
@@ -25,4 +40,32 @@
             <img class="card-img-top imageThumbnail"  src="@photo" asp-append-version="true"/>
         </div>
     }
+
+    <div>
+        <canvas id="myChart" width="200" height="110" style="width: 197px;height:110px"></canvas>
+    </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script type="text/javascript">
+    function OnSuccess(data){
+        const barChart = document.getElementById('myChart');
+        var_data = data;
+        var labels = _data[0];
+        var _ChartData = _data[1];
+        var colors = ["Red", "Green"];
+
+        var Chart(barChart,
+        {
+            type: "bar",
+            data: {
+                labels: _labels,
+                datasets: [{
+                    backgroundColor: colors,
+                    data: _ChartData,
+                    borderwidth: 1
+                }]
+            }
+        });
+    }
+</script>

@@ -6,6 +6,7 @@ using System.Net.Http;
 using school_project.ViewModels;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
+using AspNetCore;
 
 
 
@@ -76,4 +77,38 @@ public class DiagnosisController : Controller
 
     }
 
+    //Get results from a batch instance.
+    public async GetResultsFromBatchExample(string? id)
+    {
+        List<ImageRes> imageresults = _context.BatchImageDiagnosis
+        .Include(b => b.ImagesResults)
+        .FirstOrDefault(b => b.Id == id)
+        .ToListAsync();
+
+        return imageresults;
+        
+    }
+
+    public List<string> ParseListFromString(string? stringList)
+    {
+        // Split the string into individual values using whitespace as the separator
+        string[] stringList = inputString.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+
+        // Create a list to store the parsed integers
+        List<int> intList = new List<int>();
+
+        // Parse each element in the string array and add it to the list
+        foreach (string item in stringList)
+        {
+            if (int.TryParse(item, out int intValue))
+            {
+                intList.Add(intValue);
+            }
+            else
+            {
+                Console.WriteLine($"Unable to parse '{item}' as an integer.");
+            }
+        }
+        return intList;
+    }
 }

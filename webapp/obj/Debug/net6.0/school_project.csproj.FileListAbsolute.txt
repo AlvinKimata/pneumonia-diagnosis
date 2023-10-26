@@ -112,7 +112,7 @@
 /home/debonair/Documents/python/pneumonia-diagnosis/webapp/obj/Debug/net6.0/scopedcss/projectbundle/school_project.bundle.scp.css
 /home/debonair/Documents/python/pneumonia-diagnosis/webapp/obj/Debug/net6.0/school_project.csproj.CopyComplete
 /home/debonair/Documents/python/pneumonia-diagnosis/webapp/obj/Debug/net6.0/school_project.dll
-/home/debonair/Documents/python/pneumonia-diagnosis/webapp/obj/Debug/net6.0/refint/school_project.dll
 /home/debonair/Documents/python/pneumonia-diagnosis/webapp/obj/Debug/net6.0/school_project.pdb
 /home/debonair/Documents/python/pneumonia-diagnosis/webapp/obj/Debug/net6.0/school_project.genruntimeconfig.cache
 /home/debonair/Documents/python/pneumonia-diagnosis/webapp/obj/Debug/net6.0/ref/school_project.dll
+/home/debonair/Documents/python/pneumonia-diagnosis/webapp/bin/Debug/net6.0/ref/school_project.dll

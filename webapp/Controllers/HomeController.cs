@@ -208,7 +208,7 @@ public class HomeController : Controller
             _context.Add(newBatchImageDiagnosis);
             await _context.SaveChangesAsync();
 
-            return RedirectToAction("ListBatch");
+            return RedirectToAction("ListBatch", "Diagnosis");
         }
 
         return View();
