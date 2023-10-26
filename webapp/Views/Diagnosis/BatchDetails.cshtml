@@ -1,5 +1,4 @@
 @model BatchImageDiagnosis
-@using school_project.Controllers;
 
 @{   
     ViewBag.Title = "Project Details";
@@ -32,26 +31,29 @@
     </div>
 </div>
 
-<script>
-    function getImagesStatus(id) {
-        $.ajax({
-            url: '@Url.Action("GetImagesStatus", "Diagnosis")', // Update with your actual controller and action names
-            data: { id: id },
-            type: 'GET',
-            dataType: 'json',
-            success: function (data) {
-                // Update the content of the "imagesStatusContainer" div with the received data
-                $('#imagesStatusContainer').html(data);
-            },
-            error: function () {
-                alert('Failed to fetch data.');
-            }
-        });
-    }
+@section Scripts
+    {
+    <script>
+        function getImagesStatus(id) {
+            $.ajax({
+                url: '@Url.Action("GetImagesStatus", "Diagnosis")', // controller name and action name
+                data: { id: id },
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    // Update the content of the "imagesStatusContainer" div with the received data
+                    $('#imagesStatusContainer').html(data);
+                },
+                error: function () {
+                    alert('Failed to fetch data.');
+                }
+            });
+        }
 
-    // Call the function when the page loads or when a specific event occurs
-    getImagesStatus(@Model.Id);
-</script>
+        // Call the function when the page loads or when a specific event occurs
+        getImagesStatus(@Model.Id);
+    </script>
+}
 
 
 @* <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace school_project.Controllers;
 
-public class DiagnosisController : ViewComponent
+public class DiagnosisController : Controller
 {
     private readonly Microsoft.AspNetCore.Hosting.IHostingEnvironment hostingEnvironment;
     private readonly AppDbContext _context;
@@ -109,7 +109,7 @@ public class DiagnosisController : ViewComponent
     [HttpGet]
     public PartialViewResult GetImagesStatus(int id)
     {
-        List<int> imagesStatus = GetResultsFromBatchExample(id); // Your existing method
+        List<int> imagesStatus = GetResultsFromBatchExample(id); 
         return PartialView("_ImagesStatusPartialView", imagesStatus);
     }
 }
