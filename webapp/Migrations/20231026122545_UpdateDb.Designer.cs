@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using school_project.Models;
 
@@ -11,9 +12,11 @@ using school_project.Models;
 namespace school_project.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231026122545_UpdateDb")]
+    partial class UpdateDb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -38,7 +41,7 @@ namespace school_project.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Roles", (string)null);
+                    b.ToTable("Roles");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -60,7 +63,7 @@ namespace school_project.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("RoleClaims", (string)null);
+                    b.ToTable("RoleClaims");
                 });
 
             modelBuilder.Entity("school_project.Models.BatchImageDiagnosis", b =>
@@ -77,7 +80,7 @@ namespace school_project.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("BatchImageDiagnosis", (string)null);
+                    b.ToTable("BatchImageDiagnosis");
                 });
 
             modelBuilder.Entity("school_project.Models.Employee", b =>
@@ -105,7 +108,7 @@ namespace school_project.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Employees", (string)null);
+                    b.ToTable("Employees");
                 });
 
             modelBuilder.Entity("school_project.Models.ImageRes", b =>
@@ -135,7 +138,7 @@ namespace school_project.Migrations
 
                     b.HasIndex("BatchImageDiagnosisId1");
 
-                    b.ToTable("ImageRes", (string)null);
+                    b.ToTable("ImageRes");
                 });
 
             modelBuilder.Entity("school_project.Models.Photo", b =>
@@ -157,7 +160,7 @@ namespace school_project.Migrations
 
                     b.HasIndex("BatchImageDiagnosisId");
 
-                    b.ToTable("Photo", (string)null);
+                    b.ToTable("Photo");
                 });
 
             modelBuilder.Entity("school_project.Models.SingleImageDiagnosis", b =>
@@ -182,7 +185,7 @@ namespace school_project.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("SingleImageDiagnosis", (string)null);
+                    b.ToTable("SingleImageDiagnosis");
                 });
 
             modelBuilder.Entity("school_project.Models.ImageRes", b =>

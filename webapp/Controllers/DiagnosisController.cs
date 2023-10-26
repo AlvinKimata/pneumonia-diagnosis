@@ -76,23 +76,23 @@ public class DiagnosisController : Controller
 
     }
 
-    //Get results from a batch instance.
-    public ImageRes GetResultsFromBatchExample(int? id)
-    {
-        ImageRes imageresults = _context.ImageRes
-        .FirstOrDefault(b => b.Id == id);
+    // //Get results from a batch instance.
+    // public ImageRes GetResultsFromBatchExample(int? id)
+    // {
+    //     ImageRes imageresults = _context.ImageRes
+    //     .FirstOrDefault(b => b.Id == id);
 
-        // Create a list to store the parsed integers
-        List<float> floatList = new List<float>();
+    //     // Create a list to store the parsed integers
+    //     List<float> floatList = new List<float>();
 
-        // Parse each element in the string array and add it to the list
-        foreach (string item in imageresults)
-        {
-            if (float.TryParse(item, out float floatValue))
-            {
-                floatList.Add(floatValue);
-            }
-        }
-    return imageresults;
-    }
+    //     // Parse each element in the string array and add it to the list
+    //     foreach (string item in imageresults)
+    //     {
+    //         if (float.TryParse(item, out float floatValue))
+    //         {
+    //             floatList.Add(floatValue);
+    //         }
+    //     }
+    // return imageresults;
+    // }
 }

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using school_project.Models;
 
@@ -11,9 +12,11 @@ using school_project.Models;
 namespace school_project.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231026115712_AddImageStatusToDb")]
+    partial class AddImageStatusToDb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -38,7 +41,7 @@ namespace school_project.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Roles", (string)null);
+                    b.ToTable("Roles");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -60,7 +63,7 @@ namespace school_project.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("RoleClaims", (string)null);
+                    b.ToTable("RoleClaims");
                 });
 
             modelBuilder.Entity("school_project.Models.BatchImageDiagnosis", b =>
@@ -77,7 +80,7 @@ namespace school_project.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("BatchImageDiagnosis", (string)null);
+                    b.ToTable("BatchImageDiagnosis");
                 });
 
             modelBuilder.Entity("school_project.Models.Employee", b =>
@@ -105,7 +108,7 @@ namespace school_project.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Employees", (string)null);
+                    b.ToTable("Employees");
                 });
 
             modelBuilder.Entity("school_project.Models.ImageRes", b =>
@@ -119,9 +122,6 @@ namespace school_project.Migrations
                     b.Property<int?>("BatchImageDiagnosisId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("BatchImageDiagnosisId1")
-                        .HasColumnType("int");
-
                     b.Property<int>("ImageResultStatus")
                         .HasColumnType("int");
 
@@ -133,9 +133,7 @@ namespace school_project.Migrations
 
                     b.HasIndex("BatchImageDiagnosisId");
 
-                    b.HasIndex("BatchImageDiagnosisId1");
-
-                    b.ToTable("ImageRes", (string)null);
+                    b.ToTable("ImageRes");
                 });
 
             modelBuilder.Entity("school_project.Models.Photo", b =>
@@ -157,7 +155,7 @@ namespace school_project.Migrations
 
                     b.HasIndex("BatchImageDiagnosisId");
 
-                    b.ToTable("Photo", (string)null);
+                    b.ToTable("Photo");
                 });
 
             modelBuilder.Entity("school_project.Models.SingleImageDiagnosis", b =>
@@ -182,18 +180,14 @@ namespace school_project.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("SingleImageDiagnosis", (string)null);
+                    b.ToTable("SingleImageDiagnosis");
                 });
 
             modelBuilder.Entity("school_project.Models.ImageRes", b =>
                 {
                     b.HasOne("school_project.Models.BatchImageDiagnosis", null)
-                        .WithMany("ImageResultStatus")
-                        .HasForeignKey("BatchImageDiagnosisId");
-
-                    b.HasOne("school_project.Models.BatchImageDiagnosis", null)
                         .WithMany("ImagesResults")
-                        .HasForeignKey("BatchImageDiagnosisId1");
+                        .HasForeignKey("BatchImageDiagnosisId");
                 });
 
             modelBuilder.Entity("school_project.Models.Photo", b =>
@@ -205,8 +199,6 @@ namespace school_project.Migrations
 
             modelBuilder.Entity("school_project.Models.BatchImageDiagnosis", b =>
                 {
-                    b.Navigation("ImageResultStatus");
-
                     b.Navigation("ImagesResults");
 
                     b.Navigation("Photos");

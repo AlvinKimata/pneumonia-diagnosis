@@ -15,7 +15,6 @@ namespace school_project.Models
         [Required]
         public string imageresult { get; set; }
 
-        public int ImageResultStatus {get; set;}
     }
 
 }
