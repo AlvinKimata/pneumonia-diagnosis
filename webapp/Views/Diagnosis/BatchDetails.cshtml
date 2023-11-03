@@ -3,6 +3,7 @@
 @{   
     ViewBag.Title = "Project Details";
     var photoPath = "~/images/";
+    Layout = "~/Views/Shared/_ImagesStatusPartialView.cshtml";
 }
 
 <div class="card-deck">
@@ -31,7 +32,7 @@
     </div>
 </div>
 
-@section Scripts
+@* @section Scripts
     {
     <script>
         function getImagesStatus(id) {
@@ -53,7 +54,7 @@
         // Call the function when the page loads or when a specific event occurs
         getImagesStatus(@Model.Id);
     </script>
-}
+} *@
 
 
 @* <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

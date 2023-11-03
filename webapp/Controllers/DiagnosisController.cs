@@ -79,7 +79,8 @@ public class DiagnosisController : Controller
     
 
     //Get results from a batch instance.
-    public List<int> GetResultsFromBatchExample(int? id)
+    [HttpGet]
+    public List<int> GetResultsFromBatchExample(int id)
     {
         BatchImageDiagnosis imageresults = _context.BatchImageDiagnosis
         .Include(b => b.ImagesResults)
@@ -93,7 +94,7 @@ public class DiagnosisController : Controller
         {
             var floatItem = float.Parse(imageresults.ImagesResults[i].imageresult);
 
-            if (floatItem < 80)
+            if (floatItem < 0.5)
             {
                 imagesStatus.Add(-1);
             }
