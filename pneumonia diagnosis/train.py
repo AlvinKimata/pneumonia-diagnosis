@@ -3,13 +3,16 @@ import torch
 import random
 import argparse
 import numpy as np
+from tqdm import tqdm
+import torch.nn as nn
+import torch.optim as optim
 from data import pneumonia_dataset as ds
 from models.cnn_ensemble import EnsembleCNN
 from torchvision import datasets, transforms
 
 #Define arguments to parse when training the model.
 def get_args(parser):
-    parser.add_argument("--batch_size", type=int, default=1)
+    parser.add_argument("--batch_size", type=int, default=2)
     parser.add_argument("--data_dir", type=str, default="pneumonia diagnosis/inputs/chest_xray/")
     parser.add_argument("--lr", type=float, default=1e-4)
     parser.add_argument("--epochs", type=int, default=20)
@@ -61,9 +64,60 @@ def prepare_dataset(args):
     return train_dataloader, test_dataloader, valid_dataloader
 
 
-def prepare_model(args):
+def prepare_model():
+    model = EnsembleCNN()
+    return model
 
-parser = argparse.ArgumentParser(description="Train Model")
-get_args(parser)
-args, remaining_args = parser.parse_known_args()
-train_dataloader, test_dataloader, valid_dataloader = prepare_dataset(args)
+def main(args):
+    #Main python script for training the model.
+    #Prepare the model.
+    model = prepare_model()
+    criterion = nn.CrossEntropyLoss()
+    optimizer = optim.Adam(model.parameters(), lr=args.lr, weight_decay=1e-5)
+
+    #Prepare the dataset.
+    train_ds, test_ds, valid_ds = prepare_dataset(args)
+
+
+    for epoch in range(args.epochs):
+        train_losses = []
+        model.train()
+        optimizer.zero_grad()
+
+        print(f"Epoch {epoch} of {args.epochs}")
+
+        for index, batch in tqdm(enumerate(train_ds)):
+            images, labels = batch
+            images = images.to(args.device)
+            labels = labels.to(args.device)
+
+            print(images.shape)
+            print(labels.shape)
+
+            # zero the parameter gradients
+            optimizer.zero_grad()
+
+            outputs = model(images)
+            loss = criterion(outputs, labels)
+
+            loss.backward()
+            optimizer.step()
+
+            #Print statistics.
+            running_loss += loss.item()
+
+            if index % 10 == 0:    # print every 10 mini-batches
+                print(f'[{epoch + 1}, {index + 1:5d}] loss: {running_loss / 2000:.3f}')
+                running_loss = 0.0
+
+            train_losses.append(loss.item())
+
+
+if __name__ == "__main__":
+    import warnings
+    warnings.filterwarnings("ignore")
+
+    parser = argparse.ArgumentParser(description="Train Model")
+    get_args(parser)
+    args, remaining_args = parser.parse_known_args()
+    main(args)
