@@ -1,3 +1,4 @@
+import os
 import cv2
 import random
 import numpy as np
@@ -10,6 +11,7 @@ from torch.utils.data import ConcatDataset, Dataset
 import torchvision
 from torchvision import datasets, transforms
 
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 def seed_everything(seed):
     random.seed(seed)
@@ -23,14 +25,7 @@ def seed_everything(seed):
 SEED = 42 
 batch_s = 16
 seed_everything(SEED)
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-
-train_dir = '../input/chest-xray-pneumonia/chest_xray/train'
-valid_dir = '../input/chest-xray-pneumonia/chest_xray/val'
-test_dir  = '../input/chest-xray-pneumonia/chest_xray/test'
-
-img_size = 224
 
 # unused (actually used for plotting), better way found (marked as "* better way")
 def  generate_dataframes(root_dir):
@@ -69,7 +64,6 @@ def  generate_dataframes(root_dir):
                 
     return train_df, test_df, valid_df
 
-train_df, test_df, valid_df = generate_dataframes('../input/chest-xray-pneumonia/chest_xray/')
 
 
 class Dataset(Dataset):
@@ -113,20 +107,4 @@ def unbalanced_dataset_weights(instances):
         
     return weight
 
-# * better way
-transform = transforms.Compose([transforms.Resize((img_size, img_size)),
-                                transforms.RandomRotation(30),
-                                transforms.RandomHorizontalFlip(p=0.5),
-                                transforms.ToTensor()])
 
-# train_ds = datasets.ImageFolder(train_dir, transform)
-# weights = unbalanced_dataset_weights(train_ds.imgs)
-# weights = torch.tensor(weights, dtype=torch.double)
-# sampler = torch.utils.data.sampler.WeightedRandomSampler(weights, len(weights))
-# train_dataloader = torch.utils.data.DataLoader(train_ds, batch_size=batch_s, sampler= sampler)
-
-# valid_ds = datasets.ImageFolder(valid_dir, transform)
-# valid_dataloader = torch.utils.data.DataLoader(valid_ds, batch_size=2, shuffle=False)
-
-# test_ds = datasets.ImageFolder(test_dir, transform)
-# test_dataloader = torch.utils.data.DataLoader(test_ds, batch_size=1, shuffle=False)
