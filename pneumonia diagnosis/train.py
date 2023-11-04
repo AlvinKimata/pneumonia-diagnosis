@@ -8,12 +8,14 @@ import torch.nn as nn
 import torch.optim as optim
 from data import pneumonia_dataset as ds
 from models.cnn_ensemble import EnsembleCNN
-from torchvision import datasets, transforms
+from torchvision import  transforms
 
 #Define arguments to parse when training the model.
 def get_args(parser):
     parser.add_argument("--batch_size", type=int, default=2)
-    parser.add_argument("--data_dir", type=str, default="pneumonia diagnosis/inputs/chest_xray/")
+    parser.add_argument("--train_ds", type=str, default="pneumonia diagnosis/inputs/train.csv")
+    parser.add_argument("--val_ds", type=str, default="pneumonia diagnosis/inputs/valid.csv")
+    parser.add_argument("--test_ds", type=str, default="pneumonia diagnosis/inputs/test.csv")
     parser.add_argument("--lr", type=float, default=1e-4)
     parser.add_argument("--epochs", type=int, default=20)
     parser.add_argument("--savedir", type=str, default="pneumonia diagnosis/savepath/")
@@ -24,41 +26,37 @@ def get_args(parser):
 
 #Prepare the dataset.
 def prepare_dataset(args):
-    train_dir = os.path.join(args.data_dir, 'train')
-    test_dir = os.path.join(args.data_dir, 'test')
-    valid_dir = os.path.join(args.data_dir, 'val')
-
     #Dataset transformations.
     train_transform = transforms.Compose([
+        transforms.ToTensor(),
         transforms.Resize((224, 224)),
         transforms.RandomHorizontalFlip(p=0.5),
         transforms.RandomVerticalFlip(p=0.5),
         transforms.GaussianBlur(kernel_size=(5, 9), sigma=(0.1, 5)),
         transforms.RandomRotation(degrees=(30, 70)),
-        transforms.ToTensor(),
         transforms.Normalize(
             mean=[0.5, 0.5, 0.5],
             std=[0.5, 0.5, 0.5]
         )
     ])
 
-    #Validation transforms
+    #Test and validation transforms.
     valid_transform = transforms.Compose([
-        transforms.Resize((224, 224)),
         transforms.ToTensor(),
+        transforms.Resize((224, 224)),
         transforms.Normalize(
             mean=[0.5, 0.5, 0.5],
             std=[0.5, 0.5, 0.5]
         )
     ])
 
-    train_ds = datasets.ImageFolder(train_dir, transform = train_transform)
-    train_dataloader = torch.utils.data.DataLoader(train_ds, batch_size=args.batch_size)
+    train_ds = ds.PneumoniaDataset(data = args.train_ds, transform=train_transform)
+    train_dataloader = torch.utils.data.DataLoader(train_ds, batch_size=args.batch_size, shuffle = True)
 
-    valid_ds = datasets.ImageFolder(valid_dir, transform = valid_transform)
+    valid_ds = ds.PneumoniaDataset(data = args.val_ds, transform = valid_transform)
     valid_dataloader = torch.utils.data.DataLoader(valid_ds, batch_size=args.batch_size, shuffle=False)
 
-    test_ds = datasets.ImageFolder(test_dir, transform = valid_transform)
+    test_ds = ds.PneumoniaDataset(data = args.test_ds, transform = valid_transform)
     test_dataloader = torch.utils.data.DataLoader(test_ds, batch_size=args.batch_size, shuffle=False)
 
     return train_dataloader, test_dataloader, valid_dataloader
