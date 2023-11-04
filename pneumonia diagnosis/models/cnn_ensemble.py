@@ -249,17 +249,19 @@ class EnsembleCNN(nn.Module):
         googlenet_outputs = self.googlenet_model(x)
 
 
-        inputs = torch.concat([resnet_inputs, efficnetnet_inputs, googlenet_outputs[0]], dim = 0)
-        x = nn.Linear(1000, 500)(inputs)
+        inputs = torch.concat([resnet_inputs, efficnetnet_inputs, googlenet_outputs[0]], dim = 1)
+        x = nn.Flatten()(inputs)
+        x = nn.Linear(3000, 500)(inputs)
         x = F.relu(x)
         x = nn.Dropout(0.3)(x)
         x = nn.Linear(500, 200)(x)
         x = F.relu(x)
         x = nn.Dropout(0.3)(x)
-        x = nn.Linear(200, 1)(x)
-        out_mean = torch.mean(x)
+        out = nn.Linear(200, 1)(x)
+        # out_mean = torch.mean(x)
+        # out = torch.unsqueeze(out_mean)
 
-        return out_mean
+        return out
 
 
 

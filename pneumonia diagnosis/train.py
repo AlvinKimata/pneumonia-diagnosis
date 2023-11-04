@@ -72,7 +72,7 @@ def main(args):
     #Main python script for training the model.
     #Prepare the model.
     model = prepare_model()
-    criterion = nn.CrossEntropyLoss()
+    criterion = nn.BCELoss()
     optimizer = optim.Adam(model.parameters(), lr=args.lr, weight_decay=1e-5)
 
     #Prepare the dataset.
@@ -80,25 +80,25 @@ def main(args):
 
 
     for epoch in range(args.epochs):
+        running_loss = 0.0
         train_losses = []
         model.train()
-        optimizer.zero_grad()
 
         print(f"Epoch {epoch} of {args.epochs}")
 
         for index, batch in tqdm(enumerate(train_ds)):
             images, labels = batch
+            
             images = images.to(args.device)
             labels = labels.to(args.device)
-
-            print(images.shape)
-            print(labels.shape)
+            labels = labels.view(-1, 1)
 
             # zero the parameter gradients
             optimizer.zero_grad()
 
             outputs = model(images)
-            loss = criterion(outputs, labels)
+            outputs = torch.abs(outputs)
+            loss = criterion(outputs, labels.float())
 
             loss.backward()
             optimizer.step()
