@@ -1,4 +1,3 @@
-import os
 import cv2
 import random
 import numpy as np
@@ -13,6 +12,7 @@ from torchvision import datasets, transforms
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
+
 def seed_everything(seed):
     random.seed(seed)
     np.random.seed(seed)
@@ -25,45 +25,6 @@ def seed_everything(seed):
 SEED = 42 
 batch_s = 16
 seed_everything(SEED)
-
-
-# unused (actually used for plotting), better way found (marked as "* better way")
-def  generate_dataframes(root_dir):
-    train_df = pd.DataFrame(columns=['xray_dir', 'pneumonia (label)'])
-    test_df  = pd.DataFrame(columns=['xray_dir', 'pneumonia (label)'])
-    valid_df = pd.DataFrame(columns=['xray_dir', 'pneumonia (label)'])
-    
-    for dirname, _, filenames in os.walk(root_dir):     
-        
-        # Train
-        if dirname == root_dir + 'train/' + 'NORMAL':
-            for filename in filenames:
-                train_df.loc[len(train_df)] = [dirname + '/' + filename, 0]
-
-        elif dirname == root_dir + 'train/' + 'PNEUMONIA':
-            for filename in filenames:
-                train_df.loc[len(train_df)] = [dirname + '/' + filename, 1]
-        
-        # Test
-        if dirname == root_dir + 'test/' + 'NORMAL':
-            for filename in filenames:
-                test_df.loc[len(test_df)] = [dirname + '/' + filename, 0]
-
-        elif dirname == root_dir + 'test/' + 'PNEUMONIA':
-            for filename in filenames:
-                test_df.loc[len(test_df)] = [dirname + '/' + filename, 1]
-        
-        # Validation
-        if dirname == root_dir + 'val/' + 'NORMAL':
-            for filename in filenames:
-                valid_df.loc[len(valid_df)] = [dirname + '/' + filename, 0]
-
-        elif dirname == root_dir + 'val/' + 'PNEUMONIA':
-            for filename in filenames:
-                valid_df.loc[len(valid_df)] = [dirname + '/' + filename, 1]
-                
-    return train_df, test_df, valid_df
-
 
 
 class Dataset(Dataset):
@@ -106,5 +67,4 @@ def unbalanced_dataset_weights(instances):
         weight[index] = class_weight[value[1]]
         
     return weight
-
 
