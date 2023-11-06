@@ -242,6 +242,13 @@ class EnsembleCNN(nn.Module):
         self.resnet_model = torchvision.models.resnet101()
         self.efficientnet_model = torchvision.models.efficientnet_b0()
         self.googlenet_model = GoogLeNet()
+
+        self.fc1 = nn.Linear(3000, 500)
+        self.fc2 = nn.Linear(500, 200)
+        self.fc3 = nn.Linear(200, 1)
+
+        self.bn1 = nn.BatchNorm1d(3000)
+        self.bn2 = nn.BatchNorm1d(200)
     
     def forward(self, x):
         resnet_inputs = self.resnet_model(x)
@@ -250,20 +257,22 @@ class EnsembleCNN(nn.Module):
 
 
         inputs = torch.concat([resnet_inputs, efficnetnet_inputs, googlenet_outputs[0]], dim = 1)
-        x = nn.Flatten()(inputs)
-        x = nn.Linear(3000, 500)(inputs)
-        x = F.relu(x)
+        # x = nn.Flatten()(inputs)
+        x = self.bn1(inputs)
+        x = F.relu(self.fc1(x))
         x = nn.Dropout(0.3)(x)
-        x = nn.Linear(500, 200)(x)
-        x = F.relu(x)
+        x = F.relu(self.fc2(x))
         x = nn.Dropout(0.3)(x)
-        out = nn.Linear(200, 1)(x)
-        # out_mean = torch.mean(x)
-        # out = torch.unsqueeze(out_mean)
+        x = self.bn2(x)
+        x = nn.Linear(200, 1)(x)
+        out = F.sigmoid(x)
 
         return out
 
 
 
-    
-
+# model = EnsembleCNN()
+# inputs = torch.randn((2, 3, 256, 256))
+# print(inputs.shape)
+# out = model(inputs)
+# print(out.shape)

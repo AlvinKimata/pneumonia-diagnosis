@@ -33,21 +33,12 @@ def prepare_dataset(args):
         transforms.RandomHorizontalFlip(p=0.5),
         transforms.RandomVerticalFlip(p=0.5),
         transforms.GaussianBlur(kernel_size=(5, 9), sigma=(0.1, 5)),
-        transforms.RandomRotation(degrees=(30, 70)),
-        transforms.Normalize(
-            mean=[0.5, 0.5, 0.5],
-            std=[0.5, 0.5, 0.5]
-        )
     ])
 
     #Test and validation transforms.
     valid_transform = transforms.Compose([
         transforms.ToTensor(),
-        transforms.Resize((224, 224)),
-        transforms.Normalize(
-            mean=[0.5, 0.5, 0.5],
-            std=[0.5, 0.5, 0.5]
-        )
+        transforms.Resize((224, 224))
     ])
 
     train_ds = ds.PneumoniaDataset(data = args.train_ds, transform=train_transform)
@@ -59,7 +50,8 @@ def prepare_dataset(args):
     test_ds = ds.PneumoniaDataset(data = args.test_ds, transform = valid_transform)
     test_dataloader = torch.utils.data.DataLoader(test_ds, batch_size=args.batch_size, shuffle=False)
 
-    return train_dataloader, test_dataloader, valid_dataloader
+    return train_dataloader, valid_dataloader, test_dataloader
+
 
 
 def prepare_model():
@@ -73,8 +65,7 @@ def main(args):
     criterion = nn.BCELoss()
     optimizer = optim.Adam(model.parameters(), lr=args.lr, weight_decay=1e-5)
 
-    #Prepare the dataset.
-    train_ds, test_ds, valid_ds = prepare_dataset(args)
+    train_ds, valid_ds, test_ds = prepare_dataset(args)
 
 
     for epoch in range(args.epochs):
@@ -86,7 +77,7 @@ def main(args):
 
         for index, batch in tqdm(enumerate(train_ds)):
             images, labels = batch
-            
+
             images = images.to(args.device)
             labels = labels.to(args.device)
             labels = labels.view(-1, 1)
@@ -95,7 +86,6 @@ def main(args):
             optimizer.zero_grad()
 
             outputs = model(images)
-            outputs = torch.abs(outputs)
             loss = criterion(outputs, labels.float())
 
             loss.backward()
