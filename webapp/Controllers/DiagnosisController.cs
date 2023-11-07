@@ -79,38 +79,21 @@ public class DiagnosisController : Controller
     
 
     //Get results from a batch instance.
-    [HttpGet]
-    public List<int> GetResultsFromBatchExample(int id)
+    public List<float> GetResultsFromBatchExample(int id)
     {
         BatchImageDiagnosis imageresults = _context.BatchImageDiagnosis
         .Include(b => b.ImagesResults)
         .FirstOrDefault(b => b.Id == id);
 
         // Create a list to store the parsed integers
-        List<int> imagesStatus = new List<int>();
+        List<float> imagesStatus = new List<float>();
 
         // Parse each element in the string array and add it to the list
         for(int i = 0; i < imageresults.ImagesResults.Count; i++)
         {
             var floatItem = float.Parse(imageresults.ImagesResults[i].imageresult);
-
-            if (floatItem < 0.5)
-            {
-                imagesStatus.Add(-1);
-            }
-
-            else
-            {
-                imagesStatus.Add(1);
-            }
+            imagesStatus.Add(floatItem);
         }
         return imagesStatus;
-    }
-
-    [HttpGet]
-    public PartialViewResult GetImagesStatus(int id)
-    {
-        List<int> imagesStatus = GetResultsFromBatchExample(id); 
-        return PartialView("_ImagesStatusPartialView", imagesStatus);
     }
 }

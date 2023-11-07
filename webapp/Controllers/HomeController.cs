@@ -131,7 +131,7 @@ public class HomeController : Controller
             _context.Add(newSingleImageDiagnosis);
             await _context.SaveChangesAsync();
 
-            return RedirectToAction("Index");
+            return RedirectToAction("List", "Diagnosis");
         }
 
         return View();

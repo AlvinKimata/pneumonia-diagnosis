@@ -3,7 +3,6 @@
 @{   
     ViewBag.Title = "Project Details";
     var photoPath = "~/images/";
-    @* Layout = "~/Views/Shared/_ImagesStatusPartialView.cshtml"; *@
 }
 
 <div class="card-deck">
@@ -16,10 +15,11 @@
         var imageresult = Model.ImagesResults[i].imageresult;
         var imageName = Model.Photos[i].PhotoPath;
         var photo = photoPath + imageName;
+        var result = Model.ImagesResults[i];
 
         <div class="card m-3" style="min-width: 18rem; max-width:30.5%;">
             
-            <div class="card-header">
+            <div>
                 <h3>@imageresult</h3>
             </div>
             
@@ -28,22 +28,24 @@
     }
 
     <div class="status" id="imagesStatusContainer">
-        <!-- This is where the results will be displayed -->
+
     </div>
 </div>
 
-@* @section Scripts
+
+@section Scripts
     {
     <script>
         function getImagesStatus(id) {
             $.ajax({
-                url: '@Url.Action("GetImagesStatus", "Diagnosis")', // controller name and action name
+                url: '@Url.Action("GetResultsFromBatchExample", "Diagnosis")', // controller name and action name
                 data: { id: id },
                 type: 'GET',
                 dataType: 'json',
                 success: function (data) {
                     // Update the content of the "imagesStatusContainer" div with the received data
                     $('#imagesStatusContainer').html(data);
+                    console.log(data);
                 },
                 error: function () {
                     alert('Failed to fetch data.');
@@ -54,7 +56,7 @@
         // Call the function when the page loads or when a specific event occurs
         getImagesStatus(@Model.Id);
     </script>
-} *@
+}
 
 
 @* <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
