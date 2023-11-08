@@ -26,10 +26,10 @@
             <img class="card-img-top imageThumbnail"  src="@photo" asp-append-version="true"/>
         </div>
     }
-
+@* 
     <div class="status" id="imagesStatusContainer">
 
-    </div>
+    </div> *@
 </div>
 
 
@@ -48,7 +48,7 @@
                     console.log(data);
                 },
                 error: function () {
-                    alert('Failed to fetch data.');
+                    console.log('Failed to fetch data.');
                 }
             });
         }

@@ -247,6 +247,31 @@ public class HomeController : Controller
         await _context.SaveChangesAsync();
         return RedirectToAction("Index");
 
+
     }
+
+    //Get total number of single and batch diagnosis projects created.
+    public int NumberOfProjects()
+    {
+        int batchProjects = _context.BatchImageDiagnosis.Count();
+        int singleProjects = _context.SingleImageDiagnosis.Count();
+
+        int totalProjects = batchProjects + singleProjects;
+        return totalProjects;
+    }
+
+    // //Get total number of patients diagnosed using single and batch diagnosis.
+    // public int NumberOfPatientsDiagnosed(int id)
+    // {
+    //     BatchImageDiagnosis batchImages = _context.BatchImageDiagnosis
+    //     .Include(b => b.Photos)
+    //     .FirstOrDefault(b => b.Id == id);
+
+    //     int singleImagesDiagnosed = _context.SingleImageDiagnosis.Count();
+    //     int batchImagesDiagnosed = _context.BatchImageDiagnosis.Photos.Count();
+        
+    //     int totalImages = singleImages + batchImages;
+
+    // }
 
 }
