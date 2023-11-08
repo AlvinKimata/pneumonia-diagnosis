@@ -9,13 +9,15 @@ namespace school_project.Controllers;
 
 public class AnalysisController: Controller
 {
+    [HttpGet]
     
-    public ViewResult DataAnalysis()
+    public IActionResult Index()
     {
         return View();
     }
 
-     public ViewResult ModelAnalysis()
+    [HttpGet]
+    public IActionResult DataAnalysis()
     {
         return View();
     }
