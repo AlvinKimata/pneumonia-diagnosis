@@ -35,24 +35,6 @@
   <script src="~/js/scripts.js"></script>
 
   <script>
-    @* function getImagesStatus(id) {
-    results = []
-    $.ajax({
-    url: '@Url.Action("GetResultsFromBatchExample", "Diagnosis")', // controller name and action name
-    data: { id: id },
-    type: 'GET',
-    dataType: 'text',
-    success: function (data) {
-    console.log(data);
-    },
-    error: function () {
-    console.log('Failed to fetch data.');
-    }
-    });
-
-    }
-    //Call the function and assign variables for plotting purposes.
-    getImagesStatus(@Model.Id); *@
     function getImagesStatus(id, callback) {
       $.ajax({
         url: '@Url.Action("GetResultsFromBatchExample", "Diagnosis")',
@@ -72,10 +54,16 @@
   // Call the function and specify a callback function to handle the data
   getImagesStatus(@Model.Id, function (data) {
     // Handle the data here, e.g., assign it to a variable
-    var receivedData = data;
-    console.log('Received data:', receivedData);
-    // Now you can use the 'receivedData' variable as needed.
+    var receivedData = extractFloatsFromString(data);
+    
+    console.log(receivedData);
+    //Plot pie chart.
+    plotPieChart(receivedData);
+    // Plot bar chart.
+    plotBarChart(receivedData);
   });
+
+  
 
   </script>
 }
