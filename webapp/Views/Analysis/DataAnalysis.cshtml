@@ -1,0 +1,81 @@
+@model BatchImageDiagnosis
+
+@{
+  ViewData["Title"] = "Data analysis home page";
+  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row">
+  <div class="col-lg-6">
+    <div class="card mb-4">
+      <div class="card-header">
+        <i class="fas fa-chart-bar me-1"></i>
+        Bar Chart Example
+      </div>
+      <div class="card-body"><canvas id="myBarChart" width="100%" height="50"></canvas></div>
+      <div class="card-footer"></div>
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <div class="card mb-4">
+      <div class="card-header">
+        <i class="fas fa-chart-pie me-1"></i>
+        Pie Chart Example
+      </div>
+      <div class="card-body"><canvas id="myPieChart" width="100%" height="50"></canvas></div>
+      <div class="card-footer"></div>
+    </div>
+  </div>
+</div>
+
+
+@section Scripts
+{
+  <script src="~/js/scripts.js"></script>
+
+  <script>
+    @* function getImagesStatus(id) {
+    results = []
+    $.ajax({
+    url: '@Url.Action("GetResultsFromBatchExample", "Diagnosis")', // controller name and action name
+    data: { id: id },
+    type: 'GET',
+    dataType: 'text',
+    success: function (data) {
+    console.log(data);
+    },
+    error: function () {
+    console.log('Failed to fetch data.');
+    }
+    });
+
+    }
+    //Call the function and assign variables for plotting purposes.
+    getImagesStatus(@Model.Id); *@
+    function getImagesStatus(id, callback) {
+      $.ajax({
+        url: '@Url.Action("GetResultsFromBatchExample", "Diagnosis")',
+        data: { id: id },
+        type: 'GET',
+        dataType: 'text',
+        success: function (data) {
+          // Call the callback function with the data as an argument
+          callback(data);
+        },
+        error: function () {
+          console.log('Failed to fetch data.');
+        }
+      });
+    }
+
+  // Call the function and specify a callback function to handle the data
+  getImagesStatus(@Model.Id, function (data) {
+    // Handle the data here, e.g., assign it to a variable
+    var receivedData = data;
+    console.log('Received data:', receivedData);
+    // Now you can use the 'receivedData' variable as needed.
+  });
+
+  </script>
+}

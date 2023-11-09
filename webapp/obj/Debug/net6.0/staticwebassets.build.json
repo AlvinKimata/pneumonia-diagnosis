@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "e5GXOKcmi5q3WEF1IW5N/Po+p/yDVQloZBrn+5DVGjo=",
+  "Hash": "FZHBv/J/auChODwyzErby8F7ln7dO21ribIs3YmXnCA=",
   "Source": "school_project",
   "BasePath": "_content/school_project",
   "Mode": "Default",
@@ -561,6 +561,23 @@
       "OriginalItemSpec": "wwwroot/images/dcbafee2-413e-4e5a-9833-1c53ceeb5bf5_pneumonia.jpeg"
     },
     {
+      "Identity": "/home/debonair/Documents/python/pneumonia-diagnosis/webapp/wwwroot/images/de7a690c-36db-4a0e-8cab-42db85601811_normal.jpeg",
+      "SourceId": "school_project",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/debonair/Documents/python/pneumonia-diagnosis/webapp/wwwroot/",
+      "BasePath": "_content/school_project",
+      "RelativePath": "images/de7a690c-36db-4a0e-8cab-42db85601811_normal.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/de7a690c-36db-4a0e-8cab-42db85601811_normal.jpeg"
+    },
+    {
       "Identity": "/home/debonair/Documents/python/pneumonia-diagnosis/webapp/wwwroot/images/ec224b78-58c8-4d65-b125-d9ba2bc446e3_Screenshot from 2023-10-19 11-33-27.png",
       "SourceId": "school_project",
       "SourceType": "Discovered",
@@ -644,23 +661,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/js/chart-pie-demo.js"
-    },
-    {
-      "Identity": "/home/debonair/Documents/python/pneumonia-diagnosis/webapp/wwwroot/js/chart.js",
-      "SourceId": "school_project",
-      "SourceType": "Discovered",
-      "ContentRoot": "/home/debonair/Documents/python/pneumonia-diagnosis/webapp/wwwroot/",
-      "BasePath": "_content/school_project",
-      "RelativePath": "js/chart.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/js/chart.js"
     },
     {
       "Identity": "/home/debonair/Documents/python/pneumonia-diagnosis/webapp/wwwroot/js/datatables-demo.js",

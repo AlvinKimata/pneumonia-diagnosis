@@ -1,70 +1,46 @@
 @model IEnumerable<BatchImageDiagnosis>
 
 @{
-    ViewData["Title"] = "Data analysis home page";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Project Analysis list";
 }
 
-<div class="row">
-    <div class="col-xl-6">
-      <canvas id="pieChart"></canvas>
-    </div>
-</div>
 
-<div class="row">
-    <div class="col-xl-6">
-      <canvas id="barChart"></canvas>
-    </div>
-</div>
-<script src="~/js/chart.js"></script>
+@if (Model.Any())
+{
+<div class="card-deck">
 
+    @foreach (var project in Model)
+    {
+        <div class="card m-3" style="min-width: 18rem; max-width:30.5%;">
+            <div class="card-header">
+                <h3>@project.Name</h3>
+            </div>
 
-<script>
-  const barChart = document.getElementById('barChart');
+            <div class="card-header">
+                <h3>@project.Id</h3>
+            </div>
 
-  new Chart(barChart, {
-    type: 'bar',
-    data: {
-      labels: ['Red', 'Blue'],
-      datasets: [{
-        label: '# of Votes',
-        data: [12, 19],
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
+            <div class="card-footer text-center d-flex">
+                <a asp-controller="Analysis" asp-action="DataAnalysis" asp-route-id="@project.Id" 
+                   class="btn btn-primary m-1">View</a>
+
+                <a href="#" class="btn btn-danger  m-1">Delete</a>
+            </div>
+        </div>
     }
-  });
+</div>
+}
+else 
+{
+    <div class="card">
+    <div class="card-header">No batch image diagnosis project created yet.</div>
+    <div class="card-body">
+        <h5 class="card-title">
+            Use the button below to create a project.
+        </h5>
 
-  const ctx = document.getElementById('pieChart');
-  new Chart(ctx, {
-    type: 'doughnut',
-    data: {
-    labels: ['Red', 'Blue'],
-    datasets: [{
-        label: 'My First Dataset',
-        data: [300, 100],
-        backgroundColor: [
-        'rgb(255, 99, 132)',
-        'rgb(54, 162, 235)',
-        'rgb(255, 205, 86)'
-        ],
-        hoverOffset: 4
-        }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
-
-  });
-
-</script>
+        <a class="btn btn-primary" style="width: auto" asp-controller="Home" asp-action="CreateBatch">Create</a>
+    </div>
+</div>   
+}

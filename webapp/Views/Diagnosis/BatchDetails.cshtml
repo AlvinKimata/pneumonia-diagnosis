@@ -41,7 +41,7 @@
                 url: '@Url.Action("GetResultsFromBatchExample", "Diagnosis")', // controller name and action name
                 data: { id: id },
                 type: 'GET',
-                dataType: 'json',
+                dataType: 'text',
                 success: function (data) {
                     // Update the content of the "imagesStatusContainer" div with the received data
                     $('#imagesStatusContainer').html(data);

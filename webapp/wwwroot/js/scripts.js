@@ -15,3 +15,17 @@ window.addEventListener('DOMContentLoaded', event => {
     }
 
 });
+
+//Regular expression function to parse a list of float stored as a string.
+function extractFloatsFromString(inputString) {
+    var regex = /[-+]?[0-9]*\.?[0-9]+/g;
+    var matches = inputString.match(regex);
+  
+    if (matches) {
+      return matches.map(function (match) {
+        return parseFloat(match);
+      });
+    } else {
+      return [];
+    }
+}
