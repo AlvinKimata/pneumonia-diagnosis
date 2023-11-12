@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "FZHBv/J/auChODwyzErby8F7ln7dO21ribIs3YmXnCA=",
+  "Hash": "ebdGBfw4pi4jae6RMSmAwkT/J8sBCr0+oF2t+whRF0E=",
   "Source": "school_project",
   "BasePath": "_content/school_project",
   "Mode": "Default",
@@ -508,6 +508,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/images/cc53c386-5725-46bd-87a5-506deb7df539_Screenshot from 2023-10-25 15-42-47.png"
+    },
+    {
+      "Identity": "/home/debonair/Documents/python/pneumonia-diagnosis/webapp/wwwroot/images/ced7595d-72de-48be-a737-de44f5debe13_pneumonia.jpeg",
+      "SourceId": "school_project",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/debonair/Documents/python/pneumonia-diagnosis/webapp/wwwroot/",
+      "BasePath": "_content/school_project",
+      "RelativePath": "images/ced7595d-72de-48be-a737-de44f5debe13_pneumonia.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/ced7595d-72de-48be-a737-de44f5debe13_pneumonia.jpeg"
     },
     {
       "Identity": "/home/debonair/Documents/python/pneumonia-diagnosis/webapp/wwwroot/images/d1b7e1d3-fedc-4035-900e-f65fc1e4563e_pneumonia.jpeg",

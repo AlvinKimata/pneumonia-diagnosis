@@ -9,6 +9,12 @@
     <div asp-validation-summary="All" class="text-danger"></div>
 
     <div class="form-group">
+        <input class="form-control" asp-for="Name" type="text" placeholder="Name" />
+        <ion-icon name="mail-outline"></ion-icon>
+        <span class="text-danger" asp-validation-for="Name"></span>
+    </div>
+
+    <div class="form-group">
         <input class="form-control" asp-for="Email" type="text" placeholder="Email" />
         <ion-icon name="mail-outline"></ion-icon>
         <span class="text-danger" asp-validation-for="Email"></span>
@@ -32,7 +38,7 @@
         <span class="text-danger" asp-validation-for="ConfirmPassword"></span>
     </div>
 
-    <button class="btn primary w-100" type="submit">Sign Up</button>
-    <p class="noAcc">Already have an account ? <a asp-action="Login"> Login </a></p>
+    <button class="btn btn-primary w-100" type="submit">Sign Up</button>
+    <p class="noAcc">Already have an account?<a asp-action="Login"> Login </a></p>
 
 </form>

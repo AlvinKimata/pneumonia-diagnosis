@@ -9,5 +9,6 @@ namespace school_project.Models
     public class ApplicationUser : IdentityUser
     {
         public string City  { get; set; }
+        public string Name {get; set;}
     }
 }

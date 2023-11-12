@@ -24,17 +24,17 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
     {
         options.Password.RequiredLength = 8;
         options.Password.RequiredUniqueChars = 1;   
-        options.SignIn.RequireConfirmedAccount = false;
+        options.SignIn.RequireConfirmedAccount = true;
     }).AddEntityFrameworkStores<AppDbContext>();
 
 
-// builder.Services.AddMvc(options => {
-//                 var policy = new AuthorizationPolicyBuilder()
-//                                 .RequireAuthenticatedUser()
-//                                 .Build();
+builder.Services.AddMvc(options => {
+                var policy = new AuthorizationPolicyBuilder()
+                                .RequireAuthenticatedUser()
+                                .Build();
 
-//                 options.Filters.Add(new AuthorizeFilter(policy));
-//             });
+                options.Filters.Add(new AuthorizeFilter(policy));
+            });
 
 builder.Services.AddControllersWithViews();
 var app = builder.Build();
@@ -68,4 +68,5 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
+app.MapRazorPages();
 app.Run();

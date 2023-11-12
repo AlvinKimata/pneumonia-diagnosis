@@ -68,6 +68,7 @@ namespace school_project.Controllers
             {
                 var user = new ApplicationUser { 
                     UserName = model.Email,
+                    Name = model.Name,
                     Email = model.Email,
                     City = model.City
 

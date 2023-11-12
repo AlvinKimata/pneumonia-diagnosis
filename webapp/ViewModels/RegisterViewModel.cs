@@ -10,6 +10,10 @@ namespace school_project.ViewModels
     public class RegisterViewModel
     {   
         [Required]
+        [Display(Name="Full Name")]
+        public string Name { get; set; }
+
+        [Required]
         [EmailAddress]
         public string Email { get; set; }
 
