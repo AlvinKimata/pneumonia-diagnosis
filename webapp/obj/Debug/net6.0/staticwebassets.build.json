@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "zltChMrmCQVNvAU0olARTWprTvL5nquGVaEZ/SSkyZ4=",
+  "Hash": "q6UYePP4CVoqdYmjd6G7ZomU0tHBm/AhUOL17Ocg4K8=",
   "Source": "school_project",
   "BasePath": "_content/school_project",
   "Mode": "Default",
@@ -1698,6 +1698,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/js/chart-pie-demo.js"
+    },
+    {
+      "Identity": "/home/debonair/Documents/python/pneumonia-diagnosis/webapp/wwwroot/js/CustomScript.js",
+      "SourceId": "school_project",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/debonair/Documents/python/pneumonia-diagnosis/webapp/wwwroot/",
+      "BasePath": "_content/school_project",
+      "RelativePath": "js/CustomScript.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/js/CustomScript.js"
     },
     {
       "Identity": "/home/debonair/Documents/python/pneumonia-diagnosis/webapp/wwwroot/js/datatables-demo.js",
