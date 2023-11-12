@@ -77,14 +77,16 @@
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" asp-controller="Home" asp-action="Create">Create Single image diagnosis</a>
+                                <a class="nav-link" asp-controller="Home" asp-action="Create">Create Single image
+                                    diagnosis</a>
                             </nav>
                         </div>
 
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" asp-controller="Home" asp-action="List">List single image diagnosis</a>
+                                <a class="nav-link" asp-controller="Home" asp-action="List">List single image
+                                    diagnosis</a>
                             </nav>
                         </div>
                         <!--End of Single image projects -->
@@ -93,14 +95,16 @@
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" asp-controller="Home" asp-action="CreateBatch">Create batch image diagnosis</a>
+                                <a class="nav-link" asp-controller="Home" asp-action="CreateBatch">Create batch image
+                                    diagnosis</a>
                             </nav>
                         </div>
 
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" asp-controller="Home" asp-action="ListBatch">List batch image diagnosis</a>
+                                <a class="nav-link" asp-controller="Home" asp-action="ListBatch">List batch image
+                                    diagnosis</a>
                             </nav>
                         </div>
                         <!--End of batch image projects -->
@@ -122,7 +126,8 @@
                                 <a class="nav-link" asp-controller="Diagnosis" asp-action="SingleImageDiagnosis">Single
                                     image diagnosis</a>
 
-                                <a class="nav-link" asp-controller="Diagnosis" asp-action="BatchImageDiagnosis">Batch image
+                                <a class="nav-link" asp-controller="Diagnosis" asp-action="BatchImageDiagnosis">Batch
+                                    image
                                     diagnosis</a>
                             </nav>
                         </div>
@@ -150,14 +155,17 @@
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
-                   @if (signInManager.IsSignedIn(User))
+                    @if (signInManager.IsSignedIn(User))
                     {
                         <li class="nav-item">
-                            <form method="post" asp-action="logout" asp-controller="account">
-                                <button type="submit" class="nav-link btn btn-link py-0" style="width: auto">
-                                    Logout @User.Identity.Name
-                                </button>
-                            </form>
+                            @if (User != null)
+                            {
+                                <form method="post" asp-action="logout" asp-controller="account">
+                                    <button type="submit" class="nav-link btn btn-link py-0" style="width: auto">
+                                        Logout @User.Identity.Name
+                                    </button>
+                                </form>
+                            }
                         </li>
                     }
                 </div>
