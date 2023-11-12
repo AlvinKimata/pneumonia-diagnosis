@@ -20,22 +20,6 @@ builder.Services.AddDbContext<AppDbContext> (options =>{
 });
 
 
-builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options => 
-    {
-        options.Password.RequiredLength = 8;
-        options.Password.RequiredUniqueChars = 1;   
-        options.SignIn.RequireConfirmedAccount = true;
-    }).AddEntityFrameworkStores<AppDbContext>();
-
-
-builder.Services.AddMvc(options => {
-                var policy = new AuthorizationPolicyBuilder()
-                                .RequireAuthenticatedUser()
-                                .Build();
-
-                options.Filters.Add(new AuthorizeFilter(policy));
-            });
-
 builder.Services.AddControllersWithViews();
 var app = builder.Build();
 

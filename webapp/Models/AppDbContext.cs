@@ -4,7 +4,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore;
-using Microsoft.AspNetCore.Identity;
 
 
 namespace school_project.Models{
@@ -30,13 +29,6 @@ namespace school_project.Models{
             modelBuilder.Entity<BatchImageDiagnosis>()  
                 .HasMany(b => b.ImagesResults)
                 .WithOne();
-
-            modelBuilder.Ignore<IdentityUserLogin<string>>();
-            modelBuilder.Ignore<IdentityUserRole<string>>();
-            modelBuilder.Ignore<IdentityUserClaim<string>>();
-            modelBuilder.Ignore<IdentityUserToken<string>>();
-            modelBuilder.Ignore<IdentityUser<string>>();
-            modelBuilder.Ignore<ApplicationUser>();
         }
 
     }
