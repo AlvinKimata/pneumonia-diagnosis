@@ -5,7 +5,6 @@ build_property.UsingMicrosoftNETSdkWeb = true
 build_property.ProjectTypeGuids = 
 build_property.InvariantGlobalization = 
 build_property.PlatformNeutralAssembly = 
-build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = school_project
 build_property.RootNamespace = school_project
@@ -15,6 +14,14 @@ build_property.SupportLocalizedComponentNames =
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
 build_property.MSBuildProjectDirectory = /home/debonair/Documents/python/pneumonia-diagnosis/webapp
 build_property._RazorSourceGeneratorDebug = 
+
+[/home/debonair/Documents/python/pneumonia-diagnosis/webapp/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9Mb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/debonair/Documents/python/pneumonia-diagnosis/webapp/Views/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9SZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
 
 [/home/debonair/Documents/python/pneumonia-diagnosis/webapp/Views/Analysis/DataAnalysis.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQW5hbHlzaXMvRGF0YUFuYWx5c2lzLmNzaHRtbA==
@@ -58,6 +65,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [/home/debonair/Documents/python/pneumonia-diagnosis/webapp/Views/Shared/_AuthLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19BdXRoTGF5b3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/debonair/Documents/python/pneumonia-diagnosis/webapp/Views/Shared/_LoginPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [/home/debonair/Documents/python/pneumonia-diagnosis/webapp/Views/Shared/_ValidationScriptsPartial.cshtml]

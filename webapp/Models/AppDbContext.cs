@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore;
+using Microsoft.AspNetCore.Identity;
 
 
 namespace school_project.Models{
@@ -22,6 +23,10 @@ namespace school_project.Models{
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<IdentityUserLogin<string>>().HasNoKey();
+            modelBuilder.Entity<IdentityUserRole<string>>().HasNoKey();
+            modelBuilder.Entity<IdentityUserToken<string>>().HasNoKey();
+
             modelBuilder.Entity<BatchImageDiagnosis>()
                 .HasMany(b => b.Photos)
                 .WithOne();
@@ -33,3 +38,4 @@ namespace school_project.Models{
 
     }
 }
+
