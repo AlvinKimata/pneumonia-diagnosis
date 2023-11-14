@@ -14,7 +14,7 @@ def load_model():
     model = model.to(device)
 
     # Load model ckpt.
-    ckpt = torch.load('../ckpt/best.pth', map_location = device)
+    ckpt = torch.load('../ckpt/best_1.pth', map_location = device)
     model.load_state_dict(ckpt, strict = True)
 
     #Evaluation mode.
@@ -37,14 +37,14 @@ def image_predict(input_image):
     out = model.forward(image)
     out = out.detach().cpu().numpy()
     out = np.round(out, 4)
-    # return out
-    if out > 0.5:
-        return f"{out * 100}% probability of prescence of pneumonia."
+    return out
+    # if out > 0.5:
+    #     return f"{out * 100}% probability of prescence of pneumonia."
     
-    else:
+    # else:
 
-        out = 1 - out
-        return f"{out * 100}% probability of abscence of pneumonia."
+    #     out = 1 - out
+    #     return f"{out * 100}% probability of abscence of pneumonia."
 
 
 def image_classification(image_bn, model):
@@ -53,13 +53,13 @@ def image_classification(image_bn, model):
     grads = model.forward(img)
     out = grads.detach().cpu().numpy()
     out = np.round(out * 100, 4)
-    # return out
-    if out > 0.5:
-        return f"{out}% probability of prescence of pneumonia."
+    return out
+    # if out > 0.5:
+    #     return f"{out}% probability of prescence of pneumonia."
     
-    else:
-        out = 1 - out
-        return f"{out}% probability of abscence of pneumonia."
+    # else:
+    #     out = 1 - out
+    #     return f"{out}% probability of abscence of pneumonia."
 
 
 def decode_image_binary(image_bn):

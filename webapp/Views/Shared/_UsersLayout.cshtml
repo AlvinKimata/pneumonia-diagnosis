@@ -1,0 +1,98 @@
+@inject SignInManager<ApplicationUser> signInManager;
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <environment>
+        <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+        <script src="~/lib/jquery/jquery.js"></script>
+        <script src="~/lib/jquery-validate/jquery.validate.js"></script>
+        <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    </environment>
+
+    <environment exclude="Development">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+              rel="stylesheet"
+              integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+              crossorigin="anonymous"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.css"
+              asp-fallback-test-class="sr-only"
+              asp-fallback-test-value="absolute"
+              asp-suppress-fallback-integrity="true">
+        <script src="~/lib/jquery/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <link href="~/css/site.css" rel="stylesheet" />
+        <link href="~/css/site.css" rel="stylesheet" />
+    </environment>
+    <link href="~/css/site.css" rel="stylesheet" />
+
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div class="container">
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <a class="navbar-brand" asp-controller="home" asp-action="index">
+            <img src="~/images/huggingface.png" width="30" height="30">
+        </a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="home" asp-action="index">List</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="home" asp-action="create">Create</a>
+                </li>
+                @* @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                {
+                    <li class="nav-item dropdown show">
+                        <a class="nav-link dropdown-toggle" role ="button" href="#" id="navbarDropdownMenuLink"
+                           data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Manage</a>
+
+                        <div class="dropdown-menu" aria-labelledby="navbarDropDownMenuLink">
+                            <a class="dropdown-item" asp-controller="Administration" asp-action="ListUsers">Users</a>
+                            <a class="dropdown-item" asp-controller="Administration" asp-action="ListRoles">Roles</a>
+                        </div>
+                    </li>
+                } *@
+            </ul>
+
+            <ul class="navbar-nav ms-auto">
+                @if (signInManager.IsSignedIn(User))
+                {
+                    <li class="nav-item">
+                        <form method="post" asp-action="logout" asp-controller="account">
+                            <button type="submit" class="nav-link btn btn-link py-0" style="width: auto">
+                                Logout @User.Identity.Name
+                            </button>
+                        </form>
+                    </li>
+                }
+                else
+                {
+                    <li class="nav-item">
+                        <a asp-action="register" asp-controller="account" class="nav-link">Register</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a asp-action="login" asp-controller="account" class="nav-link">Login</a>
+                    </li>
+                }
+            </ul>
+        </div>
+    </nav>
+    <div class="col-md-12">
+         @RenderBody()
+    </div>
+    </div>
+    @if (IsSectionDefined("Scripts"))
+    {
+        @RenderSection("Scripts", required: false)
+    }
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.js" integrity="sha512-nO7wgHUoWPYGCNriyGzcFwPSF+bPDOR+NvtOYy2wMcWkrnCNPKBcFEkU80XIN14UVja0Gdnff9EmydyLlOL7mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
