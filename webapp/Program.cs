@@ -46,7 +46,26 @@ builder.Services.AddMvc(options => {
                 options.Filters.Add(new AuthorizeFilter(policy));
             });
 
+builder.Services.AddAuthorization(options =>
+    {
+        options.AddPolicy("DeleteRolePolicy",
+            policy => policy.RequireClaim("Delete Role"));
 
+        options.AddPolicy("EditRolePolicy",
+            policy => policy.AddRequirements(new ManageAdminRolesAndClaimsRequirement()));
+
+        options.InvokeHandlersAfterFailure = false;
+
+        options.AddPolicy("AdminRolePolicy",
+            policy => policy.RequireRole("Admin"));
+
+    });
+
+builder.Services.ConfigureApplicationCookie(options =>
+            {
+                options.AccessDeniedPath = new PathString("/Administration/AccessDenied");
+            });
+            
 builder.Services.AddControllersWithViews();
 builder.Services.AddSingleton<IAuthorizationHandler, CanEditOnlyOtherAdminRolesAndClaimsHandler>();
 builder.Services.AddSingleton<IAuthorizationHandler, SuperAdminHandler>();
