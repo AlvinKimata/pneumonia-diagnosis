@@ -1,3 +1,4 @@
+using System;
 using System.Net;
 using school_project.Models;
 using Microsoft.EntityFrameworkCore;
@@ -5,6 +6,16 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Formatters;
+using Microsoft.Extensions.Configuration;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.InteropServices;
+using System.Threading.Tasks;
+using school_project.Security;
 
 
 
@@ -27,16 +38,18 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
     }).AddEntityFrameworkStores<AppDbContext>();
 
 
-// builder.Services.AddMvc(options => {
-//                 var policy = new AuthorizationPolicyBuilder()
-//                                 .RequireAuthenticatedUser()
-//                                 .Build();
+builder.Services.AddMvc(options => {
+                var policy = new AuthorizationPolicyBuilder()
+                                .RequireAuthenticatedUser()
+                                .Build();
 
-//                 options.Filters.Add(new AuthorizeFilter(policy));
-//             });
+                options.Filters.Add(new AuthorizeFilter(policy));
+            });
 
 
 builder.Services.AddControllersWithViews();
+builder.Services.AddSingleton<IAuthorizationHandler, CanEditOnlyOtherAdminRolesAndClaimsHandler>();
+builder.Services.AddSingleton<IAuthorizationHandler, SuperAdminHandler>();
 var app = builder.Build();
 
 
