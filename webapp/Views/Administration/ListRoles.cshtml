@@ -31,11 +31,11 @@
             <div class="card-footer">
                 <form asp-action="DeleteRole" asp-route-id="@role.Id" method="post">
 
-                    @if ((await authorizationService.AuthorizeAsync(User, "EditRolePolicy")).Succeeded)
-                    {
+                    @* @if ((await authorizationService.AuthorizeAsync(User, "EditRolePolicy")).Succeeded)
+                    { *@
                         <a class="btn btn-primary" asp-action="EditRole"
                            asp-controller="Administration" asp-route-id="@role.Id">Edit</a>
-                    }
+                    @* } *@
 
                     <span id="confirmDeleteSpan_@role.Id" style="display: none">
                         <span>Are you sure you want to delete?></span>

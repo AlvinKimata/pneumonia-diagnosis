@@ -23,9 +23,15 @@ namespace school_project.Models{
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<IdentityUserLogin<string>>().HasNoKey();
-            modelBuilder.Entity<IdentityUserRole<string>>().HasNoKey();
-            modelBuilder.Entity<IdentityUserToken<string>>().HasNoKey();
+            foreach (var foreignKey in modelBuilder.Model.GetEntityTypes()
+                .SelectMany(e => e.GetForeignKeys()))
+            {
+                foreignKey.DeleteBehavior = DeleteBehavior.Restrict;
+            }
+
+            modelBuilder.Entity<IdentityUserLogin<string>>().HasKey(e => new { e.LoginProvider, e.ProviderKey });
+            modelBuilder.Entity<IdentityUserRole<string>>().HasKey(e => new { e.UserId, e.RoleId});
+            modelBuilder.Entity<IdentityUserToken<string>>().HasKey(e => new {e.UserId, e.LoginProvider, e.Name});
 
             modelBuilder.Entity<BatchImageDiagnosis>()
                 .HasMany(b => b.Photos)

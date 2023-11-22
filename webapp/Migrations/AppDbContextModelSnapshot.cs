@@ -308,14 +308,16 @@ namespace school_project.Migrations
                 {
                     b.HasOne("school_project.Models.BatchImageDiagnosis", null)
                         .WithMany("ImagesResults")
-                        .HasForeignKey("BatchImageDiagnosisId");
+                        .HasForeignKey("BatchImageDiagnosisId")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("school_project.Models.Photo", b =>
                 {
                     b.HasOne("school_project.Models.BatchImageDiagnosis", null)
                         .WithMany("Photos")
-                        .HasForeignKey("BatchImageDiagnosisId");
+                        .HasForeignKey("BatchImageDiagnosisId")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("school_project.Models.BatchImageDiagnosis", b =>

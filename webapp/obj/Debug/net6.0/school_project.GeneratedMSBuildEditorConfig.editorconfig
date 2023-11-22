@@ -103,6 +103,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[/home/debonair/Documents/python/pneumonia-diagnosis/webapp/Views/Shared/NotFound.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL05vdEZvdW5kLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/debonair/Documents/python/pneumonia-diagnosis/webapp/Views/Shared/_AuthLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19BdXRoTGF5b3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

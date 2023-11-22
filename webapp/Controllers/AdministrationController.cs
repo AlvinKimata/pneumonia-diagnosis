@@ -14,7 +14,7 @@ using System.Security.Claims;
 
 namespace school_project.Controllers
 {
-    [Authorize(Policy = "AdminRolePolicy")]
+    // [Authorize(Policy = "AdminRolePolicy")]
     public class AdministrationController : Controller
     {
         private readonly RoleManager<IdentityRole> roleManager;
@@ -114,7 +114,7 @@ namespace school_project.Controllers
 
 
         [HttpGet]
-        [Authorize(Policy = "EditRolePolicy")]
+        // [Authorize(Policy = "EditRolePolicy")]
         public async Task<IActionResult> ManageUserRoles(string userId)
         {
             ViewBag.userId = userId;
@@ -151,7 +151,7 @@ namespace school_project.Controllers
             return View(model);
         }
         [HttpPost]
-        [Authorize(Policy = "EditRolePolicy")]
+        // [Authorize(Policy = "EditRolePolicy")]
         public async Task<IActionResult> ManageUserRoles(List<UserRolesViewModel> model, string userId)
         {
             var user = await userManager.FindByIdAsync(userId);
@@ -208,7 +208,7 @@ namespace school_project.Controllers
         }
 
         [HttpPost]
-        [Authorize(Policy = "DeleteRolePolicy")]
+        // [Authorize(Policy = "DeleteRolePolicy")]
         public async Task<IActionResult> DeleteRole(string id)
         {
             var role = await roleManager.FindByIdAsync(id);
@@ -367,7 +367,7 @@ namespace school_project.Controllers
             {
                 if (await userManager.IsInRoleAsync(user, role.Name))
                 {
-                    model.Users.Add(user.UserName);
+                    model.Users.Add(user.Name);
                 }
             }
             return View(model);

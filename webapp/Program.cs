@@ -18,9 +18,10 @@ using System.Threading.Tasks;
 using school_project.Security;
 
 
-
 var builder = WebApplication.CreateBuilder(args);
-
+// var connectionString = builder.Configuration.GetConnectionString("DiagnosisDBConnection");builder.Services.AddDbContext<school_projectIdentityDbContext>(options =>
+//     options.UseSqlServer(connectionString));builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+//     .AddEntityFrameworkStores<school_projectIdentityDbContext>();
 // Add services to the container.
 builder.Services.AddDbContext<AppDbContext> (options =>{
     var config = builder.Configuration;
@@ -46,26 +47,26 @@ builder.Services.AddMvc(options => {
                 options.Filters.Add(new AuthorizeFilter(policy));
             });
 
-builder.Services.AddAuthorization(options =>
-    {
-        options.AddPolicy("DeleteRolePolicy",
-            policy => policy.RequireClaim("Delete Role"));
+// builder.Services.AddAuthorization(options =>
+//     {
+//         options.AddPolicy("DeleteRolePolicy",
+//             policy => policy.RequireClaim("Delete Role"));
 
-        options.AddPolicy("EditRolePolicy",
-            policy => policy.AddRequirements(new ManageAdminRolesAndClaimsRequirement()));
+//         options.AddPolicy("EditRolePolicy",
+//             policy => policy.AddRequirements(new ManageAdminRolesAndClaimsRequirement()));
 
-        options.InvokeHandlersAfterFailure = false;
+//         options.InvokeHandlersAfterFailure = false;
 
-        options.AddPolicy("AdminRolePolicy",
-            policy => policy.RequireRole("Admin"));
+//         options.AddPolicy("AdminRolePolicy",
+//             policy => policy.RequireRole("Admin"));
 
-    });
+//     });
 
 builder.Services.ConfigureApplicationCookie(options =>
             {
                 options.AccessDeniedPath = new PathString("/Administration/AccessDenied");
             });
-            
+
 builder.Services.AddControllersWithViews();
 builder.Services.AddSingleton<IAuthorizationHandler, CanEditOnlyOtherAdminRolesAndClaimsHandler>();
 builder.Services.AddSingleton<IAuthorizationHandler, SuperAdminHandler>();
@@ -99,6 +100,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Account}/{action=Login}");
+    pattern:"{controller=home}/{action=Index}/{id?}");
 
 app.Run();
