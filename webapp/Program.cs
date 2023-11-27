@@ -19,9 +19,7 @@ using school_project.Security;
 
 
 var builder = WebApplication.CreateBuilder(args);
-// var connectionString = builder.Configuration.GetConnectionString("DiagnosisDBConnection");builder.Services.AddDbContext<school_projectIdentityDbContext>(options =>
-//     options.UseSqlServer(connectionString));builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-//     .AddEntityFrameworkStores<school_projectIdentityDbContext>();
+
 // Add services to the container.
 builder.Services.AddDbContext<AppDbContext> (options =>{
     var config = builder.Configuration;

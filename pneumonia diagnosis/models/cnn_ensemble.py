@@ -3,6 +3,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 import torchvision
+import numpy as np
 from collections import namedtuple
 from typing import Optional, Tuple, Any
 
@@ -235,44 +236,83 @@ def googlenet(**kwargs: Any) -> GoogLeNet:
 
     return model
 
+class ResnetModel(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.resnet_model = torchvision.models.resnet101()
+        self.resnet_layers = nn.ModuleList(list(self.resnet_model.children())[:-1])
+
+    def forward(self, x):
+        for layer in self.resnet_layers:
+            x = layer(x)
+
+        return x
+
+class EfficientNetModel(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.efficientnet_model = torchvision.models.efficientnet_b0()
+        self.efficientnet_layers = nn.ModuleList(list(self.efficientnet_model.children())[:-1])
+
+    def forward(self, x):
+        for layer in self.efficientnet_layers:
+            x = layer(x)
+
+        return x
+
+class GoogleNetModel(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.googlenet_model = GoogLeNet()
+        self.googlenet_layers = nn.ModuleList(list(self.googlenet_model.children())[:-1])
+
+
+    def forward(self, x):
+        x = self.googlenet_model(x)
+        # for layer in self.googlenet_layers:
+        #     x = layer(x)
+
+        return x
+
 
 class EnsembleCNN(nn.Module):
     def __init__(self):
         super().__init__()
-        self.resnet_model = torchvision.models.resnet101()
-        self.efficientnet_model = torchvision.models.efficientnet_b0()
-        self.googlenet_model = GoogLeNet()
+        self.resnet_model = ResnetModel()
+        self.efficientnet_model = EfficientNetModel()
+        self.googlenet_model = GoogleNetModel()
+        
 
-        self.fc1 = nn.Linear(3000, 500)
-        self.fc2 = nn.Linear(500, 200)
-        self.fc3 = nn.Linear(200, 1)
-
-        self.bn1 = nn.BatchNorm1d(3000)
-        self.bn2 = nn.BatchNorm1d(200)
-    
     def forward(self, x):
         resnet_inputs = self.resnet_model(x)
-        efficnetnet_inputs = self.efficientnet_model(x)
-        googlenet_outputs = self.googlenet_model(x)
+        googlenet_inputs = self.googlenet_model(x)
+        efficientnet_inputs = self.efficientnet_model(x)
+
+        # combined_features = torch.cat([resnet_inputs, efficientnet_inputs, googlenet_inputs], dim=1)
+        return resnet_inputs, googlenet_inputs[0], efficientnet_inputs
 
 
-        inputs = torch.concat([resnet_inputs, efficnetnet_inputs, googlenet_outputs[0]], dim = 1)
-        # x = nn.Flatten()(inputs)
-        x = self.bn1(inputs)
-        x = F.relu(self.fc1(x))
-        x = nn.Dropout(0.3)(x)
-        x = F.relu(self.fc2(x))
-        x = nn.Dropout(0.3)(x)
-        x = self.bn2(x)
-        x = nn.Linear(200, 1)(x)
-        out = F.sigmoid(x)
+        # inputs = torch.concat([resnet_inputs, efficnetnet_inputs, googlenet_outputs[0]], dim = 0)
+        # x = torch.unsqueeze(inputs, dim = 0)
+        # x = self.ff(inputs)
 
-        return out
+        
+        # x = self.bn1(inputs)
+        # x = F.relu(self.fc1(x))
+        # x = nn.Dropout(0.3)(x)
+        # x = F.relu(self.fc2(x))
+        # x = nn.Dropout(0.3)(x)
+        # x = self.bn2(x)
+        # x = nn.Linear(200, 1)(x)
+        # out = F.sigmoid(x)
+
+        # return resnet_inputs
 
 
 
-# model = EnsembleCNN()
-# inputs = torch.randn((2, 3, 256, 256))
-# print(inputs.shape)
-# out = model(inputs)
-# print(out.shape)
+model = EnsembleCNN()
+inputs = torch.randn((1, 3, 256, 256))
+print(inputs.shape)
+out = model(inputs)
+for sample in out:
+    print(sample.shape)

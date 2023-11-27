@@ -5,6 +5,7 @@ import torch
 import numpy as np
 from PIL import Image
 from models import cnn_model
+from models import efficientnetv2
 
 
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
@@ -14,7 +15,8 @@ def load_model():
     model = model.to(device)
 
     # Load model ckpt.
-    ckpt = torch.load('../ckpt/best_1.pth', map_location = device)
+    ckpt = torch.load('../ckpt/best_1.pth', map_location = device) #Load model using an endpoint.
+    # ckpt = torch.load('ckpt/best_1.pth', map_location = device) #Load model using gradio webapp.
     model.load_state_dict(ckpt, strict = True)
 
     #Evaluation mode.
@@ -31,12 +33,21 @@ def preprocess_img(image):
 
 
 def image_predict(input_image):
-    model = load_model()
+    # model = load_model()
+    model = efficientnetv2.create_model(best_model_path='ckpt/efficientnetv2.ckpt')
+
+    #Load ckpt.
+    # ckpt = torch.load('ckpt/efficientnetv2.ckpt', map_location=device)
+    # model.load_state_dict(ckpt, strict = False)
+    #Set model to evaluation mode
+
+    model.eval()
+
     image = preprocess_img(input_image)
 
     out = model.forward(image)
-    out = out.detach().cpu().numpy()
-    out = np.round(out, 4)
+    # out = out.detach().cpu().numpy()
+    # out = np.round(out, 4)
     return out
     # if out > 0.5:
     #     return f"{out * 100}% probability of prescence of pneumonia."

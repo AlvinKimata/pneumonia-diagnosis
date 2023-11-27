@@ -38,6 +38,12 @@ namespace school_project.Controllers
         }
 
         [HttpGet]
+        public IActionResult Index()
+        {
+            return View();
+        }
+
+        [HttpGet]
         public async Task<IActionResult> ManageUserClaims(string userId)
         {
             var user = await userManager.FindByIdAsync(userId);
@@ -474,6 +480,18 @@ namespace school_project.Controllers
                 }
             }
             return RedirectToAction("EditRole", new { id = roleId });
+        }
+
+        public int NumberOfRoles()
+        {
+            int numberOfRoles  = roleManager.Roles.OrderBy(x => x.Name).Count();
+            return numberOfRoles;
+        }
+
+        public int NumberOfUsers()
+        {
+            int numberOfUsers = userManager.Users.OrderBy(x => x.Name).Count();
+            return numberOfUsers;
         }
 
     }

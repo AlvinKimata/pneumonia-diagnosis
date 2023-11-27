@@ -59,7 +59,7 @@
                         
                         @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
                         {
-                            <a class="nav-link" asp-controller="Home" asp-action="Index">
+                            <a class="nav-link" asp-controller="Administration" asp-action="Index">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Administrator
                             </a>

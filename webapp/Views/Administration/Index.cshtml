@@ -1,0 +1,80 @@
+@{
+    ViewData["Title"] = "Administration Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<main>
+    <div class="container-fluid px-4">
+        <h1 class="mt-4">Administration page</h1>
+        <div class="row">
+            <div class="col-xl-6">
+                <div class="card bg-primary text-white mb-4">
+                    <div class="card-header" id="numberOfUsers">
+                    </div>
+
+                    <div class="card-body large text-white stretched-link">
+                        Number of users
+                    </div>
+
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="small text-white stretched-link" asp-action="ListUsers" asp-controller="Administration">View Details</a>
+                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-6">
+                <div class="card bg-success text-white mb-4">
+                    <div class="card-header" id="numberOfRoles">
+
+                    </div>
+
+                    <div class="card-body">Number of roles</div>
+
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="small text-white stretched-link" asp-action="ListRoles" asp-controller="Administration">View Details</a>
+                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+@section Scripts
+{
+    <script>
+        function getTotalUsers(){
+            $.ajax({
+                url: '@Url.Action("NumberOfUsers", "Administration")',
+                type: 'GET',
+                dataType: 'json',
+                success: function (data){
+                    $('#numberOfUsers').html(data);
+                    console.log(data);
+                },
+                error: function(){
+                    alert('Failed to fetch data');
+                }
+            });
+        }
+
+        function getTotalRoles(){
+            $.ajax({
+                url: '@Url.Action("NumberOfRoles", "Administration")',
+                type: 'GET',
+                dataType: 'json',
+                success: function (data){
+                    $('#numberOfRoles').html(data);
+                    console.log(data);
+                },
+                error: function(){
+                    alert('Failed to fetch data');
+                }
+            });
+        }
+
+        //Call the function when the page loads.
+        getTotalUsers();
+        getTotalRoles();
+    </script>
+}
