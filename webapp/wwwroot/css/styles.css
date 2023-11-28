@@ -2222,6 +2222,17 @@ textarea.form-control-lg {
   margin-left: 0;
 }
 
+.image-container {
+  display: flex;
+  justify-content: space-between; /* align items horizontally */
+  gap: 10px; /* add some spacing between images */
+}
+
+.image-container img {
+  width: calc((100% - 20px) / 2); /* set each image to take up half of the container minus the spacing */
+  height: auto; /* maintain aspect ratio */
+}
+
 .form-check-input {
   width: 1em;
   height: 1em;
