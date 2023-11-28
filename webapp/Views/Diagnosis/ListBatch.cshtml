@@ -12,14 +12,15 @@
 
     @foreach (var project in Model)
     {
+        var imageCount = project.Photos.Count();
         <div class="card m-3 batch-details" style="min-width: 18rem; max-width:30.5%;">
             <div class="batch-details">
                 <div class="card-header">
                     <h3>@project.Name</h3>
                 </div>
 
-                <div class="card-header">
-                    <h3>@project.Id</h3>
+                <div class="card-body">
+                    <h3>@imageCount images diagnosed</h3>
                 </div>
 
                 <div class="card-footer text-center d-flex">

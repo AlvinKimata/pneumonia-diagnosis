@@ -57,7 +57,7 @@ public class DiagnosisController : Controller
     [HttpGet]
     public async Task<IActionResult> ListBatch()
     {
-        return View(await _context.BatchImageDiagnosis.ToListAsync());
+        return View(await _context.BatchImageDiagnosis.Include(b => b.Photos).ToListAsync());
     }
 
     [HttpPost]
