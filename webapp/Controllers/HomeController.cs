@@ -250,28 +250,19 @@ public class HomeController : Controller
 
     }
 
-    //Get total number of single and batch diagnosis projects created.
-    public int NumberOfProjects()
+    //Get total number of batch diagnosis projects created.
+    public int NumberOfBatchProjects()
     {
         int batchProjects = _context.BatchImageDiagnosis.Count();
-        int singleProjects = _context.SingleImageDiagnosis.Count();
-
-        int totalProjects = batchProjects + singleProjects;
-        return totalProjects;
+        return batchProjects;
     }
 
-    // //Get total number of patients diagnosed using single and batch diagnosis.
-    // public int NumberOfPatientsDiagnosed(int id)
-    // {
-    //     BatchImageDiagnosis batchImages = _context.BatchImageDiagnosis
-    //     .Include(b => b.Photos)
-    //     .FirstOrDefault(b => b.Id == id);
+    //Get total number of single image diagnosis projects created.
+    public int NumberOfSingleProjects()
+    {
+        int singleImages = _context.SingleImageDiagnosis.ToList().Count();
+        return singleImages;
 
-    //     int singleImagesDiagnosed = _context.SingleImageDiagnosis.Count();
-    //     int batchImagesDiagnosed = _context.BatchImageDiagnosis.Photos.Count();
-        
-    //     int totalImages = singleImages + batchImages;
-
-    // }
+    }
 
 }

@@ -6,17 +6,18 @@
     <div class="container-fluid px-4">
         <h1 class="mt-4">Pneumonia diagnosis web-application.</h1>
         <div class="row">
+
             <div class="col-xl-6">
                 <div class="card bg-primary text-white mb-4">
-                    <div class="card-header" id="numberOfProjectsCreated">
+                    <div class="card-header" id="numberOfBatchProjectsCreated">
                     </div>
 
                     <div class="card-body large text-white stretched-link">
-                        Number of projects created
+                        Number of batch projects created
                     </div>
 
                     <div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-white stretched-link" href="#">View Details</a>
+                        <a class="small text-white stretched-link" asp-action="ListBatch" asp-controller="Diagnosis">View Details</a>
                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                     </div>
                 </div>
@@ -24,13 +25,21 @@
 
             <div class="col-xl-6">
                 <div class="card bg-success text-white mb-4">
-                    <div class="card-body">Number of patients diagnosed</div>
+                    <div class="card-header" id="numberOfSingleProjectsCreated">
+                    </div>
+
+                    <div class="card-body large text-white stretched-link">
+                        Number of single image projects created
+                    </div>
+
                     <div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-white stretched-link" href="#">View Details</a>
+                        <a class="small text-white stretched-link" asp-action="List" asp-controller="Diagnosis">View Details</a>
                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                     </div>
                 </div>
             </div>
+
+
         </div>
     </div>
 </main>
@@ -38,13 +47,13 @@
 @section Scripts
 {
     <script>
-        function getTotalProjectsCreated(){
+        function getTotalBatchProjectsCreated(){
             $.ajax({
-                url: '@Url.Action("NumberOfProjects", "Home")',
+                url: '@Url.Action("NumberOfBatchProjects", "Home")',
                 type: 'GET',
                 dataType: 'json',
                 success: function (data){
-                    $('#numberOfProjectsCreated').html(data);
+                    $('#numberOfBatchProjectsCreated').html(data);
                     console.log(data);
                 },
                 error: function(){
@@ -53,7 +62,23 @@
             });
         }
 
+        function getTotalSingleProjectsDiagnosed(){
+            $.ajax({
+                url: '@Url.Action("NumberOfSingleProjects", "Home")',
+                type: 'GET',
+                dataType: 'json',
+                success: function (data){
+                    $('#numberOfSingleProjectsCreated').html(data);
+                    console.log(data);
+                },
+                error: function(){
+                    alert('Failed to fetch data');
+                }
+            })
+        }
+
         //Call the function when the page loads.
-        getTotalProjectsCreated();
+        getTotalBatchProjectsCreated();
+        getTotalSingleProjectsDiagnosed();
     </script>
 }
