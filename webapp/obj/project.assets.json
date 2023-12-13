@@ -10372,24 +10372,26 @@
     ]
   },
   "packageFolders": {
-    "/home/debonair/.nuget/packages/": {}
+    "C:\\Users\\alvin\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/debonair/Documents/python/pneumonia-diagnosis/webapp/school_project.csproj",
+      "projectUniqueName": "C:\\Users\\alvin\\Documents\\Python Scripts\\pneumonia-diagnosis\\webapp\\school_project.csproj",
       "projectName": "school_project",
-      "projectPath": "/home/debonair/Documents/python/pneumonia-diagnosis/webapp/school_project.csproj",
-      "packagesPath": "/home/debonair/.nuget/packages/",
-      "outputPath": "/home/debonair/Documents/python/pneumonia-diagnosis/webapp/obj/",
+      "projectPath": "C:\\Users\\alvin\\Documents\\Python Scripts\\pneumonia-diagnosis\\webapp\\school_project.csproj",
+      "packagesPath": "C:\\Users\\alvin\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\alvin\\Documents\\Python Scripts\\pneumonia-diagnosis\\webapp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/debonair/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\alvin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -10460,7 +10462,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/home/debonair/.dotnet/sdk/6.0.412/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.417\\RuntimeIdentifierGraph.json"
       }
     }
   }

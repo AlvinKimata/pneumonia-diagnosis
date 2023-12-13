@@ -5,10 +5,17 @@ from flask import Flask, request, jsonify
 
 #Setting path.
 cwd = pathlib.Path(__name__).parent.resolve()
-cwd = str(cwd).split(sep = '/')[:-1]
-cwd = '/'.join(cwd)
-sys.path.append(cwd)
-print(cwd)
+if sys.platform.startswith('win'):
+    cwd = str(cwd).split(sep = '\\')[:-1]
+    cwd = '\\'.join(cwd)
+    sys.path.append(cwd)
+
+else:
+    # Use '/' for Linux and other platforms
+    cwd = str(cwd).split(sep = '/')[:-1]
+    cwd = '/'.join(cwd)
+    sys.path.append(cwd)
+    print(cwd)
 
 
 import utils

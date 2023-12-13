@@ -5,7 +5,7 @@ import torch
 import numpy as np
 from PIL import Image
 from models import cnn_model
-from models import efficientnetv2
+# from models import efficientnetv2
 
 
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
@@ -15,12 +15,11 @@ def load_model():
     model = model.to(device)
 
     # Load model ckpt.
-    ckpt = torch.load('../ckpt/best_1.pth', map_location = device) #Load model using an endpoint.
-    # ckpt = torch.load('ckpt/best_1.pth', map_location = device) #Load model using gradio webapp.
+    ckpt = torch.load('..\\ckpt\\model.pth', map_location = device) #Load model using an endpoint.
     model.load_state_dict(ckpt, strict = True)
 
     #Evaluation mode.
-    model = model.eval()
+    model.eval()
     return model
 
 
@@ -32,45 +31,20 @@ def preprocess_img(image):
     return image_pt
 
 
-def image_predict(input_image):
-    # model = load_model()
-    model = efficientnetv2.create_model(best_model_path='ckpt/efficientnetv2.ckpt')
-
-    #Load ckpt.
-    # ckpt = torch.load('ckpt/efficientnetv2.ckpt', map_location=device)
-    # model.load_state_dict(ckpt, strict = False)
-    #Set model to evaluation mode
-
-    model.eval()
-
-    image = preprocess_img(input_image)
-
-    out = model.forward(image)
-    # out = out.detach().cpu().numpy()
-    # out = np.round(out, 4)
-    return out
-    # if out > 0.5:
-    #     return f"{out * 100}% probability of prescence of pneumonia."
-    
-    # else:
-
-    #     out = 1 - out
-    #     return f"{out * 100}% probability of abscence of pneumonia."
-
-
 def image_classification(image_bn, model):
     img = decode_image_binary(image_bn)
     img = preprocess_img(img)
     grads = model.forward(img)
     out = grads.detach().cpu().numpy()
-    out = np.round(out * 100, 4)
-    return out
-    # if out > 0.5:
-    #     return f"{out}% probability of prescence of pneumonia."
+    out = np.round(out * 100, 2)
+    if out > 0.5:
+        print(out)
+        return f"{out}% probability of prescence of pneumonia."
     
-    # else:
-    #     out = 1 - out
-    #     return f"{out}% probability of abscence of pneumonia."
+    else:
+        out = 1 - out
+        print(out)
+        return f"{out}% probability of abscence of pneumonia."
 
 
 def decode_image_binary(image_bn):

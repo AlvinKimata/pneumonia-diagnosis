@@ -8,133 +8,133 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = school_project
 build_property.RootNamespace = school_project
-build_property.ProjectDir = /home/debonair/Documents/python/pneumonia-diagnosis/webapp/
+build_property.ProjectDir = C:\Users\alvin\Documents\Python Scripts\pneumonia-diagnosis\webapp\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = /home/debonair/Documents/python/pneumonia-diagnosis/webapp
+build_property.MSBuildProjectDirectory = C:\Users\alvin\Documents\Python Scripts\pneumonia-diagnosis\webapp
 build_property._RazorSourceGeneratorDebug = 
 
-[/home/debonair/Documents/python/pneumonia-diagnosis/webapp/Views/Account/Login.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9Mb2dpbi5jc2h0bWw=
+[C:/Users/alvin/Documents/Python Scripts/pneumonia-diagnosis/webapp/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/debonair/Documents/python/pneumonia-diagnosis/webapp/Views/Account/Register.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9SZWdpc3Rlci5jc2h0bWw=
+[C:/Users/alvin/Documents/Python Scripts/pneumonia-diagnosis/webapp/Views/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/debonair/Documents/python/pneumonia-diagnosis/webapp/Views/Administration/AccessDenied.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW5pc3RyYXRpb24vQWNjZXNzRGVuaWVkLmNzaHRtbA==
+[C:/Users/alvin/Documents/Python Scripts/pneumonia-diagnosis/webapp/Views/Administration/AccessDenied.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5pc3RyYXRpb25cQWNjZXNzRGVuaWVkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/debonair/Documents/python/pneumonia-diagnosis/webapp/Views/Administration/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW5pc3RyYXRpb24vQ3JlYXRlLmNzaHRtbA==
+[C:/Users/alvin/Documents/Python Scripts/pneumonia-diagnosis/webapp/Views/Administration/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5pc3RyYXRpb25cQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/debonair/Documents/python/pneumonia-diagnosis/webapp/Views/Administration/CreateRole.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW5pc3RyYXRpb24vQ3JlYXRlUm9sZS5jc2h0bWw=
+[C:/Users/alvin/Documents/Python Scripts/pneumonia-diagnosis/webapp/Views/Administration/CreateRole.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5pc3RyYXRpb25cQ3JlYXRlUm9sZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/debonair/Documents/python/pneumonia-diagnosis/webapp/Views/Administration/EditRole.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW5pc3RyYXRpb24vRWRpdFJvbGUuY3NodG1s
+[C:/Users/alvin/Documents/Python Scripts/pneumonia-diagnosis/webapp/Views/Administration/EditRole.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5pc3RyYXRpb25cRWRpdFJvbGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/debonair/Documents/python/pneumonia-diagnosis/webapp/Views/Administration/EditUser.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW5pc3RyYXRpb24vRWRpdFVzZXIuY3NodG1s
+[C:/Users/alvin/Documents/Python Scripts/pneumonia-diagnosis/webapp/Views/Administration/EditUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5pc3RyYXRpb25cRWRpdFVzZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/debonair/Documents/python/pneumonia-diagnosis/webapp/Views/Administration/EditUsersInRole.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW5pc3RyYXRpb24vRWRpdFVzZXJzSW5Sb2xlLmNzaHRtbA==
+[C:/Users/alvin/Documents/Python Scripts/pneumonia-diagnosis/webapp/Views/Administration/EditUsersInRole.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5pc3RyYXRpb25cRWRpdFVzZXJzSW5Sb2xlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/debonair/Documents/python/pneumonia-diagnosis/webapp/Views/Administration/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW5pc3RyYXRpb24vSW5kZXguY3NodG1s
+[C:/Users/alvin/Documents/Python Scripts/pneumonia-diagnosis/webapp/Views/Administration/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5pc3RyYXRpb25cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/debonair/Documents/python/pneumonia-diagnosis/webapp/Views/Administration/ListRoles.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW5pc3RyYXRpb24vTGlzdFJvbGVzLmNzaHRtbA==
+[C:/Users/alvin/Documents/Python Scripts/pneumonia-diagnosis/webapp/Views/Administration/ListRoles.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5pc3RyYXRpb25cTGlzdFJvbGVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/debonair/Documents/python/pneumonia-diagnosis/webapp/Views/Administration/ListUsers.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW5pc3RyYXRpb24vTGlzdFVzZXJzLmNzaHRtbA==
+[C:/Users/alvin/Documents/Python Scripts/pneumonia-diagnosis/webapp/Views/Administration/ListUsers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5pc3RyYXRpb25cTGlzdFVzZXJzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/debonair/Documents/python/pneumonia-diagnosis/webapp/Views/Administration/ManageUserClaims.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW5pc3RyYXRpb24vTWFuYWdlVXNlckNsYWltcy5jc2h0bWw=
+[C:/Users/alvin/Documents/Python Scripts/pneumonia-diagnosis/webapp/Views/Administration/ManageUserClaims.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5pc3RyYXRpb25cTWFuYWdlVXNlckNsYWltcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/debonair/Documents/python/pneumonia-diagnosis/webapp/Views/Administration/ManageUserRoles.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW5pc3RyYXRpb24vTWFuYWdlVXNlclJvbGVzLmNzaHRtbA==
+[C:/Users/alvin/Documents/Python Scripts/pneumonia-diagnosis/webapp/Views/Administration/ManageUserRoles.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5pc3RyYXRpb25cTWFuYWdlVXNlclJvbGVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/debonair/Documents/python/pneumonia-diagnosis/webapp/Views/Analysis/DataAnalysis.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQW5hbHlzaXMvRGF0YUFuYWx5c2lzLmNzaHRtbA==
+[C:/Users/alvin/Documents/Python Scripts/pneumonia-diagnosis/webapp/Views/Analysis/DataAnalysis.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5hbHlzaXNcRGF0YUFuYWx5c2lzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/debonair/Documents/python/pneumonia-diagnosis/webapp/Views/Analysis/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQW5hbHlzaXMvSW5kZXguY3NodG1s
+[C:/Users/alvin/Documents/Python Scripts/pneumonia-diagnosis/webapp/Views/Analysis/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5hbHlzaXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/debonair/Documents/python/pneumonia-diagnosis/webapp/Views/Diagnosis/BatchDetails.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRGlhZ25vc2lzL0JhdGNoRGV0YWlscy5jc2h0bWw=
+[C:/Users/alvin/Documents/Python Scripts/pneumonia-diagnosis/webapp/Views/Diagnosis/BatchDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGlhZ25vc2lzXEJhdGNoRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/debonair/Documents/python/pneumonia-diagnosis/webapp/Views/Diagnosis/List.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRGlhZ25vc2lzL0xpc3QuY3NodG1s
+[C:/Users/alvin/Documents/Python Scripts/pneumonia-diagnosis/webapp/Views/Diagnosis/List.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGlhZ25vc2lzXExpc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/debonair/Documents/python/pneumonia-diagnosis/webapp/Views/Diagnosis/ListBatch.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRGlhZ25vc2lzL0xpc3RCYXRjaC5jc2h0bWw=
+[C:/Users/alvin/Documents/Python Scripts/pneumonia-diagnosis/webapp/Views/Diagnosis/ListBatch.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGlhZ25vc2lzXExpc3RCYXRjaC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/debonair/Documents/python/pneumonia-diagnosis/webapp/Views/Home/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9DcmVhdGUuY3NodG1s
+[C:/Users/alvin/Documents/Python Scripts/pneumonia-diagnosis/webapp/Views/Home/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/debonair/Documents/python/pneumonia-diagnosis/webapp/Views/Home/CreateBatch.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9DcmVhdGVCYXRjaC5jc2h0bWw=
+[C:/Users/alvin/Documents/Python Scripts/pneumonia-diagnosis/webapp/Views/Home/CreateBatch.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDcmVhdGVCYXRjaC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/debonair/Documents/python/pneumonia-diagnosis/webapp/Views/Home/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
+[C:/Users/alvin/Documents/Python Scripts/pneumonia-diagnosis/webapp/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/debonair/Documents/python/pneumonia-diagnosis/webapp/Views/Home/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
+[C:/Users/alvin/Documents/Python Scripts/pneumonia-diagnosis/webapp/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/debonair/Documents/python/pneumonia-diagnosis/webapp/Views/Shared/Error.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
+[C:/Users/alvin/Documents/Python Scripts/pneumonia-diagnosis/webapp/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/debonair/Documents/python/pneumonia-diagnosis/webapp/Views/Shared/NotFound.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL05vdEZvdW5kLmNzaHRtbA==
+[C:/Users/alvin/Documents/Python Scripts/pneumonia-diagnosis/webapp/Views/Shared/NotFound.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXE5vdEZvdW5kLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/debonair/Documents/python/pneumonia-diagnosis/webapp/Views/Shared/_AuthLayout.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19BdXRoTGF5b3V0LmNzaHRtbA==
+[C:/Users/alvin/Documents/Python Scripts/pneumonia-diagnosis/webapp/Views/Shared/_AuthLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BdXRoTGF5b3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/debonair/Documents/python/pneumonia-diagnosis/webapp/Views/Shared/_LoginPartial.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19Mb2dpblBhcnRpYWwuY3NodG1s
+[C:/Users/alvin/Documents/Python Scripts/pneumonia-diagnosis/webapp/Views/Shared/_LoginPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/debonair/Documents/python/pneumonia-diagnosis/webapp/Views/Shared/_UsersLayout.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19Vc2Vyc0xheW91dC5jc2h0bWw=
+[C:/Users/alvin/Documents/Python Scripts/pneumonia-diagnosis/webapp/Views/Shared/_UsersLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Vc2Vyc0xheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/debonair/Documents/python/pneumonia-diagnosis/webapp/Views/Shared/_ValidationScriptsPartial.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+[C:/Users/alvin/Documents/Python Scripts/pneumonia-diagnosis/webapp/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/debonair/Documents/python/pneumonia-diagnosis/webapp/Views/_ViewImports.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+[C:/Users/alvin/Documents/Python Scripts/pneumonia-diagnosis/webapp/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/debonair/Documents/python/pneumonia-diagnosis/webapp/Views/_ViewStart.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdTdGFydC5jc2h0bWw=
+[C:/Users/alvin/Documents/Python Scripts/pneumonia-diagnosis/webapp/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/debonair/Documents/python/pneumonia-diagnosis/webapp/Views/Shared/_Layout.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19MYXlvdXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = b-fyt87btpn5
+[C:/Users/alvin/Documents/Python Scripts/pneumonia-diagnosis/webapp/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-xrqygptfwq
