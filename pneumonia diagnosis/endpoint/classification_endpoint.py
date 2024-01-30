@@ -1,7 +1,7 @@
 import sys
 import pathlib
 import traceback
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template, current_app
 
 #Setting path.
 cwd = pathlib.Path(__name__).parent.resolve()
@@ -17,6 +17,10 @@ else:
     sys.path.append(cwd)
     print(cwd)
 
+def file_format_not_supported(e = None):
+    if e:
+        current_app.logger.info(f"{e.name} error {e.code} at {request.url}")
+    return "Error! File format is not supported"
 
 import utils
 app = Flask(__name__)
@@ -33,8 +37,10 @@ def predict_class():
                 image_data = request.data
                 prediction = utils.image_classification(image_data, model = model)
                 return str(prediction)
-        except:
-            return jsonify({'trace': traceback.format_exc()})
+            else:
+                return file_format_not_supported()
+        except Exception as e:
+            return jsonify({'trace': traceback.format_exc(), 'error': str(e)})
     else:
         print("Model not loaded yet!")
 
@@ -48,5 +54,6 @@ if __name__ == "__main__":
     print("Loading model checkpoint...")
     model = utils.load_model()
     print("Loaded model.")
+    app.register_error_handler(400, file_format_not_supported)
 
     app.run(debug = True, port = port)

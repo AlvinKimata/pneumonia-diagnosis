@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\alvin\\Documents\\Python Scripts\\pneumonia-diagnosis\\webapp\\school_project.csproj": {}
+    "C:\\Users\\Alvin.Kimata\\Documents\\Python\\pneumonia-diagnosis\\webapp\\school_project.csproj": {}
   },
   "projects": {
-    "C:\\Users\\alvin\\Documents\\Python Scripts\\pneumonia-diagnosis\\webapp\\school_project.csproj": {
+    "C:\\Users\\Alvin.Kimata\\Documents\\Python\\pneumonia-diagnosis\\webapp\\school_project.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\alvin\\Documents\\Python Scripts\\pneumonia-diagnosis\\webapp\\school_project.csproj",
+        "projectUniqueName": "C:\\Users\\Alvin.Kimata\\Documents\\Python\\pneumonia-diagnosis\\webapp\\school_project.csproj",
         "projectName": "school_project",
-        "projectPath": "C:\\Users\\alvin\\Documents\\Python Scripts\\pneumonia-diagnosis\\webapp\\school_project.csproj",
-        "packagesPath": "C:\\Users\\alvin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\alvin\\Documents\\Python Scripts\\pneumonia-diagnosis\\webapp\\obj\\",
+        "projectPath": "C:\\Users\\Alvin.Kimata\\Documents\\Python\\pneumonia-diagnosis\\webapp\\school_project.csproj",
+        "packagesPath": "C:\\Users\\Alvin.Kimata\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Alvin.Kimata\\Documents\\Python\\pneumonia-diagnosis\\webapp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\alvin\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Alvin.Kimata\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -92,7 +90,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.417\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.418\\RuntimeIdentifierGraph.json"
         }
       }
     }

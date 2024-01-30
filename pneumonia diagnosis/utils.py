@@ -14,9 +14,9 @@ def load_model():
     model = cnn_model.conv_v1()
     model = model.to(device)
 
-    # Load model ckpt.
-    ckpt = torch.load('..\\ckpt\\model_weights.pth', map_location = device) #Load model using an endpoint.
-    model.load_state_dict(ckpt, strict = True)
+    # # Load model ckpt.
+    # ckpt = torch.load('..\\ckpt\\model_weights.pth', map_location = device) #Load model using an endpoint.
+    # model.load_state_dict(ckpt, strict = True)
 
     #Evaluation mode.
     model.eval()
