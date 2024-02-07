@@ -1,3 +1,4 @@
+import cv2
 import sys
 import pathlib
 import traceback
@@ -17,10 +18,10 @@ else:
     sys.path.append(cwd)
     print(cwd)
 
-def file_format_not_supported(e = None):
-    if e:
-        current_app.logger.info(f"{e.name} error {e.code} at {request.url}")
-    return "Error! File format is not supported"
+# def file_format_not_supported(e = None):
+#     if e:
+#         current_app.logger.info(f"{e.name} error {e.code} at {request.url}")
+#     return "Error! File format is not supported"
 
 import utils
 app = Flask(__name__)
@@ -32,13 +33,12 @@ def predict_class():
             #Check request content type.
             content_type = request.content_type
             if content_type == "image/jpeg":
-
                 #Read image binary data.
                 image_data = request.data
                 prediction = utils.image_classification(image_data, model = model)
                 return str(prediction)
             else:
-                return file_format_not_supported()
+                return utils.file_format_not_supported()
         except Exception as e:
             return jsonify({'trace': traceback.format_exc(), 'error': str(e)})
     else:
@@ -54,6 +54,7 @@ if __name__ == "__main__":
     print("Loading model checkpoint...")
     model = utils.load_model()
     print("Loaded model.")
-    app.register_error_handler(400, file_format_not_supported)
+    app.register_error_handler(400, utils.file_format_not_supported)
+    app.register_error_handler(cv2.error, utils.opencv_error)
 
     app.run(debug = True, port = port)
